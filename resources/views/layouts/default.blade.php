@@ -17,7 +17,7 @@
     <!--end css-->
 
 </head>
-<body class="lock">
+<body>
         <!-- Header Start -->
         @include('layouts/header')
         <!-- //Header End -->

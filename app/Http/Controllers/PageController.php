@@ -12,8 +12,6 @@ use Illuminate\Http\Request;
 
 class PageController extends AppController
 {
-
-
     /**
      * Contacte
      *
@@ -21,10 +19,10 @@ class PageController extends AppController
      */
     public function contacts(Request $request)
     {
-        $page        = Page::find(4);
-        $ourMission  = About::find(3);
+        $page        = Page::find(3);
         $activeMenu  = $page->id;
-        return view('page.contacts',compact('page','activeMenu','ourMission'));
+//        dd($page->toArray());
+        return view('page.contacts',compact('page','activeMenu'));
     }
 
     public function sendContactForm(ContactFormRequest $request)
@@ -47,9 +45,6 @@ class PageController extends AppController
     public function aboutUs()
     {
         $page         = Page::find(12);
-        $teams        = Team::get();
-        $certificates = Certificate::get();
-        $partners     = Partner::get();
         return view('page.about-us',compact('page','partners','certificates','teams'));
     }
 

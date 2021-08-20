@@ -10,10 +10,5 @@
 
     @include("home.slider")
 
-    @include("home.products")
-
-    @include("home.news")
-
-    @include("home.about-us")
 
 @stop
