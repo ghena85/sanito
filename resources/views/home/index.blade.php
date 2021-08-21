@@ -2,8 +2,8 @@
 
 {{-- Page title --}}
 @section('title')
-    {{ ENV('APP_NAME') }}
-@stop
+    {{ env('APP_NAME')." - ".$page->getTranslatedAttribute('name')}}
+@endsection
 
 {{-- content --}}
 @section('content')

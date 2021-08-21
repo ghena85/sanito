@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-    <title>{{ env('APP_NAME') }}</title>
+    <title>@yield("title")</title>
     <!-- mobile setting -->
     @yield('meta') @show
 

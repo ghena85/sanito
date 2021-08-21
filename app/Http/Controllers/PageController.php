@@ -21,8 +21,8 @@ class PageController extends AppController
     {
         $page        = Page::find(3);
         $activeMenu  = $page->id;
-//        dd($page->toArray());
-        return view('page.contacts',compact('page','activeMenu'));
+        // dd($page->toArray());
+        return view('contact.index',compact('page','activeMenu'));
     }
 
     public function sendContactForm(ContactFormRequest $request)
