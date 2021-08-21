@@ -45,7 +45,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         'as' => 'home',
         'uses' => 'HomeController@home'
     ]);
-    Route::get('/acasa', [
+    Route::get('/home', [
         'as' => 'home',
         'uses' => 'HomeController@home'
     ]);
@@ -94,6 +94,17 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
     Route::get('/despre-noi', [
         'as' => 'despre-noi',
         'uses' => 'PageController@aboutUs'
+    ]);
+    Route::get('/about', [
+        'as' => 'about',
+        'uses' => 'PageController@aboutUs'
+    ]);
+
+    #Category
+
+    Route::get('/category', [
+        'as' => 'category',
+        'uses' => 'PageController@category'
     ]);
 
     #Cart

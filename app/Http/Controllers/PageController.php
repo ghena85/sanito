@@ -44,8 +44,16 @@ class PageController extends AppController
      */
     public function aboutUs()
     {
-        $page         = Page::find(12);
-        return view('page.about-us',compact('page','partners','certificates','teams'));
+        $page         = Page::find(2);
+        return view('about.index',compact('page'));
+    }
+
+    #Category
+
+    public function category()
+    {
+        $page         = Page::find(4);
+        return view('category.index',compact('page'));
     }
 
 
