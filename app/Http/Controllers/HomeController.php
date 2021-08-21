@@ -17,6 +17,7 @@ class HomeController extends AppController
         $activeMenu  = 1;
         $news        = Article::orderBy('id','desc')->take(3)->get();
         $slider      = Slider::orderBy('id','desc')->take(3)->get();
+//        dd($slider->toArray());
 
         return view('home.index', compact(
             'page',
