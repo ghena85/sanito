@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    {{ $page->getTranslatedAttribute('name') }} | {{ ENV('APP_NAME') }}
+    {{ env('APP_NAME')." - ".$page->getTranslatedAttribute('name') }}
 @stop
 
 {{-- content --}}

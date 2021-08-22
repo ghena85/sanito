@@ -53,7 +53,7 @@ class PageController extends AppController
     public function category()
     {
         $page         = Page::find(4);
-        return view('category.index',compact('page'));
+        return view('shop.index',compact('page'));
     }
 
 

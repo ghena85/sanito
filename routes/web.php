@@ -69,12 +69,12 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
     ]);
 
     #Blog>news
-    Route::get('/noutati', [
+    Route::get('/blog', [
         'as' => 'news',
         'uses' => 'NewsController@index'
     ]);
 
-    Route::get('/noutati/{id}-{slug}', [
+    Route::get('/blog/{id}-{slug}', [
         'as' => 'news-detail',
         'uses' => 'NewsController@detail'
     ]);
@@ -107,6 +107,8 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         'uses' => 'PageController@category'
     ]);
 
+    
+
     #Cart
 
     Route::get('/cart', [
@@ -128,6 +130,10 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         'uses' => 'CartController@successOrder'
     ]);
 
+    Route::get('/checkout', [
+        'as' => 'cart-checkout',
+        'uses' => 'CartController@checkout'
+    ]);
 
 
 

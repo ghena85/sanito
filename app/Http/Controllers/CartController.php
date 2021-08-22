@@ -118,4 +118,10 @@ class CartController extends AppController
     public function successOrder(Request $request) {
         return view('cart.success-order');
     }
+
+    public function checkout(){
+        $page = Page::find(6);
+        return view('cart.checkout',compact('page'));
+    }
+
 }
