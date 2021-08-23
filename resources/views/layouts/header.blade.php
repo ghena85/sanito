@@ -10,14 +10,14 @@
                         <span class="icon-time"></span>
                         <div class="header-info__text">
                             <p>Working hours</p>
-                            <p>Mo - Su 09:00 - 20:00</p>
+                            <p>{{ $vars['header-work'] }}</p>
                         </div>
                     </div>
     
                     <div class="header-info__column">
                         <span class="icon-phone"></span>
                         <div class="header-info__text">
-                            <a href="#">+373 60 88 45 67</a>
+                            <a href="#">{{ $vars['header-tel'] }}</a>
                             <p>Order call back</p>
                         </div>
                     </div>

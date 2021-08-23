@@ -3,11 +3,11 @@
         <div class="transport-body">
             <div class="transport-body__item">
                 <span class="icon-bus"></span>
-                <p>Autobus 19 sectorul (centru, botanica, riscani)</p>
+                <p>{{ $vars['home-transport-bus'] }}</p>
             </div>
             <div class="transport-body__item">
                 <span class="icon-trolleybus"></span>
-                <p>Troleibuz 38 sectorul (buiucani, centru, botanica)</p>
+                <p>{{ $vars['home-transport-trol'] }}</p>
             </div>
         </div>
     </div>

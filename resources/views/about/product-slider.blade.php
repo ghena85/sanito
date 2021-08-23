@@ -1,34 +1,34 @@
 <div class="product-slider">
-    <h2 class="product-slider__title">You may also like</h2>
+    <h2 class="product-slider__title">{{ $vars['aboutp-title-hero'] }}</h2>
     <div class="product-slider__body">
         <div class="product-slider__slider container">
             <div class="slider-product__body slider-container swiper">
                 <div class="slider-product__slide">
                     <div class="product">
                         <div class="product-labels">
-                            <span class="product-labels__hit">Hit</span>
+                            <span class="product-labels__hit">{{ $vars['about-hit'] }}</span>
                         </div>
                         <a href="#" class="product-image">
                             <img src="img/product1.png" alt="product">
                         </a>
 
                         <div class="product-meta">
-                            <p class="product-meta__price">de la <b>120 LEI</b></p>
-                            <span class="product-meta__status out">Out of stock</span>
+                            <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <b>{{ $vars['aboutp-pricec'] }}</b></p>
+                            <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                         </div>
 
                         <div class="product-category">
-                            <a href="#">Pots</a>
-                            <a href="#">Flower pots</a>
+                            <a href="#">{{ $vars['aboutp-category-f'] }}</a>
+                            <a href="#">{{ $vars['aboutp-category-s'] }}</a>
                         </div>
 
-                        <a href="#" class="product-info">Self- watering wick system</a>
+                        <a href="#" class="product-info">{{ $vars['aboutp-desc-product'] }}</a>
 
                         <div class="product-footer">
-                            <button class="accent-btn product-btn">Add to cart</button>
+                            <button class="accent-btn product-btn">{{ $vars['aboutp-add-cart'] }}</button>
                             <button class="accent-btn cart-btn icon-bag"></button>                                
                             <div class="product-footer__review">
-                                <small>(120 reviews)</small>
+                                <small>{{ $vars['aboutp-reviews'] }}</small>
                                 <div class="stars">
                                     <span class="icon-star fill"></span>
                                     <span class="icon-star fill"></span>
@@ -43,15 +43,15 @@
                 <div class="slider-product__slide">
                     <div class="product">
                         <div class="product-labels">
-                            <span class="product-labels__hit">Hit</span>
+                            <span class="product-labels__hit">{{ $vars['about-hit'] }}</span>
                         </div>
                         <a href="#" class="product-image">
                             <img src="img/product2.png" alt="product">
                         </a>
 
                         <div class="product-meta">
-                            <p class="product-meta__price">de la <b>120 LEI</b></p>
-                            <span class="product-meta__status">In stock</span>
+                            <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <b>{{ $vars['aboutp-pricec'] }}</b></p>
+                            <span class="product-meta__status">{{ $vars['aboutp-instock'] }}</span>
                         </div>
 
                         <div class="product-category">
@@ -59,13 +59,13 @@
                             <a href="#">Flower pots</a>
                         </div>
 
-                        <a href="#" class="product-info">Santino Self-Watering Planter DECO' TWIN with a drainage cartridge </a>
+                        <a href="#" class="product-info">{{ $vars['aboutp-desc-product'] }}</a>
 
                         <div class="product-footer">
-                            <button class="accent-btn product-btn">Add to cart</button>
+                            <button class="accent-btn product-btn">{{ $vars['aboutp-add-cart'] }}</button>
                             <button class="accent-btn cart-btn icon-bag"></button>                                
                             <div class="product-footer__review">
-                                <small>(120 reviews)</small>
+                                <small>{{ $vars['aboutp-reviews'] }}</small>
                                 <div class="stars">
                                     <span class="icon-star fill"></span>
                                     <span class="icon-star fill"></span>
@@ -80,15 +80,15 @@
                 <div class="slider-product__slide">
                     <div class="product">
                         <div class="product-labels">
-                            <span class="product-labels__hit">Hit</span>
+                            <span class="product-labels__hit">{{ $vars['about-hit'] }}</span>
                         </div>
                         <a href="#" class="product-image">
-                            <img src="img/product3.png" alt="product">
+                            <img src="img/product2.png" alt="product">
                         </a>
 
                         <div class="product-meta">
-                            <p class="product-meta__price">de la <b>120 LEI</b></p>
-                            <span class="product-meta__status">In stock</span>
+                            <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <b>{{ $vars['aboutp-pricec'] }}</b></p>
+                            <span class="product-meta__status">{{ $vars['aboutp-instock'] }}</span>
                         </div>
 
                         <div class="product-category">
@@ -96,13 +96,13 @@
                             <a href="#">Flower pots</a>
                         </div>
 
-                        <a href="#" class="product-info">Self- watering wick system</a>
+                        <a href="#" class="product-info">{{ $vars['aboutp-desc-product'] }}</a>
 
                         <div class="product-footer">
-                            <button class="accent-btn product-btn">Add to cart</button>
+                            <button class="accent-btn product-btn">{{ $vars['aboutp-add-cart'] }}</button>
                             <button class="accent-btn cart-btn icon-bag"></button>                                
                             <div class="product-footer__review">
-                                <small>(120 reviews)</small>
+                                <small>{{ $vars['aboutp-reviews'] }}</small>
                                 <div class="stars">
                                     <span class="icon-star fill"></span>
                                     <span class="icon-star fill"></span>
@@ -117,16 +117,16 @@
                 <div class="slider-product__slide">
                     <div class="product">
                         <div class="product-labels">
-                            <span class="product-labels__hit">Hit</span>
-                            <span class="product-labels__discount">15%</span>
+                            <span class="product-labels__hit">{{ $vars['about-hit'] }}</span>
+                            <span class="product-labels__discount">{{ $vars['about-procent'] }}</span>
                         </div>
                         <a href="#" class="product-image">
-                            <img src="img/product4.png" alt="product">
+                            <img src="img/product2.png" alt="product">
                         </a>
 
                         <div class="product-meta">
-                            <p class="product-meta__price">de la <span>150LEI</span> <b class="discount">120 LEI</b></p>
-                            <span class="product-meta__status">In stock</span>
+                            <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <b>{{ $vars['aboutp-pricec'] }}</b></p>
+                            <span class="product-meta__status">{{ $vars['aboutp-instock'] }}</span>
                         </div>
 
                         <div class="product-category">
@@ -134,19 +134,19 @@
                             <a href="#">Flower pots</a>
                         </div>
 
-                        <a href="#" class="product-info">Self- watering wick system</a>
+                        <a href="#" class="product-info">{{ $vars['aboutp-desc-product'] }}</a>
 
                         <div class="product-footer">
-                            <button class="accent-btn product-btn">Add to cart</button>
+                            <button class="accent-btn product-btn">{{ $vars['aboutp-add-cart'] }}</button>
                             <button class="accent-btn cart-btn icon-bag"></button>                                
                             <div class="product-footer__review">
-                                <small>(120 reviews)</small>
+                                <small>{{ $vars['aboutp-reviews'] }}</small>
                                 <div class="stars">
                                     <span class="icon-star fill"></span>
                                     <span class="icon-star fill"></span>
                                     <span class="icon-star fill"></span>
                                     <span class="icon-star fill"></span>
-                                    <span class="icon-star"></span>
+                                    <span class="icon-star fill"></span>
                                 </div>
                             </div>
                         </div>
@@ -155,29 +155,29 @@
                 <div class="slider-product__slide">
                     <div class="product">
                         <div class="product-labels">
-                            <span class="product-labels__hit">Hit</span>
+                            <span class="product-labels__hit">{{ $vars['about-hit'] }}</span>
                         </div>
                         <a href="#" class="product-image">
                             <img src="img/product1.png" alt="product">
                         </a>
 
                         <div class="product-meta">
-                            <p class="product-meta__price">de la <b>120 LEI</b></p>
-                            <span class="product-meta__status out">Out of stock</span>
+                            <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <b>{{ $vars['aboutp-pricec'] }}</b></p>
+                            <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                         </div>
 
                         <div class="product-category">
-                            <a href="#">Pots</a>
-                            <a href="#">Flower pots</a>
+                            <a href="#">{{ $vars['aboutp-category-f'] }}</a>
+                            <a href="#">{{ $vars['aboutp-category-s'] }}</a>
                         </div>
 
-                        <a href="#" class="product-info">Self- watering wick system</a>
+                        <a href="#" class="product-info">{{ $vars['aboutp-desc-product'] }}</a>
 
                         <div class="product-footer">
-                            <button class="accent-btn product-btn">Add to cart</button>
+                            <button class="accent-btn product-btn">{{ $vars['aboutp-add-cart'] }}</button>
                             <button class="accent-btn cart-btn icon-bag"></button>                                
                             <div class="product-footer__review">
-                                <small>(120 reviews)</small>
+                                <small>{{ $vars['aboutp-reviews'] }}</small>
                                 <div class="stars">
                                     <span class="icon-star fill"></span>
                                     <span class="icon-star fill"></span>
@@ -192,15 +192,15 @@
                 <div class="slider-product__slide">
                     <div class="product">
                         <div class="product-labels">
-                            <span class="product-labels__hit">Hit</span>
+                            <span class="product-labels__hit">{{ $vars['about-hit'] }}</span>
                         </div>
                         <a href="#" class="product-image">
                             <img src="img/product2.png" alt="product">
                         </a>
 
                         <div class="product-meta">
-                            <p class="product-meta__price">de la <b>120 LEI</b></p>
-                            <span class="product-meta__status">In stock</span>
+                            <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <b>{{ $vars['aboutp-pricec'] }}</b></p>
+                            <span class="product-meta__status">{{ $vars['aboutp-instock'] }}</span>
                         </div>
 
                         <div class="product-category">
@@ -208,13 +208,13 @@
                             <a href="#">Flower pots</a>
                         </div>
 
-                        <a href="#" class="product-info">Santino Self-Watering Planter DECO' TWIN with a drainage cartridge </a>
+                        <a href="#" class="product-info">{{ $vars['aboutp-desc-product'] }}</a>
 
                         <div class="product-footer">
-                            <button class="accent-btn product-btn">Add to cart</button>
+                            <button class="accent-btn product-btn">{{ $vars['aboutp-add-cart'] }}</button>
                             <button class="accent-btn cart-btn icon-bag"></button>                                
                             <div class="product-footer__review">
-                                <small>(120 reviews)</small>
+                                <small>{{ $vars['aboutp-reviews'] }}</small>
                                 <div class="stars">
                                     <span class="icon-star fill"></span>
                                     <span class="icon-star fill"></span>
@@ -229,15 +229,15 @@
                 <div class="slider-product__slide">
                     <div class="product">
                         <div class="product-labels">
-                            <span class="product-labels__hit">Hit</span>
+                            <span class="product-labels__hit">{{ $vars['about-hit'] }}</span>
                         </div>
                         <a href="#" class="product-image">
-                            <img src="img/product3.png" alt="product">
+                            <img src="img/product2.png" alt="product">
                         </a>
 
                         <div class="product-meta">
-                            <p class="product-meta__price">de la <b>120 LEI</b></p>
-                            <span class="product-meta__status">In stock</span>
+                            <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <b>{{ $vars['aboutp-pricec'] }}</b></p>
+                            <span class="product-meta__status">{{ $vars['aboutp-instock'] }}</span>
                         </div>
 
                         <div class="product-category">
@@ -245,13 +245,13 @@
                             <a href="#">Flower pots</a>
                         </div>
 
-                        <a href="#" class="product-info">Self- watering wick system</a>
+                        <a href="#" class="product-info">{{ $vars['aboutp-desc-product'] }}</a>
 
                         <div class="product-footer">
-                            <button class="accent-btn product-btn">Add to cart</button>
+                            <button class="accent-btn product-btn">{{ $vars['aboutp-add-cart'] }}</button>
                             <button class="accent-btn cart-btn icon-bag"></button>                                
                             <div class="product-footer__review">
-                                <small>(120 reviews)</small>
+                                <small>{{ $vars['aboutp-reviews'] }}</small>
                                 <div class="stars">
                                     <span class="icon-star fill"></span>
                                     <span class="icon-star fill"></span>

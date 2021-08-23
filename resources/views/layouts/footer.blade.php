@@ -9,9 +9,9 @@
                 <div class="separator"></div>
 
                 <div class="footer-contacts contacts">
-                    <address>2118 Thornridge Cir. Syracuse, Connecticut 35624</address>
+                    <address>{{ $vars['contact-loc'] }}</address>
                     <a href="tel:+37367525214" class="phone">
-                        <span class="icon-phone"></span> +373 67 525 214
+                        <span class="icon-phone"></span> {{ $vars['footer-tel'] }}
                     </a>
                     <p>Order call back</p>
                 </div>

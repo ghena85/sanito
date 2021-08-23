@@ -4,8 +4,8 @@
             <div class="slider-main__body swiper swiper-bild swiper-container-fade swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events"><div class="swiper-wrapper" id="swiper-wrapper-b56f9b92ddfa92f1" aria-live="off" style="transition-duration: 0ms;"><div class="slider-main__slide swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="1" role="group" aria-label="2 / 2" style="width: 1191px; transition-duration: 0ms; opacity: 1; transform: translate3d(0px, 0px, 0px);">
                    <div class="container slider-main__container">
                         <div class="slider-main__text"> 
-                            <h1 class="swiper-no-swiping">Forget about watering daily</h1>
-                            <p class="swiper-no-swiping">It’s not a secret that self-watering. Our goal is to significantly reduce the cost of this innovative method and make it available and affordable for everyone. We offer products for all types of flowers from simplest to the most demanding</p>
+                            <h1 class="swiper-no-swiping">{{ $vars['home-slider-title'] }}</h1>
+                            <p class="swiper-no-swiping">{{ $vars['home-slider-desc'] }}</p>
                             <a class="accent-btn slider-main__btn" href="single-category.html">View all products</a>
                         </div>
 
@@ -15,8 +15,8 @@
                 <div class="slider-main__slide swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" role="group" aria-label="1 / 2" style="width: 1191px; transition-duration: 0ms; opacity: 1; transform: translate3d(-1191px, 0px, 0px);">
                    <div class="container slider-main__container">
                         <div class="slider-main__text">
-                            <h1 class="swiper-no-swiping">Forget about watering your plants daily</h1>
-                            <p class="swiper-no-swiping">It’s not a secret that self-watering systems simplify gardening. Our goal is to significantly reduce the cost of this innovative method and make it available and affordable for everyone. We offer products for all types of flowers from simplest to the most demanding</p>
+                            <h1 class="swiper-no-swiping">{{ $vars['home-slider-title'] }}</h1>
+                            <p class="swiper-no-swiping">{{ $vars['home-slider-desc'] }}</p>
                             <a class="accent-btn slider-main__btn" href="single-category.html">View all products</a>
                         </div>
 
@@ -25,22 +25,22 @@
                 </div>
                 <div class="slider-main__slide swiper-slide swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="1" role="group" aria-label="2 / 2" style="width: 1191px; transition-duration: 0ms; opacity: 1; transform: translate3d(-2382px, 0px, 0px);">
                    <div class="container slider-main__container">
-                        <div class="slider-main__text"> 
-                            <h1 class="swiper-no-swiping">Forget about watering daily</h1>
-                            <p class="swiper-no-swiping">It’s not a secret that self-watering. Our goal is to significantly reduce the cost of this innovative method and make it available and affordable for everyone. We offer products for all types of flowers from simplest to the most demanding</p>
-                            <a class="accent-btn slider-main__btn" href="single-category.html">View all products</a>
-                        </div>
+                    <div class="slider-main__text">
+                        <h1 class="swiper-no-swiping">{{ $vars['home-slider-title'] }}</h1>
+                        <p class="swiper-no-swiping">{{ $vars['home-slider-desc'] }}</p>
+                        <a class="accent-btn slider-main__btn" href="single-category.html">View all products</a>
+                    </div>
 
                         <img src="img/mainslider.png" alt="plants">
                    </div>
                 </div>
             <div class="slider-main__slide swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="0" role="group" aria-label="1 / 2" style="width: 1191px; transition-duration: 0ms; opacity: 1; transform: translate3d(-3573px, 0px, 0px);">
                    <div class="container slider-main__container">
-                        <div class="slider-main__text">
-                            <h1 class="swiper-no-swiping">Forget about watering your plants daily</h1>
-                            <p class="swiper-no-swiping">It’s not a secret that self-watering systems simplify gardening. Our goal is to significantly reduce the cost of this innovative method and make it available and affordable for everyone. We offer products for all types of flowers from simplest to the most demanding</p>
-                            <a class="accent-btn slider-main__btn" href="single-category.html">View all products</a>
-                        </div>
+                    <div class="slider-main__text">
+                        <h1 class="swiper-no-swiping">{{ $vars['home-slider-title'] }}</h1>
+                        <p class="swiper-no-swiping">{{ $vars['home-slider-desc'] }}</p>
+                        <a class="accent-btn slider-main__btn" href="single-category.html">View all products</a>
+                    </div>
 
                         <img src="img/mainslider.png" alt="plants">
                    </div>
