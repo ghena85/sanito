@@ -9,7 +9,7 @@
                             <a class="accent-btn slider-main__btn" href="single-category.html">View all products</a>
                         </div>
 
-                        <img src="img/mainslider.png" alt="plants">
+                        <img src="/img/mainslider.png" alt="plants">
                    </div>
                 </div>
                 <div class="slider-main__slide swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" role="group" aria-label="1 / 2" style="width: 1191px; transition-duration: 0ms; opacity: 1; transform: translate3d(-1191px, 0px, 0px);">

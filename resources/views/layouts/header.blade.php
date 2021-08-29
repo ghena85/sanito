@@ -220,9 +220,13 @@
     
                 <nav class="navbar">
                     <ul class="navbar__list">
-                        <li class="navbar__item"><a href="{{ route('about') }}">About us</a></li>
-                        <li class="navbar__item"><a href="{{ route('contacts') }}">Contacts</a></li>
-                        <li class="navbar__item"><a href="{{ route('category') }}">Categories</a></li>
+                        @foreach($navMenu as $value)
+                            <li class="navbar__item {{ (isset($activeMenu) && $activeMenu == $value->id ? 'active' : '') }}">
+                                <a href="{{ Route::has($value->slug) ? route($value->slug) : route('info',['slug' =>$value->slug]) }}">
+                                    {{ $value->getTranslatedAttribute('name') }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </nav>
     
