@@ -130,12 +130,7 @@
             </aside>
 
             <div class="page-grid__category category">
-                <div class="category-item">
-                    <a href="single-category.html">
-                        <img src="img/category1.png" alt="Flower pots" class="category-item__image">
-                        <h4 class="category-item__name">Flower pots</h4>
-                    </a>
-                </div>
+
                 <div class="category-item">
                     <a href="single-category.html">
                         <img src="img/category2.png" alt="Food boxes" class="category-item__image">

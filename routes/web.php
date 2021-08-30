@@ -63,10 +63,22 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
     ]);
 
     // Product
+    Route::get('/produse/{categorySlug}', [
+        'as' => 'products',
+        'uses' => 'ProductController@index'
+    ]);
     Route::get('/produs/{slug}', [
         'as' => 'product-detail',
         'uses' => 'ProductController@detail'
     ]);
+
+    #Category
+
+    Route::get('/category', [
+        'as' => 'category',
+        'uses' => 'CategoryController@index'
+    ]);
+
 
     #Blog>news
     Route::get('/noutati', [
@@ -100,14 +112,6 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         'uses' => 'PageController@aboutUs'
     ]);
 
-    #Category
-
-    Route::get('/category', [
-        'as' => 'category',
-        'uses' => 'PageController@category'
-    ]);
-
-    
 
     #Cart
 

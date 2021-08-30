@@ -48,15 +48,6 @@ class PageController extends AppController
         return view('about.index',compact('page'));
     }
 
-    #Category
-
-    public function category()
-    {
-        $page         = Page::find(4);
-        return view('shop.index',compact('page'));
-    }
-
-
     /**
      * Info/Detail Page
      *
