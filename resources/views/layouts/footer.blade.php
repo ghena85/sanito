@@ -4,7 +4,7 @@
         <div class="footer-body">
             <div class="footer-main">
                 <div class="footer-logo">
-                    <a href="/"><img src="img/logo.svg" alt="logo"></a>
+                    <a href="/"><img src="/img/logo.svg" alt="logo"></a>
                 </div>
                 <div class="separator"></div>
 
@@ -68,8 +68,8 @@
                 </ul>
 
                 <div class="social__payment">
-                    <img src="img/visa.svg" alt="visa">
-                    <img src="img/mastercard.svg" alt="mastercard">
+                    <img src="/img/visa.svg" alt="visa">
+                    <img src="/img/mastercard.svg" alt="mastercard">
                 </div>
             </div>
         </div>
@@ -77,8 +77,8 @@
         <div class="footer-copyright">
             <small>© 2021 Santino</small>
             <div class="social__payment">
-                <img src="img/visa.svg" alt="visa">
-                <img src="img/mastercard.svg" alt="mastercard">
+                <img src="/img/visa.svg" alt="visa">
+                <img src="/img/mastercard.svg" alt="mastercard">
             </div>
         </div>
     </div>

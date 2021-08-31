@@ -1,20 +1,30 @@
-<div class="blog-article">
-    <div class="blog-article__video">
-        <video class="video" src="img/Flower_3.mp4" muted loop></video>
-    </div>
-    <div class="article">
+@if ($key>0)
+    <div class="blog-article">
+        <div class="blog-article__video">
+            @php
+                $currentFile = $value->image;
+                $extensions = ['.jpg',".jpeg",'.png','.gif','.tif','.tiff','.bmp'];
+            @endphp
+            @if (!in_array($currentFile,$extensions))
+                <img src="{{ url('storage/'.$value->image) }}" alt="Image Article">
+            @else
+            <video class="video" src="{{ url('storage/'.$value->image) }}" muted loop></video>
+            @endif
+        </div>
+        <div class="article">
 
-        <h3 class="blog-article__title">
-            {{ $vars['blog-title-article'] }}
-        </h3>
-        <p class="blog-article__descr">
-            {{ $vars['blog-desc-article'] }}
-        </p>
-        <data class="blog-article__data">
-            {{ $vars['blog-date-article'] }}
-        </data>
-        <a class="blog-article__view" href="single.html">
-            {{ $vars['blog-more-article'] }}
-        </a>
+            <h3 class="blog-article__title">
+                {{ $value->getTranslatedAttribute('name') }}
+            </h3>
+            <p class="blog-article__descr">
+                {{ $value->getTranslatedAttribute('short_text') }}
+            </p>
+            <data class="blog-article__data">
+                {{ $value->getTranslatedAttribute('date') }}
+            </data>
+            <a class="blog-article__view" href="{{ route('news-detail',['id' => $value->id,'slug' => $value->slug]) }}">
+                {{ $vars['blog-more-article'] }}
+            </a>
+        </div>
     </div>
-</div>
+@endif

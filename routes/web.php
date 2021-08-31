@@ -81,7 +81,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
 
 
     #Blog>news
-    Route::get('/noutati', [
+    Route::get('/news', [
         'as' => 'news',
         'uses' => 'NewsController@index'
     ]);

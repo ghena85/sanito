@@ -30,15 +30,15 @@
                     <div class="blog-article__background" style="background: url('./img/blog_bg.jpg') 50% 50% / cover no-repeat; height: 400px; width: 100%;">
                         <div class="blog-article__main">
                             <h2 class="blog-article__title main">
-                                {{ $vars['blog-title-hero'] }}
+                                {{ $value->getTranslatedAttribute('name') }}
                             </h2>
                             <p class="blog-article__descr">
-                                {{ $vars['blog-desc-hero'] }}
+                                {{ $value->getTranslatedAttribute('description') }}
                             </p>
                             <data class="blog-article__data">
-                                {{ $vars['blog-date-hero'] }}
+                                {{ $value->getTranslatedAttribute('date') }}
                             </data>
-                            <a class="blog-article__view" href="single.html">
+                            <a class="blog-article__view" href="{{ route('news-detail',['id' => $value->id,'slug' => $value->slug]) }}">
                                 {{ $vars['blog-more-hero'] }}
                             </a>
                         </div>
@@ -50,10 +50,8 @@
 
             <div class="blog-articles">
 
-                @foreach($newsList as  $key =>  $value)
-                    @if($key > 0)
+                @foreach($newsList as $key => $value)
                         @include("news.news-item")
-                    @endif
                 @endforeach
 
             </div>
