@@ -6,7 +6,7 @@
 
 
 @section('content')
-
+    
     @include("contact/contact-form")
 
     @include("home/google-maps")
