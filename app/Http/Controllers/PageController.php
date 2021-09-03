@@ -45,7 +45,9 @@ class PageController extends AppController
     public function aboutUs()
     {
         $page         = Page::find(2);
-        return view('about.index',compact('page'));
+        $aboutHero    = About::find(3);
+        $aboutDir     = About::find(2);
+        return view('about.index',compact('page','aboutHero','aboutDir'));
     }
 
     /**

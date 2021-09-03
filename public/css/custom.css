@@ -10,6 +10,10 @@
     background-color: #545454;
 }
 
+.navbar__item.active a {
+    opacity: 1 !important;
+}
+
 .desktop-header .under-header .under-header__container .navbar .navbar__list .navbar__item.active::after{
     content: '';
     position: absolute;

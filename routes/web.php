@@ -107,8 +107,8 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         'as' => 'despre-noi',
         'uses' => 'PageController@aboutUs'
     ]);
-    Route::get('/about', [
-        'as' => 'about',
+    Route::get('/about-us', [
+        'as' => 'about-us',
         'uses' => 'PageController@aboutUs'
     ]);
 
