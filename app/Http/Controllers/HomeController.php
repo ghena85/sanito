@@ -20,6 +20,9 @@ class HomeController extends AppController
         $news        = Article::orderBy('id','desc')->take(3)->get();
         $slider      = Slider::orderBy('id','desc')->take(3)->get();
         $categoryies      = Category::where('onHome',1)->orderBy('id','desc')->get();
+
+        $about      = About::find(3);
+        $aboutList      = About::where('id','>=',4)->orderBy('id','desc')->get();
         $productPopulars      = Series::where('onMostPopular',1)->orderBy('id','desc')->get();
 //        dd($slider->toArray());
 
