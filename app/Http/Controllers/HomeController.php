@@ -21,14 +21,14 @@ class HomeController extends AppController
         $slider      = Slider::orderBy('id','desc')->take(3)->get();
         $categoryies      = Category::where('onHome',1)->orderBy('id','desc')->get();
         $productPopulars      = Series::where('onMostPopular',1)->orderBy('id','desc')->get();
-//        dd($slider->toArray());
+        $aboutus     = About::find(4);
 
         return view('home.index', compact(
             'page',
             'news',
             'slider',
-            'activeMenu'
-
+            'activeMenu',
+            'aboutus'
         ));
     }
 
