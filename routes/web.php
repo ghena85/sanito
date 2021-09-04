@@ -45,10 +45,6 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         'as' => 'home',
         'uses' => 'HomeController@home'
     ]);
-    Route::get('/home', [
-        'as' => 'home',
-        'uses' => 'HomeController@home'
-    ]);
 
     Route::get('/info/{slug}', [
         'as' => 'info',
@@ -63,13 +59,15 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
     ]);
 
     // Product
-    Route::get('/produse/{categorySlug}', [
-        'as' => 'products',
-        'uses' => 'ProductController@index'
-    ]);
     Route::get('/produs/{slug}', [
         'as' => 'product-detail',
         'uses' => 'ProductController@detail'
+    ]);
+
+    // Series
+    Route::get('/serii-de-produse/{categorySlug}', [
+        'as' => 'series',
+        'uses' => 'SeriesController@index'
     ]);
 
     #Category
