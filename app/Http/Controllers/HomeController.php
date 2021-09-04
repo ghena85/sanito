@@ -31,7 +31,8 @@ class HomeController extends AppController
             'news',
             'slider',
             'activeMenu',
-            'aboutus'
+            'aboutus',
+            'categoryies'
         ));
     }
 
