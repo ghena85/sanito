@@ -9,7 +9,7 @@
                     <div class="header-info__column">
                         <span class="icon-time"></span>
                         <div class="header-info__text">
-                            <p>Working hours</p>
+                            <p>{{ $vars['header_work_text'] }}</p>
                             <p>{{ $vars['header-work'] }}</p>
                         </div>
                     </div>
@@ -18,7 +18,7 @@
                         <span class="icon-phone"></span>
                         <div class="header-info__text">
                             <a href="#">{{ $vars['header-tel'] }}</a>
-                            <p>Order call back</p>
+                            <p>{{ $vars['header_tel_text'] }}</p>
                         </div>
                     </div>
                 </div>
@@ -386,10 +386,13 @@
             </ul>
     
             <ul class="navbar-menu">
-                <li class="navbar-menu__item"><a href="../about.html">About us</a></li>
-                <li class="navbar-menu__item"><a href="../contact.html">Contact</a></li>
-                <li class="navbar-menu__item"><a href="../category.html">Categories</a></li>
-                <!-- <li class="navbar-menu__item"><a href="#">Login/Register</a></li> -->
+                @foreach($navMenu as $value)
+                    <li class="header_item {{ (isset($activeMenu) && $activeMenu == $value->id ? 'active' : '') }}">
+                        <a class="navbar-menu__item" href="{{ Route::has($value->slug) ? route($value->slug) : route('info',['slug' =>$value->slug]) }}">
+                            {{ $value->getTranslatedAttribute('name') }}
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </nav>
         <form action="#" class="search">

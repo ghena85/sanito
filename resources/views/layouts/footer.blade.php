@@ -31,9 +31,13 @@
                 <div class="menu-footer__column">
                     <h4 class="menu-footer__title footer-title">About</h4>
                     <ul class="menu-footer__list">
-                        <li><a href="../about.html" class="menu-footer__link">About us</a></li>
-                        <li><a href="../contact.html" class="menu-footer__link">Contacts</a></li>
-                        <li><a href="../blog.html" class="menu-footer__link">Blog</a></li>
+                        @foreach($footerMenu as $value)
+                            <li class="{{ (isset($activeMenu) && $activeMenu == $value->id ? 'active' : '') }}">
+                                <a class="menu-footer__link" href="{{ Route::has($value->slug) ? route($value->slug) : route('info',['slug' =>$value->slug]) }}">
+                                    {{ $value->getTranslatedAttribute('name') }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
 
