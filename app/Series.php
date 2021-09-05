@@ -3,9 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use LaravelAdminPanel\Traits\Translatable;
 
 
 class Series extends Model
 {
-    protected $translatable = ['name'];
+    use Translatable;
+
+    protected $translatable = [
+        'name',
+        'text',
+        'short_text'
+    ];
 }

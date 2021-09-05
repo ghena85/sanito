@@ -14,11 +14,6 @@ class About extends Model
 {
     use Translatable;
     protected $translatable = [
-        'name',
-        'name2',
-        'short_text',
-        'text',
-        'text1',
-        'text2'
+        'name'
     ];
 }

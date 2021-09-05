@@ -23,3 +23,7 @@
     left: 0;
     background-color: #62c0cb;
 }
+
+.about-section .slider-about__body{
+    overflow: hidden !important;
+}

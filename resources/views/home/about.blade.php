@@ -1,8 +1,8 @@
 <section class="about-section">
     <div class="container">
         <div class="section-header">
-            <h2>About us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non justo turpis. Donec eros risus, pellentesque eu lectus ac, facilisis ornare velit. In nec ante condimentum, pretium diam eu, tempus enim. Curabitur ac quam sed elit malesuada euismod</p>
+            <h2>{{ $about->getTranslatedAttribute('name') }}</h2>
+            <p>{{ $about->getTranslatedAttribute('short_text') }}</p>
         </div>
     </div>
 
@@ -11,24 +11,21 @@
             <div class="about-slider__body">
                 <div class="about-slider__slider container">
                     <div class="slider-about__body slider-container swiper">
-                        <div class="slider-about__slide">
-                            <a data-fslightbox="gallery" href="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4">
-                                <button class="icon-play"></button>
-                                <img src="img/video-thumbnail.jpg" alt="video">
-                            </a>
-                            <div class="video-info">
-                                <h4 class="video-info__title swiper-no-swiping">Praesent elementum dignissim metus, eu auctor elit dignissim ac</h4>
-                            </div>
-                        </div>
-                        <div class="slider-about__slide">
-                            <a data-fslightbox="gallery" href="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4">
-                                <button class="icon-play"></button>
-                                <img src="img/video-thumbnail2.jpg" alt="video">
-                            </a>
-                            <div class="video-info swiper-no-swiping">
-                                <h4 class="video-info__title">Praesent elementum dignissim metus, eu auctor elit dignissim ac</h4>
-                            </div>
-                        </div>
+
+                        @foreach ($aboutList as $value)
+                            @if ((!empty($value->youtube_image)) && (!empty($value->youtube)))
+                                <div class="slider-about__slide">
+                                    <a data-fslightbox="gallery" href="{{ $value->getTranslatedAttribute('youtube') }}">
+                                        <button class="icon-play"></button>
+                                        <img src="{{ url('storage/'.$value->youtube_image) }}" alt="video">
+                                    </a>
+                                    <div class="video-info">
+                                        <h4 class="video-info__title swiper-no-swiping">{{ $value->getTranslatedAttribute('name') }}</h4>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+
                     </div>
 
                     <div class="slider-about-controls">
