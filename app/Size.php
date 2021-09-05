@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Series extends Model
+class Size extends Model
 {
     protected $translatable = ['name'];
 }

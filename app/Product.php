@@ -16,8 +16,16 @@ class Product extends Model
         'short_text',
     ];
 
-    public function shopId() {
-        return $this->belongsTo(Shop::class, 'shop_id');
+    public function seriesId() {
+        return $this->belongsTo(Series::class, 'series_id');
+    }
+
+    public function sizeId() {
+        return $this->belongsTo(Size::class, 'size_id');
+    }
+
+    public function colorId() {
+        return $this->belongsTo(Color::class, 'color_id');
     }
 
     public function categories()
