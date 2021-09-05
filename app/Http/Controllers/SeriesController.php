@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Page;
+use App\Series;
 use Illuminate\Http\Request;
 
 class SeriesController extends AppController
@@ -15,6 +16,7 @@ class SeriesController extends AppController
         $activeMenu  = $page->id;
         $category    = Category::where('slug',$categorySlug)->first();
         if(empty($category)) return abort(404);
-        return view('series.index', compact('category','activeMenu','page'));
+        $series      = Series::orderBy('id','desc')->get();
+        return view('series.index', compact('category','series','activeMenu','page'));
     }
 }
