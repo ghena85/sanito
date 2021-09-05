@@ -450,3 +450,31 @@ if(fixedContacts){
         }
     })
 }
+
+if ("ontouchstart" in document.documentElement){
+    window.addEventListener('resize', () =>{
+        const pageW = window.innerWidth;
+        console.log(pageW);
+        if (pageW >= 767) {
+            const desktopHeader = document.querySelector('.desktop-header');
+            if (desktopHeader.querySelector('.languages')) {
+                const currentLanguage = desktopHeader.querySelector('.current-language');
+                const languageDropdown = desktopHeader.querySelector('.language-dropdown');
+                currentLanguage.addEventListener('click', () =>{
+                    currentLanguage.classList.toggle('open')
+                    languageDropdown.classList.toggle('open')
+                })
+            }
+        }else{
+            const mobileHeader = document.querySelector('.mobile-header');
+            if (mobileHeader.querySelector('.languages')) {
+                const currentLanguage = mobileHeader.querySelector('.current-language');
+                const languageDropdown = mobileHeader.querySelector('.language-dropdown');
+                currentLanguage.addEventListener('click', () =>{
+                    currentLanguage.classList.toggle('open')
+                    languageDropdown.classList.toggle('open')
+                }) 
+            }
+        }
+    })
+}

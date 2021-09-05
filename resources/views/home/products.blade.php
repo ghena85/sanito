@@ -13,149 +13,77 @@
                 </a>
             </div>
             <div class="product-body__grid">
-                <div class="product">
-                    <div class="product-labels">
-                        <span class="product-labels__discount">20%</span>
-                    </div>
-                    <a href="single-product.html" class="product-image">
-                        <img src="img/product1.png" alt="product">
-                    </a>
 
-                    <div class="product-meta">
-                        <p class="product-meta__price">de la <b>120 LEI</b></p>
-                        <span class="product-meta__status out">Out of stock</span>
-                    </div>
+                @foreach ($productOnSale as $key => $value)
+                    @if ($key < 4)
+                        <div class="product">
+                            <div class="product-labels">
+                                @if (!empty($value->discount_percent))
+                                    <span class="product-labels__discount">{{ $value->getTranslatedAttribute('discount_percent') }}%</span>
+                                @endif
+                            </div>
 
-                    <div class="product-category">
-                        <a href="single-category.html">Pots</a>
-                        <a href="single-category.html">Flower pots</a>
-                    </div>
+                            <a href="single-product.html" class="product-image">
+                                <img src="{{ url('storage/'.$value->image) }}" alt="product">
+                            </a>
 
-                    <a href="single-product.html" class="product-info">Self- watering wick system</a>
+                            @if ((!empty($value->price_from)) && ($value->price_offer_from == null))
+                                <div class="product-meta">
+                                    <p class="product-meta__price">de la <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
+                                    @if ($value->in_stock == 0)
+                                        <span class="product-meta__status out">Out of stock</span>
+                                    @endif
+                                    @if ($value->in_stock == 1)
+                                        <span class="product-meta__status">In stock</span>
+                                    @endif
+                                </div>
+                            @endif
 
-                    <div class="product-footer">
-                        <button class="accent-btn product-btn">Add to cart</button>
-                        <button class="accent-btn cart-btn icon-bag"></button>
-                        <div class="product-footer__review">
-                            <small>(120 reviews)</small>
-                            <div class="stars">
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
+                            
+                            @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
+                                <div class="product-meta">
+                                    <p class="product-meta__price">de la <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
+                                    @if ($value->in_stock == 0)
+                                        <span class="product-meta__status out">Out of stock</span>
+                                    @endif
+                                    @if ($value->in_stock == 1)
+                                        <span class="product-meta__status">In stock</span>
+                                    @endif
+                                </div>
+                            @endif
+
+                            <div class="product-category">
+                                <a href="single-category.html">Pots</a>
+                                <a href="single-category.html">Flower pots</a>
+                            </div>
+
+                            <a href="#" class="product-info">{{ $value->getTranslatedAttribute('name') }}</a>
+
+                            <div class="product-footer">
+                                <button class="accent-btn product-btn">Add to cart</button>
+                                <button class="accent-btn cart-btn icon-bag"></button>                                
+                                <div class="product-footer__review">
+                                    <small>({{ $value->getTranslatedAttribute('reviews') }} reviews) </small>
+
+                                    <div class="stars">
+
+                                        @php
+                                            $stars = $value->getTranslatedAttribute('rate');
+                                        @endphp
+
+                                        @for ($i = 0; $i < $stars; $i++)
+                                            @if ($i<5)
+                                                <span class="icon-star fill"></span>
+                                            @endif
+                                        @endfor
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
 
-                <div class="product">
-                    <div class="product-labels">
-                        <span class="product-labels__discount">15%</span>
-                    </div>
-                    <a href="single-product.html" class="product-image">
-                        <img src="img/product2.png" alt="product">
-                    </a>
-
-                    <div class="product-meta">
-                        <p class="product-meta__price">de la <b>120 LEI</b></p>
-                        <span class="product-meta__status">In stock</span>
-                    </div>
-
-                    <div class="product-category">
-                        <a href="single-category.html">Pots</a>
-                        <a href="single-category.html">Flower pots</a>
-                    </div>
-
-                    <a href="single-product.html" class="product-info">Santino Self-Watering Planter DECO' TWIN with a drainage cartridge </a>
-
-                    <div class="product-footer">
-                        <button class="accent-btn product-btn">Add to cart</button>
-                        <button class="accent-btn cart-btn icon-bag"></button>
-                        <div class="product-footer__review">
-                            <small>(120 reviews)</small>
-                            <div class="stars">
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product">
-                    <div class="product-labels">
-                        <span class="product-labels__discount">25%</span>
-                    </div>
-                    <a href="single-product.html" class="product-image">
-                        <img src="img/product3.png" alt="product">
-                    </a>
-
-                    <div class="product-meta">
-                        <p class="product-meta__price">de la <b>120 LEI</b></p>
-                        <span class="product-meta__status">In stock</span>
-                    </div>
-
-                    <div class="product-category">
-                        <a href="single-category.html">Pots</a>
-                        <a href="single-category.html">Flower pots</a>
-                    </div>
-
-                    <a href="single-product.html" class="product-info">Self- watering wick system</a>
-
-                    <div class="product-footer">
-                        <button class="accent-btn product-btn">Add to cart</button>
-                        <button class="accent-btn cart-btn icon-bag"></button>
-                        <div class="product-footer__review">
-                            <small>(120 reviews)</small>
-                            <div class="stars">
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product">
-                    <div class="product-labels">
-                        <span class="product-labels__discount">15%</span>
-                    </div>
-                    <a href="single-category.html" class="product-image">
-                        <img src="img/product4.png" alt="product">
-                    </a>
-
-                    <div class="product-meta">
-                        <p class="product-meta__price">de la <span>150LEI</span> <b class="discount">120 LEI</b></p>
-                        <span class="product-meta__status">In stock</span>
-                    </div>
-
-                    <div class="product-category">
-                        <a href="single-category.html">Pots</a>
-                        <a href="single-category.html">Flower pots</a>
-                    </div>
-
-                    <a href="single-product.html" class="product-info">Self- watering wick system</a>
-
-                    <div class="product-footer">
-                        <button class="accent-btn product-btn">Add to cart</button>
-                        <button class="accent-btn cart-btn icon-bag"></button>
-                        <div class="product-footer__review">
-                            <small>(120 reviews)</small>
-                            <div class="stars">
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star fill"></span>
-                                <span class="icon-star"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
