@@ -27,3 +27,21 @@
 .about-section .slider-about__body{
     overflow: hidden !important;
 }
+
+.contact-form-errors{
+    margin-bottom: 50px;
+}
+
+.contact-form-errors ul li{
+    font-weight: 600;
+    color: red;
+    text-align: center;
+}
+
+.contact-form .contact-form__lable .contact-form__input.error{
+    border: 2px solid red;
+}
+
+.thumb-slider__slide{
+    height: 85px !important;
+}

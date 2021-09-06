@@ -32,6 +32,7 @@ class PageController extends AppController
         $data['email'] = $request->email;
         $data['phone'] = $request->phone;
         $data['msg'] = $request->msg;
+        
         send(env('TO_EMAIL'),'Feedback Mesaj' ,$data, 'contact');
 
         return redirect()->back()->with('message', 'Transmis cu success.');
