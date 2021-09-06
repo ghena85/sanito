@@ -19,4 +19,11 @@ class SeriesController extends AppController
         $series      = Series::orderBy('id','desc')->get();
         return view('series.index', compact('category','series','activeMenu','page'));
     }
+
+    public function detail(Request $request, $slug)
+    {
+        $activeMenu      = 2;
+        $product = $page = Series::where('slug', $slug)->firstOrFail();
+        return view('series.detail', compact('product','activeMenu','page'));
+    }
 }

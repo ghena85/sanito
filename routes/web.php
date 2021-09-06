@@ -58,17 +58,17 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         'uses' => 'SearchController@index'
     ]);
 
-    // Product
-    Route::get('/produs/{slug}', [
-        'as' => 'product-detail',
-        'uses' => 'ProductController@detail'
-    ]);
-
     // Series
     Route::get('/serii-de-produse/{categorySlug}', [
         'as' => 'series',
         'uses' => 'SeriesController@index'
     ]);
+
+    Route::get('/seria/{slug}', [
+        'as' => 'series-detail',
+        'uses' => 'SeriesController@detail'
+    ]);
+
 
     #Category
 

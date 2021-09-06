@@ -2,7 +2,7 @@
     <div class="product-labels">
         <span class="product-labels__hit">Hit</span>
     </div>
-    <a href="{{ route('product-detail',['slug' => $value->slug]) }}" class="product-image">
+    <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-image">
         <img src="img/product1.png" alt="product">
     </a>
 
@@ -16,7 +16,7 @@
         <a href="single-category.html">Flower pots</a>
     </div>
 
-    <a href="{{ route('product-detail',['slug' => $value->slug]) }}" class="product-info">Self- watering wick system</a>
+    <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-info">Self- watering wick system</a>
 
     <div class="product-footer">
         <button class="accent-btn product-btn">Add to cart</button>
