@@ -24,7 +24,7 @@ class HomeController extends AppController
         $productPopulars      = Series::where('onMostPopular',1)->orderBy('id','desc')->get();
         $productOnSale      = Series::where('onSale',1)->orderBy('id','desc')->get();
         $productOnNewLine      = Series::where('onNewLine',1)->orderBy('id','desc')->get();
-        $about      = About::find(3);
+        $about      = About::find(4);
         $aboutList      = About::where('id','>=',4)->orderBy('id','desc')->get();
 
         return view('home.index', compact(

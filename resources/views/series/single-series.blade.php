@@ -2,7 +2,7 @@
     <div class="container">
         <ul class="breadcrumb-list">
             <li class="breadcrumb-list__item">
-                <a href="#" class="breadcrumb-list__link">Home</a>
+                <a href="{{ route('home') }}" class="breadcrumb-list__link">Home</a>
             </li>
             <li class="breadcrumb-list__item">
                 <a href="#" class="breadcrumb-list__link">Categories</a>
@@ -11,7 +11,7 @@
                 <a href="#" class="breadcrumb-list__link">Flower pots</a>
             </li>
             <li class="breadcrumb-list__item">
-                <a href="#" class="breadcrumb-list__link">Santino Self-Watering Hanging Basket VISTA - Anthracite/Anthracite, 8.5 inch</a>
+                <a href="#" class="breadcrumb-list__link">{{ $product->getTranslatedAttribute('name') }}</a>
             </li>
         </ul>
     </div>
@@ -25,16 +25,16 @@
                     <div class="thumb-slider__slider">
                         <div thumbsSlider="" class="slider-thumb__body swiper">
                             <div class="thumb-slider__slide">
-                                <img src="img/slider-thumbnail1.png" alt="product image">
+                                <img src="{{ url('storage/'.$product->image) }}" alt="product image">
                             </div>
                             <div class="thumb-slider__slide">
-                                <img src="img/slider-thumbnail2.jpg" alt="product image">
+                                <img src="{{ url('storage/'.$product->image) }}" alt="product image">
                             </div>
                             <div class="thumb-slider__slide">
-                                <img src="img/slider-thumbnail3.jpg" alt="product image">
+                                <img src="{{ url('storage/'.$product->image) }}" alt="product image">
                             </div>
                             <div class="thumb-slider__slide">
-                                <img src="img/slider-thumbnail2.jpg" alt="product image">
+                                <img src="{{ url('storage/'.$product->image) }}" alt="product image">
                             </div>
                         </div>
                     </div>
@@ -46,16 +46,16 @@
                     <div class="single-slider__slider">
                         <div class="slider-single__body swiper">
                             <div class="single-slider__slide">
-                                <img src="img/slider-thumbnail1.png" alt="product image">
+                                <img src="{{ url('storage/'.$product->image) }}" alt="product image">
                             </div>
                             <div class="single-slider__slide">
-                                <img src="img/slider-thumbnail2.jpg" alt="product image">
+                                <img src="{{ url('storage/'.$product->image) }}" alt="product image">
                             </div>
                             <div class="single-slider__slide">
-                                <img src="img/slider-thumbnail3.jpg" alt="product image">
+                                <img src="{{ url('storage/'.$product->image) }}" alt="product image">
                             </div>
                             <div class="single-slider__slide">
-                                <img src="img/slider-thumbnail2.jpg" alt="product image">
+                                <img src="{{ url('storage/'.$product->image) }}" alt="product image">
                             </div>
                         </div>
                     </div>
@@ -69,36 +69,59 @@
                 <a href="single-category.html">Flower pots</a>
             </div>
 
-            <h3 class="single-product__name">Santino Self-Watering Hanging Basket VISTA - Anthracite/Anthracite, 8.5 inch</h3>
+            <h3 class="single-product__name">{{ $product->getTranslatedAttribute('name') }}</h3>
 
-            <div class="single-product__meta">
-                <div class="price">
-                    <p>de la <span>150LEI</span></p>
-                    <span class="discount">120 LEI</span>
+            @if ((!empty($product->price_from)) && ($product->price_offer_from == null))
+                <div class="single-product__meta">
+                    <div class="price">
+                        <p>de la </p>
+                        <span class="discount">{{ $product->getTranslatedAttribute('price_from') }} LEI</span>
+                    </div>
+                    @if ($product->in_stock == 0)
+                        <span class="product-meta__status out">Out of stock</span>
+                    @endif
+                    @if ($product->in_stock == 1)
+                        <span class="product-meta__status">In stock</span>
+                    @endif
                 </div>
-                <span class="product-meta__status">In stock</span>
-            </div>
+            @endif
+
+            @if ((!empty($product->price_from)) && (!empty($product->price_offer_from)))
+                <div class="single-product__meta">
+                    <div class="price">
+                        <p>de la <span>{{ $product->getTranslatedAttribute('price_from') }}</span></p>
+                        <span class="discount">{{ $product->getTranslatedAttribute('price_offer_from') }} LEI</span>
+                    </div>
+                    @if ($product->in_stock == 0)
+                        <span class="product-meta__status out">Out of stock</span>
+                    @endif
+                    @if ($product->in_stock == 1)
+                        <span class="product-meta__status">In stock</span>
+                    @endif
+                </div>
+            @endif
+
 
             <div class="single-product__color color-picker">
                 <p class="color-picker__choosen">Color: <strong>Black</strong></p>
                 <ul class="color-picker__list">
                     <li class="color-picker__item">
-                        <img src="img/yellow.png" alt="yellow color">
+                        <img src="/img/yellow.png" alt="yellow color">
                     </li>
                     <li class="color-picker__item active">
-                        <img src="img/single-thumbnail1.png" alt="black color">
+                        <img src="/img/single-thumbnail1.png" alt="black color">
                     </li>
                     <li class="color-picker__item ">
-                        <img src="img/red.png" alt="red color">
+                        <img src="/img/red.png" alt="red color">
                     </li>
                     <li class="color-picker__item">
-                        <img src="img/yellow.png" alt="yellow color">
+                        <img src="/img/yellow.png" alt="yellow color">
                     </li>
                     <li class="color-picker__item">
-                        <img src="img/single-thumbnail1.png" alt="black color">
+                        <img src="/img/single-thumbnail1.png" alt="black color">
                     </li>
                     <li class="color-picker__item">
-                        <img src="img/red.png" alt="red color">
+                        <img src="/img/red.png" alt="red color">
                     </li>
                 </ul>
             </div>
@@ -125,35 +148,41 @@
             </div>
 
             <div class="single-product__info">
-                <img src="img/brand.png" alt="brand" class="product-brand">
+                <img src="/img/brand.png" alt="brand" class="product-brand">
                 <div class="brand-review">
                     <div class="stars">
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
+
+                        @php
+                            $stars = $product->getTranslatedAttribute('rate');
+                        @endphp
+
+                        @for ($i = 0; $i < $stars; $i++)
+                            @if ($i<5)
+                                <span class="icon-star fill"></span>
+                            @endif
+                        @endfor
+
                     </div>
-                    <small>(120 reviews)</small>
+                    <small>({{ $product->getTranslatedAttribute('reviews') }} reviews) </small>
                 </div>
             </div>
 
             <div class="single-product__attention attention">
                 <div class="attention-element">
                     <span class="icon-pp"></span>
-                    <p>Lorem ipsum</p>
+                    <p>{{ $vars['single_product_text1'] }}</p>
                 </div>
                 <div class="attention-element">
                     <span class="icon-sun"></span>
-                    <p>Lorem ipsum</p>
+                    <p>{{ $vars['single_product_text2'] }}</p>
                 </div>
                 <div class="attention-element">
                     <span class="icon-snowflake"></span>
-                    <p>Lorem ipsum</p>
+                    <p>{{ $vars['single_product_text3'] }}</p>
                 </div>
                 <div class="attention-element">
                     <span class="icon-eco"></span>
-                    <p>Lorem ipsum</p>
+                    <p>{{ $vars['single_product_text4'] }}</p>
                 </div>
             </div>
         </div>

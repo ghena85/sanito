@@ -2,14 +2,14 @@
 
 {{-- Page title --}}
 @section('title')
-    {{ env('APP_NAME')." - ".$page->getTranslatedAttribute('name') }}
+    {{ env('APP_NAME')." - ".$product->getTranslatedAttribute('name') }}
 @stop
 
 {{-- content --}}
 
 @section('content')
     
-    @include('series.single-series')
+    @include('series.single-series')    
 
     @include('series.about-section')
 

@@ -1,20 +1,25 @@
 <section id="review-section" class="single-section single-review">
     <div class="container">
         <div class="single-section__header">
-            <h3>Reviews <small>(120)</small></h3>
+            <h3>Reviews <small>({{ $product->getTranslatedAttribute('reviews') }})</small></h3>
             <a href="#" class="write-review">Write review</a>
         </div>
 
         <div class="review-info">
-            <img src="img/single-thumbnail1.png" alt="product">
+            <img src="{{ url('storage/'.$product->image) }}" alt="product">
             <div class="review-info__rate">
-                <h2>5.0 <span>/ (120 reviews)</span></h2>
+                @php
+                        $stars = $product->getTranslatedAttribute('rate');
+                @endphp
+                <h2>{{ $stars }} <span>/ ({{ $product->getTranslatedAttribute('reviews') }} reviews)</span></h2>
                 <div class="stars">
-                    <span class="icon-star fill"></span>
-                    <span class="icon-star fill"></span>
-                    <span class="icon-star fill"></span>
-                    <span class="icon-star fill"></span>
-                    <span class="icon-star fill"></span>
+
+                    @for ($i = 0; $i < $stars; $i++)
+                        @if ($i<5)
+                            <span class="icon-star fill"></span>
+                        @endif
+                    @endfor
+
                 </div>
             </div>
 

@@ -9,7 +9,7 @@ use LaravelAdminPanel\Traits\Translatable;
 class Category extends Model
 {
     use Translatable;
-    protected $translatable = ['name', 'text'];
+    protected $translatable = ['name'];
 
 
     public function parentId() {

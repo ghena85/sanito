@@ -24,7 +24,7 @@
                                 @endif
                             </div>
 
-                            <a href="single-product.html" class="product-image">
+                            <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-image">
                                 <img src="{{ url('storage/'.$value->image) }}" alt="product">
                             </a>
 
@@ -58,7 +58,7 @@
                                 <a href="single-category.html">Flower pots</a>
                             </div>
 
-                            <a href="#" class="product-info">{{ $value->getTranslatedAttribute('name') }}</a>
+                            <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-info">{{ $value->getTranslatedAttribute('name') }}</a>
 
                             <div class="product-footer">
                                 <button class="accent-btn product-btn">Add to cart</button>
