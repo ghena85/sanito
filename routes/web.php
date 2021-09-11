@@ -15,7 +15,7 @@
 Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], function () {
 
 
-    # General Route
+    # Auth
     Route::match(['get', 'post'], '/login', [
         'as' => 'login',
         'uses' => 'AuthController@login'
@@ -31,20 +31,33 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         'uses' => 'AuthController@rememberPassword'
     ]);
 
-    Route::get('/setlocale/{lang}', [
-        'uses' => 'PageController@setLocaleLanguage'
-    ])->name('setlocale');
-
     Route::get('/logout', [
         'as' => 'logout',
         'uses' => 'AuthController@logout'
     ]);
+
+    # Account
+
+    Route::group(['as' => 'account.', 'prefix' => 'account', 'middleware' => ['checkUser']], function () {
+
+        Route::get('/', [
+            'as' => 'home',
+            'uses' => 'AccountController@index'
+        ]);
+
+
+    });
+
 
     # Pages/ Menu route
     Route::get('/', [
         'as' => 'home',
         'uses' => 'HomeController@home'
     ]);
+
+    Route::get('/setlocale/{lang}', [
+        'uses' => 'PageController@setLocaleLanguage'
+    ])->name('setlocale');
 
     Route::get('/info/{slug}', [
         'as' => 'info',

@@ -79,8 +79,7 @@
                     </div>
                     @if ($product->in_stock == 0)
                         <span class="product-meta__status out">Out of stock</span>
-                    @endif
-                    @if ($product->in_stock == 1)
+                    @else
                         <span class="product-meta__status">In stock</span>
                     @endif
                 </div>
@@ -94,8 +93,7 @@
                     </div>
                     @if ($product->in_stock == 0)
                         <span class="product-meta__status out">Out of stock</span>
-                    @endif
-                    @if ($product->in_stock == 1)
+                    @else
                         <span class="product-meta__status">In stock</span>
                     @endif
                 </div>

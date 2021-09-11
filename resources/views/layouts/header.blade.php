@@ -105,7 +105,7 @@
             <div class="container under-header__container">
                 <div class="header-category">
                     <div class="header-category__select">
-                        Category
+                        <a href="{{ route('category') }}" class="white">Category</a>
                         <span class="icon-chevron down"></span>
                     </div>
                     <div class="header-category__dropdown category-dropdown">

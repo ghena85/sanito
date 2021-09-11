@@ -45,3 +45,7 @@
 .thumb-slider__slide{
     height: 85px !important;
 }
+
+.white {
+    color: white;
+}

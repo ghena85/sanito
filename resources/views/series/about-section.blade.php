@@ -23,7 +23,7 @@
                 <img src="{{ url('storage/'.$product->image) }}" alt="product">
             </div>
 
-            <div class="about-video" style="background: url('img/about-video.jpg') 50% 50% / cover no-repeat;">
+            <div class="about-video" style="background: url('/img/about-video.jpg') 50% 50% / cover no-repeat;">
                 <a data-fslightbox="gallery" href="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" class="icon-play"></a>
             </div>
         </div>

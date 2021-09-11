@@ -36,7 +36,7 @@ class AuthController extends Controller
         }
 
 
-        return view('login');
+        return view('auth.login');
     }
 
     public function registration(Request $request) {
@@ -78,7 +78,7 @@ class AuthController extends Controller
             return redirect()->route('account.home');
         }
 
-        return view('registration');
+        return view('auth.registration');
     }
 
     public function rememberPassword(Request $request) {

@@ -13,7 +13,8 @@ class CategoryController extends AppController
         $page        = Page::find(4);
         $activeMenu  = $page->id;
 
-        $categories  = Category::get();
+        $categories  = Category::Main()->with('childrens')->get();
+
         return view('category.index', compact('activeMenu','categories', 'page'));
     }
 }

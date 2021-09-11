@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="product-category">
-                            <a href="#">Pots</a>
+                            <a href="#">11Pots</a>
                             <a href="#">Flower pots</a>
                         </div>
 

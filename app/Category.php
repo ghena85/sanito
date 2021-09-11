@@ -20,4 +20,16 @@ class Category extends Model
     {
         return $this->belongsToMany(Product::class, 'product_categories');
     }
+
+
+    public function childrens()
+    {
+        return $this->hasMany('App\Category','parent_id');
+    }
+
+    // Only main category
+    public function scopeMain($query)
+    {
+        return $query->where('parent_id',0)->orWhereNull('parent_id');
+    }
 }

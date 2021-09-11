@@ -31,7 +31,7 @@
         @csrf
         
         <label class="contact-form__lable" for="nume"><span>*</span> Prenume
-            <input class="contact-form__input {{ ($errors->has('first_name') ? 'error' : '') }}" type="text" name="first_name" id="nume" placeholder="Ex: Ion" value="{{ old('first_name') }}">
+            <input class="contact-form__input {{ ($errors->has('first_name') ? 'error' : '') }}" required type="text" name="first_name" id="nume" placeholder="Ex: Ion" value="{{ old('first_name') }}">
         </label>
 
         <label class="contact-form__lable" for="familie"><span>*</span>  Nume familie
