@@ -2,12 +2,12 @@
 
     @foreach($categories as $value)
         <div class="sidebar-row">
-            <h4 class="sidebar-row__title">{{ $value->getTranslatedAttribute('name') }}</h4>
+            <h4 class="sidebar-row__title {{ ($slug==$value->slug ? 'active' : '') }}">{{ $value->getTranslatedAttribute('name') }}</h4>
             @if($value->childrens)
                 <ul class="sidebar-row__list sidebar-list">
                     @foreach($value->childrens as $svalue)
                         <li class="sidebar-list__item">
-                            <a href="{{ route('series',['categorySlug' => $svalue->slug]) }}" class="sidebar-list__link">
+                            <a href="{{ route('series',['categorySlug' => $value->slug]) }}" class="sidebar-list__link">
                                 <span class="icon-chevron"></span>
                                 {{ $svalue->getTranslatedAttribute('name') }}
                             </a>
