@@ -1,6 +1,6 @@
 <div class="product">
     <div class="product-labels">
-        <span class="product-labels__hit">Hit</span>
+        <span class="product-labels__hit">{{ $value->label }}</span>
         @if (!empty($value->discount_percent))
             <span class="product-labels__discount">{{ $value->getTranslatedAttribute('discount_percent') }}%</span>
         @endif
