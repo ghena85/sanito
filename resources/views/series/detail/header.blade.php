@@ -7,6 +7,11 @@
             <li class="breadcrumb-list__item">
                 <a href="{{ route('category') }}" class="breadcrumb-list__link">Categories</a>
             </li>
+            @if($series->category)
+                <li class="breadcrumb-list__item">
+                    <a href="{{ route('categoryDetail',['slug' => $series->categoryId->parentId->slug]) }}" class="breadcrumb-list__link">{{ $series->category }}</a>
+                </li>
+            @endif
             @if($series->subcategory)
                 <li class="breadcrumb-list__item">
                     <a href="{{ route('series',['slug' => $series->categoryId->slug]) }}" class="breadcrumb-list__link">{{ $series->subcategory }}</a>
@@ -130,10 +135,12 @@
                 <div class="single-product__controls">
                     <div class="counter">
                         <button class="minus icon-minus"></button>
-                        <span class="count">1</span>
+                        <span class="count quantity_number">1</span>
                         <button class="plus icon-plus"></button>
                     </div>
-                    <button class="to-cart accent-btn">Add to cart</button>
+                    <button class="to-cart accent-btn btn-add-cart" data-id="{{ $product->id }}" data-page="detail">
+                        Add to cart
+                    </button>
                 </div>
             @endif
 

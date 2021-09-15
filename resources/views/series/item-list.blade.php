@@ -42,7 +42,7 @@
     <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-info">{{ $value->getTranslatedAttribute('name') }}</a>
 
     <div class="product-footer">
-        <button class="accent-btn product-btn  btn-add-cart" data-id="{{ $value->id }}" data-page="detail" >Add to cart</button>
+        <button class="accent-btn product-btn  btn-add-cart" data-id="{{ $value->id }}" >Add to cart</button>
         <button class="accent-btn cart-btn icon-bag"></button>
         <div class="product-footer__review">
             <small>({{ $value->getTranslatedAttribute('reviews') }} reviews) </small>

@@ -20,5 +20,3 @@
     @include('series.detail.similar')
 
 @endsection
-
-@include("series.detail.js")

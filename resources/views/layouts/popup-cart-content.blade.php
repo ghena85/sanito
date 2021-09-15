@@ -1,27 +1,39 @@
-<ul class="cart_content-list no-scrollbar">
+<div class="cart-content_header">
+    <p>Cos de cumparaturi (2)</p>
+</div>
+<ul class="cart-content__list">
     @php $totalPrice = 0; @endphp
     @foreach(getCartItem() as $cartItem)
         @php $totalPrice = $totalPrice+($cartItem->price*$cartItem->count); @endphp
-        <li class="cart_content-item">
-            <article class="cart_content-product cart_product">
-                <img src="{{ asset('storage/'. $cartItem->image) }}" class="cart_product-img" alt="product1">
-                <div class="cart_product-text">
-                    <h3 class="cart_product-name">
-                        <span style="color: #f0c23a;font-weight: bold">{{ $cartItem->count }}x</span>{{ $cartItem->getTranslatedAttribute('name') }}
-                    </h3>
-                    <span class="cart_product-price">{{ $cartItem->price }} {{ $vars['valuta'] }}</span>
+        <li class="cart-content__item cart-item">
+            <img src="{{ asset('storage/'. $cartItem->image) }}" alt="{{ $cartItem->getTranslatedAttribute('name') }}" class="cart-item__image">
+            <div class="cart-item__info">
+                <a href="{{ route('series-detail',['slug' => $cartItem->slug]) }}" class="cart-item__name">
+                    {{ $cartItem->getTranslatedAttribute('name') }}
+                </a>
+                <div class="cart-item__meta">
+                    <p class="cart-item__price"><b>{{ $cartItem->price }} {{ $vars['valuta'] }}</b> </p>
+                    <span class="cart-item__quantity">Cantitate : {{ $cartItem->count }}</span>
                 </div>
-                <button class="cart_product-delete btn-remove-product"  data-id="{{ $cartItem->id }}" aria-label="delete product">
-                    <img src="/img/cartDelete.svg" >
-                </button>
-            </article>
+            </div>
         </li>
     @endforeach
 </ul>
-<div class="cart_content-bottom">
-    <div class="cart_content-fullprice">
-        <span>{{ $vars['total'] }}:</span>
-        <span class="fullprice">{{ $totalPrice }} {{ $vars['valuta'] }}</span>
+<div class="cart-content__prices cart-price">
+    <div class="cart-price__item">
+        <p>Subtotal</p>
+        <b>360 LEI</b>
     </div>
-    <a href="{{ route('cart') }}" class="cart_content-btn">{{ $vars['checkout'] }}</a>
+    <div class="cart-price__item">
+        <p>Livrare</p>
+        <b>90 LEI</b>
+    </div>
+    <div class="cart-price__item">
+        <p>Total</p>
+        <b class="orange">{{ $totalPrice }} {{ $vars['valuta'] }}</b>
+    </div>
+</div>
+<div class="cart-content__navigation">
+    <a href="{{ route('cart-checkout') }}" class="accent-btn">Finalizare comenda</a>
+    <a href="{{ route('cart') }}" class="outline-btn">Cos de cumparaturi</a>
 </div>

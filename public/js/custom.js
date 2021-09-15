@@ -22,7 +22,7 @@ $(document).ready(function () {
         $.ajax({
             type:'post',
             url: "/api/v1/cart/add-to-cart",
-            data: {'id' :id,'lng' : globalLocale(),'count' : count,'_token': $('.csrf_token').val()},
+            data: {'id' :id,'lng' : $('html').attr('lang'),'count' : count,'_token': $('.csrf_token').val()},
             success:function (result) {
                 $('.header_cart').addClass('active');
                 $('.cart__quantity').html(result.totalQt);
@@ -50,7 +50,7 @@ $(document).ready(function () {
             $.ajax({
                 type:'post',
                 url: "/api/v1/cart/plus-to-cart",
-                data: {'id' :id,'lng' : globalLocale(),'total' :total,'page' :page,'_token': $('.csrf_token').val()},
+                data: {'id' :id,'lng' : $('html').attr('lang'),'total' :total,'page' :page,'_token': $('.csrf_token').val()},
                 success:function (result) {
                     $('.quantity_number').html(result.count);
 
@@ -91,7 +91,7 @@ $(document).ready(function () {
             $.ajax({
                 type:'post',
                 url: "/api/v1/cart/minus-to-cart",
-                data: {'id' :id,'lng' : globalLocale(),'_token': $('.csrf_token').val()},
+                data: {'id' :id,'lng' : $('html').attr('lang'),'_token': $('.csrf_token').val()},
                 success:function (result) {
                     console.log('result.count='+result.count);
                     $('.quantity_number').html(result.count);
@@ -120,7 +120,7 @@ $(document).ready(function () {
         $.ajax({
             type:'post',
             url: "/api/v1/cart/remove-from-cart",
-            data: {'id' :id,'lng' : globalLocale(),'_token': $('.csrf_token').val()},
+            data: {'id' :id,'lng' : $('html').attr('lang'),'_token': $('.csrf_token').val()},
             success:function (result) {
 
                 $('.item-'+id).remove();
