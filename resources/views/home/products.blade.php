@@ -5,17 +5,30 @@
             <a href="single-product.html">See all</a>
         </div>
         <div class="product-section__body product-body">
-            <div class="product-body__main main-product" style="background: url('img/product-big2.jpg') 50% 50% / cover no-repeat;">
-                <a href="single-product.html">
-                    <span class="offer">Best offer</span>
-                    <h3>Green garden flower pot</h3>
-                    <p class="main-product__price">de la <b>120 LEI</b></p>
-                </a>
-            </div>
+            @foreach ($productPopulars as $key => $value)
+                @if ($key==0)
+                    <div class="product-body__main main-product" style="background: url('{{ url('storage/'.$value->image) }}') 50% 50% / cover no-repeat;">
+                        <a href="{{ route('series-detail',['slug' => $value->slug]) }}">
+                            <span class="offer">{{ $vars['best-offer'] }}</span>
+                            <h3>{{ $value->getTranslatedAttribute('name') }}</h3>
+
+                            @if ((!empty($value->price_from)) && (empty($value->price_offer_from)))
+                                <p class="main-product__price">de la <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
+                            @endif
+
+                            
+                            @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
+                                <p class="main-product__price">de la <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
+                            @endif
+
+                        </a>
+                    </div>
+                @endif
+            @endforeach
             <div class="product-body__grid">
 
                 @foreach ($productOnSale as $key => $value)
-                    @if ($key < 4)
+                    @if ($key <= 4 && $key!=0)
                         <div class="product">
                             <div class="product-labels">
                                 @if (!empty($value->discount_percent))

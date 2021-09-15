@@ -49,3 +49,7 @@
 .white {
     color: white;
 }
+
+.sidebar-row__title.active{
+    color: #62c0cb;
+}

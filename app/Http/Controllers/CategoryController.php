@@ -21,7 +21,7 @@ class CategoryController extends AppController
         $activeMenu     = $page->id;
         $category       = Category::where('slug', $slug)->firstOrFail();
         $subCategories  = Category::where('parent_id',$category->id)->get();
-        return view('category.index', compact('activeMenu','subCategories','category', 'page'));
+        return view('category.index', compact('activeMenu','subCategories','category', 'page','slug'));
     }
 
 }
