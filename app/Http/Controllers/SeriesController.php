@@ -16,7 +16,7 @@ class SeriesController extends AppController
         $activeMenu  = $page->id;
         $category    = Category::where('slug',$categorySlug)->first();
         if(empty($category)) return abort(404);
-        $series      = Series::orderBy('id','desc')->get();
+        $series      = Series::orderBy('id','desc',)->get();
         return view('series.index', compact('category','series','activeMenu','page'));
     }
 

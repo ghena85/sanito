@@ -1,9 +1,8 @@
 @if ($paginator->hasPages())
 
     @if($paginator->previousPageUrl() != null)
-        <a href="{{$paginator->previousPageUrl()}}"><svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.8415 9.13555L3.02484 5.31055L6.8415 1.48555L5.6665 0.310547L0.666504 5.31055L5.6665 10.3105L6.8415 9.13555Z" fill="#4A4F55"/>
-            </svg>
+        <a href="{{$paginator->previousPageUrl()}}">
+            <button class="icon-slider-arrow"></button>
         </a>
     @endif
 
@@ -13,19 +12,24 @@
         {{-- Array Of Links --}}
         @if (is_array($element))
             @foreach ($element as $page => $url)
+            <ul class="pagination-list">
                 @if ($page == $paginator->currentPage())
-                    <a href="{{ $url }}" class="active">{{ $page }}</a>
+                    <li class="pagination-list__item active">
+                        <a href="{{ $url }}" class="pagination-list__link">{{ $page }}</a>
+                    </li>
                 @else
-                    <a href="{{ $url }}">{{ $page }}</a>
+                    <li class="pagination-list__item">
+                        <a href="{{ $url }}" class="pagination-list__link">{{ $page }}</a>
+                    </li>
                 @endif
+            </ul>
             @endforeach
         @endif
     @endforeach
 
     @if($paginator->nextPageUrl() != null)
-        <a href="{{ $paginator->nextPageUrl() }}"><svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.158203 9.13555L3.97487 5.31055L0.158203 1.48555L1.3332 0.310547L6.3332 5.31055L1.3332 10.3105L0.158203 9.13555Z" fill="#4A4F55"/>
-            </svg>
+        <a href="{{ $paginator->nextPageUrl() }}">
+            <button class="icon-slider-arrow slider-arrow__next"></button>
         </a>
     @endif
 @endif

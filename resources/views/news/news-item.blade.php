@@ -8,7 +8,7 @@
             @if (!in_array($currentFile,$extensions))
                 <img src="{{ url('storage/'.$value->image) }}" alt="Image Article">
             @else
-            <video class="video" src="{{ url('storage/'.$value->image) }}" muted loop></video>
+                <video class="video" src="{{ url('storage/'.$value->image) }}" muted loop></video>
             @endif
         </div>
         <div class="article">

@@ -10,10 +10,6 @@ class Page extends Model
     use Translatable;
 
     protected $translatable = [
-        'name',
-        'name2',
-        'text',
-        'text2',
-        'short_text'
+        'name'
     ];
 }
