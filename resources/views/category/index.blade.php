@@ -14,7 +14,7 @@
                         <a href="#" class="breadcrumb-list__link">Home</a>
                     </li>
                     <li class="breadcrumb-list__item">
-                        <a href="#" class="breadcrumb-list__link">Categories</a>
+                        <a href="{{ route('category') }}" class="breadcrumb-list__link">Categories</a>
                     </li>
                 </ul>
             </div>
@@ -28,11 +28,15 @@
                 @include("category.left-menu")
 
                 <div class="page-grid__category category">
-                    @foreach($categories as $value)
-                        @include("category.item-list")
-                    @endforeach
-
-
+                    @if(isset($subCategories))
+                        @foreach($subCategories as $value)
+                            @include("category.item-list")
+                        @endforeach
+                    @else
+                        @foreach($categories as $value)
+                            @include("category.item-list")
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

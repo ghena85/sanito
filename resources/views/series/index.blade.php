@@ -11,13 +11,10 @@
             <div class="breadcrumb">
                 <ul class="breadcrumb-list">
                     <li class="breadcrumb-list__item">
-                        <a href="#" class="breadcrumb-list__link">Home</a>
+                        <a href="{{ route('home') }}" class="breadcrumb-list__link">Home</a>
                     </li>
                     <li class="breadcrumb-list__item">
-                        <a href="#" class="breadcrumb-list__link">Categories</a>
-                    </li>
-                    <li class="breadcrumb-list__item">
-                        <a href="#" class="breadcrumb-list__link">Flower pots</a>
+                        <a href="{{ route('category') }}" class="breadcrumb-list__link">Categories</a>
                     </li>
                 </ul>
             </div>
@@ -28,7 +25,7 @@
         <div class="container">
             <div class="page-grid__content">
                 <aside class="page-grid__sidebar sidebar">
-                    <h3 class="sidebar__title">Flower pots</h3>
+                    <h3 class="sidebar__title">{{ $category->getTranslatedAttribute('name') }}</h3>
                     <form action="#" class="filter-form">
                         <div class="filter-form__row">
                             <h4>Category</h4>
@@ -66,77 +63,7 @@
 
                         <div class="filter-form__row">
                             <h4>Brand</h4>
-                            <label class="checkbox">
-                            <span class="checkbox__input">
-                                <input type="checkbox" name="checkbox">
-                                <span class="checkbox__control">
-                                    <span class="icon-check"></span>
-                                </span>
-                            </span>
-                                <span class="radio__label">Arte</span>
-                                <small class="count">34</small>
-                            </label>
-                            <label class="checkbox">
-                            <span class="checkbox__input">
-                                <input type="checkbox" name="checkbox">
-                                <span class="checkbox__control">
-                                    <span class="icon-check"></span>
-                                </span>
-                            </span>
-                                <span class="radio__label">Asti</span>
-                                <small class="count">45</small>
-                            </label>
-                            <label class="checkbox">
-                            <span class="checkbox__input">
-                                <input type="checkbox" name="checkbox">
-                                <span class="checkbox__control">
-                                    <span class="icon-check"></span>
-                                </span>
-                            </span>
-                                <span class="radio__label">Vista</span>
-                                <small class="count">14</small>
-                            </label>
-                            <label class="checkbox">
-                            <span class="checkbox__input">
-                                <input type="checkbox" name="checkbox">
-                                <span class="checkbox__control">
-                                    <span class="icon-check"></span>
-                                </span>
-                            </span>
-                                <span class="radio__label">Dali</span>
-                                <small class="count">67</small>
-                            </label>
-                            <label class="checkbox">
-                            <span class="checkbox__input">
-                                <input type="checkbox" name="checkbox">
-                                <span class="checkbox__control">
-                                    <span class="icon-check"></span>
-                                </span>
-                            </span>
-                                <span class="radio__label">Calipso</span>
-                                <small class="count">67</small>
-                            </label>
-                            <label class="checkbox">
-                            <span class="checkbox__input">
-                                <input type="checkbox" name="checkbox">
-                                <span class="checkbox__control">
-                                    <span class="icon-check"></span>
-                                </span>
-                            </span>
-                                <span class="radio__label">Orchidea' TWIN; Dali-Dea</span>
-                                <small class="count">67</small>
-                            </label>
-                            <label class="checkbox">
-                            <span class="checkbox__input">
-                                <input type="checkbox" name="checkbox">
-                                <span class="checkbox__control">
-                                    <span class="icon-check"></span>
-                                </span>
-                            </span>
-                                <span class="radio__label">Latina Window Box</span>
-                                <small class="count">67</small>
-                            </label>
-                            <button class="show-more">Show all (29)</button>
+                            @include("series.filter.brands")
                         </div>
 
                         <div class="filter-form__row">
@@ -347,79 +274,8 @@
 
                                     <div class="filter-form__row">
                                         <h4>Brand</h4>
-                                        <label class="checkbox">
-                                        <span class="checkbox__input">
-                                            <input type="checkbox" name="checkbox">
-                                            <span class="checkbox__control">
-                                                <span class="icon-check"></span>
-                                            </span>
-                                        </span>
-                                            <span class="radio__label">Arte</span>
-                                            <small class="count">34</small>
-                                        </label>
-                                        <label class="checkbox">
-                                        <span class="checkbox__input">
-                                            <input type="checkbox" name="checkbox">
-                                            <span class="checkbox__control">
-                                                <span class="icon-check"></span>
-                                            </span>
-                                        </span>
-                                            <span class="radio__label">Asti</span>
-                                            <small class="count">45</small>
-                                        </label>
-                                        <label class="checkbox">
-                                        <span class="checkbox__input">
-                                            <input type="checkbox" name="checkbox">
-                                            <span class="checkbox__control">
-                                                <span class="icon-check"></span>
-                                            </span>
-                                        </span>
-                                            <span class="radio__label">Vista</span>
-                                            <small class="count">14</small>
-                                        </label>
-                                        <label class="checkbox">
-                                        <span class="checkbox__input">
-                                            <input type="checkbox" name="checkbox">
-                                            <span class="checkbox__control">
-                                                <span class="icon-check"></span>
-                                            </span>
-                                        </span>
-                                            <span class="radio__label">Dali</span>
-                                            <small class="count">67</small>
-                                        </label>
-                                        <label class="checkbox">
-                                        <span class="checkbox__input">
-                                            <input type="checkbox" name="checkbox">
-                                            <span class="checkbox__control">
-                                                <span class="icon-check"></span>
-                                            </span>
-                                        </span>
-                                            <span class="radio__label">Calipso</span>
-                                            <small class="count">67</small>
-                                        </label>
-                                        <label class="checkbox">
-                                        <span class="checkbox__input">
-                                            <input type="checkbox" name="checkbox">
-                                            <span class="checkbox__control">
-                                                <span class="icon-check"></span>
-                                            </span>
-                                        </span>
-                                            <span class="radio__label">Orchidea' TWIN; Dali-Dea</span>
-                                            <small class="count">67</small>
-                                        </label>
-                                        <label class="checkbox">
-                                        <span class="checkbox__input">
-                                            <input type="checkbox" name="checkbox">
-                                            <span class="checkbox__control">
-                                                <span class="icon-check"></span>
-                                            </span>
-                                        </span>
-                                            <span class="radio__label">Latina Window Box</span>
-                                            <small class="count">67</small>
-                                        </label>
-                                        <button class="show-more">Show all (29)</button>
+                                        @include("series.filter.brands")
                                     </div>
-
                                     <div class="filter-form__row">
                                         <h4>Cost</h4>
                                         <div class="filter-form__slider" id="range-slider-mobile"></div>
@@ -566,7 +422,9 @@
                         @include("series.item-list")
                     @endforeach
 
+
                     <div class="pagination">
+                        <!--
                         <button class="icon-slider-arrow slider-arrow__prev"></button>
                         <ul class="pagination-list">
                             <li class="pagination-list__item active">
@@ -583,22 +441,10 @@
                             </li>
                         </ul>
                         <button class="icon-slider-arrow slider-arrow__next"></button>
+                        -->
                     </div>
 
-                    <div class="category-banner">
-                        <div class="category-banner__left">
-                            <small>Best offer</small>
-                            <h1>Final <span>Sale</span></h1>
-                            <p>Hurry up! Limited offer</p>
-                        </div>
-                        <img src="img/banner-image.png" alt="banner image">
-                        <div class="category-banner__right">
-                            <h3>Flower pots</h3>
-                            <small>up to</small>
-                            <b><span>-20%</span> OFF</b>
-                            <a href="#">View all sale items</a>
-                        </div>
-                    </div>
+
                 </div>
 
             </div>

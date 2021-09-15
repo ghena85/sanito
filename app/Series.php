@@ -15,4 +15,47 @@ class Series extends Model
         'text',
         'short_text'
     ];
+
+    protected $with = ['categoryId','labelId'];
+
+    public function categoryId() {
+        return $this->belongsTo(Category::class, 'category_id')->with(['parentId']);
+    }
+
+    public function labelId() {
+        return $this->belongsTo(Label::class, 'label_id');
+    }
+
+    public function brandId() {
+        return $this->belongsTo(Brand::class, 'brand_id');
+    }
+
+    public function brands() {
+        return $this->hasMany(Brand::class);
+    }
+
+    public function functionalId() {
+        return $this->belongsTo(Functional::class, 'functional_id');
+    }
+
+    // todo if multiple categories
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'series_categories', 'series_id', 'category_id');
+    }
+
+    public function getSubCategoryAttribute()
+    {
+        return !empty($this->categoryId) ? $this->categoryId->getTranslatedAttribute('name') : '';
+    }
+
+    public function getLabelAttribute()
+    {
+        return !empty($this->labelId) ? $this->labelId->getTranslatedAttribute('name') : '';
+    }
+
+    public function getCategoryAttribute()
+    {
+        return !empty($this->categoryId) && $this->categoryId->parent_id > 0 ? $this->categoryId->parentId->getTranslatedAttribute('name') : '';
+    }
 }

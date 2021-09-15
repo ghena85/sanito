@@ -9,18 +9,20 @@
                 <li class="navigation-menu__item">
                     <a href="#characteristic-section" class="navigation-menu__link">{{ $vars['single_product_character'] }}</a>
                 </li>
+                <!--
                 <li class="navigation-menu__item">
                     <a href="#review-section" class="navigation-menu__link">{{ $vars['single_product_review'] }}</a>
                 </li>
+                -->
             </ul>
         </div>
 
         <div class="about-grid">
             <div class="about-grid__row">
                <div class="about-grid__text">
-                        {!! $product->text !!}
+                        {!! $series->text !!}
                </div>
-                <img src="{{ url('storage/'.$product->image) }}" alt="product">
+                <img src="{{ url('storage/'.$series->image) }}" alt="product">
             </div>
 
             <div class="about-video" style="background: url('/img/about-video.jpg') 50% 50% / cover no-repeat;">

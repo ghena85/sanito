@@ -22,7 +22,7 @@
 
     @include("home.products")
 
-    @include("home.offer-section")
+    {{--@include("home.offer-section")--}}
 
     @include("home.newin")
 

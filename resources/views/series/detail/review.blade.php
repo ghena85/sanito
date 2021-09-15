@@ -1,17 +1,17 @@
 <section id="review-section" class="single-section single-review">
     <div class="container">
         <div class="single-section__header">
-            <h3>Reviews <small>({{ $product->getTranslatedAttribute('reviews') }})</small></h3>
+            <h3>Reviews <small>({{ $series->getTranslatedAttribute('reviews') }})</small></h3>
             <a href="#" class="write-review">Write review</a>
         </div>
 
         <div class="review-info">
-            <img src="{{ url('storage/'.$product->image) }}" alt="product">
+            <img src="{{ url('storage/'.$series->image) }}" alt="product">
             <div class="review-info__rate">
                 @php
-                        $stars = $product->getTranslatedAttribute('rate');
+                        $stars = $series->getTranslatedAttribute('rate');
                 @endphp
-                <h2>{{ $stars }} <span>/ ({{ $product->getTranslatedAttribute('reviews') }} reviews)</span></h2>
+                <h2>{{ $stars }} <span>/ ({{ $series->getTranslatedAttribute('reviews') }} reviews)</span></h2>
                 <div class="stars">
 
                     @for ($i = 0; $i < $stars; $i++)

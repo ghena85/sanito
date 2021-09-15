@@ -15,6 +15,7 @@ class AppController extends Controller
         $menu = $navService->getNav();
         View::share('footerMenu', $menu['footerMenu']);
         View::share('navMenu', $menu['navMenu']);
+        View::share('categories', $menu['categories']);
         // vars
         $this->vars = Vars::getList();
         View::share('vars',$this->vars);

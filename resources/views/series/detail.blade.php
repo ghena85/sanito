@@ -2,21 +2,23 @@
 
 {{-- Page title --}}
 @section('title')
-    {{ env('APP_NAME')." - ".$product->getTranslatedAttribute('name') }}
+    {{ env('APP_NAME')." - ".$series->getTranslatedAttribute('name') }}
 @stop
 
 {{-- content --}}
 
 @section('content')
     
-    @include('series.single-series')    
+    @include('series.detail.header')
 
-    @include('series.about-section')
+    @include('series.detail.about-section')
 
-    @include('series.characteristics')
+    @include('series.detail.characteristics')
 
     {{--@include('series.review')--}}
 
-    @include('series.slider')
+    @include('series.detail.similar')
 
 @endsection
+
+@include("series.detail.js")

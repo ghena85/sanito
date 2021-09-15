@@ -90,6 +90,10 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         'uses' => 'CategoryController@index'
     ]);
 
+    Route::get('/category/{slug}', [
+        'as' => 'categoryDetail',
+        'uses' => 'CategoryController@detail'
+    ]);
 
     #Blog>news
     Route::get('/news', [

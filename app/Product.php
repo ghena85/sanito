@@ -24,8 +24,15 @@ class Product extends Model
         return $this->belongsTo(Size::class, 'size_id');
     }
 
+
     public function colorId() {
         return $this->belongsTo(Color::class, 'color_id');
+    }
+
+
+    public function getColorAttribute()
+    {
+        return !empty($this->colorId) ? $this->colorId->getTranslatedAttribute('name') : '';
     }
 
     public function categories()

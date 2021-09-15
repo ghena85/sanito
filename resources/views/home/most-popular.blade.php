@@ -18,14 +18,17 @@
                     @if ($key < 4)
                         <div class="product">
                             <div class="product-labels">
-                                <span class="product-labels__hit">Hit</span>
+                                @if (!empty($value->label))
+                                    <span class="product-labels__hit">{{ $value->label }}</span>
+                                @endif
+
                                 @if (!empty($value->discount_percent))
                                     <span class="product-labels__discount">{{ $value->getTranslatedAttribute('discount_percent') }}%</span>
                                 @endif
                             </div>
 
                             <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-image">
-                                <img src="{{ url('storage/'.$value->image) }}" alt="product">
+                                <img src="{{ url('storage/'.$value->image) }}" alt="{{ $value->getTranslatedAttribute('name') }}">
                             </a>
 
                             @if ((!empty($value->price_from)) && ($value->price_offer_from == null))

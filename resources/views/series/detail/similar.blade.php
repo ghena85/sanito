@@ -3,7 +3,7 @@
     <div class="product-slider__body">
         <div class="product-slider__slider container">
             <div class="slider-product__body slider-container swiper">
-                @foreach ($series as $value)
+                @foreach ($similarSeries as $value)
                     <div class="slider-product__slide">
                         <div class="product">
                             <div class="product-labels">
@@ -73,7 +73,6 @@
                         </div>
                     </div>
                 @endforeach
-z
             </div>
             <div class="slider-product-controls">
                 <div class="slider-product-controls__dots swiper-dots"></div>

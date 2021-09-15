@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use LaravelAdminPanel\Traits\Translatable;
 
 
-class Size extends Model
+class Brand extends Model
 {
     use Translatable;
 
-    protected $translatable = ['name'];
+    protected $translatable = [
+        'name',
+    ];
 }
