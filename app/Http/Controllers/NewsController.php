@@ -13,7 +13,7 @@ class NewsController extends AppController
     {
         $page        = Page::find(5);
         $activeMenu  = $page->id;
-        $newsList    = Article::orderBy('created_at', 'desc')->paginate(9);
+        $newsList    = Article::orderBy('created_at', 'desc')->paginate(3);
         return view('news.index', compact('newsList','page','activeMenu'));
     }
 
