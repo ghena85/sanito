@@ -19,7 +19,7 @@ class NavMenuService
         {
             $menu['navMenu']    = Page::where('onHeader',1)->orderBy('order','asc')->get();
             $menu['footerMenu'] = Page::where('onFooter',1)->orderBy('order','asc')->get();
-            $menu['categories'] = Category::Main()->with('childrens')->get();
+            $menu['categories'] = Category::Main()->where('id','!=',13)->with('childrens')->get();
 
             // add  to cache
             Cache::forever('navMenu', $menu);

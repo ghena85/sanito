@@ -2,7 +2,7 @@
 
     @foreach($categories as $value)
         <div class="sidebar-row">
-            <h4 class="sidebar-row__title {{ ($slug==$value->slug ? 'active' : '') }}">{{ $value->getTranslatedAttribute('name') }}</h4>
+            <h4 class="sidebar-row__title {{ (isset($category) && $category->id ==$value->id ? 'active' : '') }}">{{ $value->getTranslatedAttribute('name') }}</h4>
             @if($value->childrens)
                 <ul class="sidebar-row__list sidebar-list">
                     @foreach($value->childrens as $svalue)
