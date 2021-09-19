@@ -94,15 +94,23 @@
                         @endforeach
                     </ul>
                 </nav>
-    
                 <div class="languages">
                     <div class="current-language">
-                        EN
+                        @foreach (Config::get('languages') as $key => $lang)
+                            @if ($key == app()->getLocale())
+                                {{ $lang }}
+                            @endif
+                        @endforeach
                         <span class="icon-chevron down"></span>
                     </div>
                     <div class="language-dropdown">
-                        <a href="#">RU</a>
-                        <a href="#">RO</a>
+                        @foreach (Config::get('languages') as $key => $lang)
+                            @if ($key != app()->getLocale())
+                                <a href="{{  request()->path() =='' || request()->path() =='/' ? "/$key" : route('setlocale', "$key") }}">
+                                    {{ $lang }}
+                                </a>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
