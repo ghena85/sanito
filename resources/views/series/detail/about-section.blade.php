@@ -20,7 +20,7 @@
         <div class="about-grid">
             <div class="about-grid__row">
                <div class="about-grid__text">
-                        {!! $series->text !!}
+                   {!! $series->text !!}
                </div>
                 <img src="{{ url('storage/'.$series->image) }}" alt="product">
             </div>

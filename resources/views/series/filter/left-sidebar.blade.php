@@ -138,5 +138,6 @@
                 <small class="count">34</small>
             </label>
         </div>
+        <input type="text" id="range-slider">
     </form>
 </aside>

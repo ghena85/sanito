@@ -14,13 +14,17 @@ use Illuminate\Http\Request;
 class SeriesController extends AppController
 {
 
-    public function index($categorySlug)
+    /*
+     * with Filters
+     */
+    public function index($categorySlug,Request $request)
     {
         $page        = Page::find(4);
         $activeMenu  = $page->id;
         $category    = Category::where('slug',$categorySlug)->first();
         if(empty($category)) return abort(404);
-        $series      = Series::where('category_id',$category->id)->orderBy('id','desc')->get();
+
+        $series      = Series::where('category_id',$category->id)->SearchFilter($request,$this->lng);
         $brandIDs    = $series->pluck('brand_id');
         $brands      = Brand::whereIn('id',$brandIDs)->get();
         return view('series.index', compact('category','brands','series','activeMenu','page'));
@@ -52,9 +56,9 @@ class SeriesController extends AppController
         } else {
             $sizeIDs         = $products->pluck('size_id');
         }
-        $sizes           = Size::whereIn('id',$sizeIDs)->get();
+        $sizes               = Size::whereIn('id',$sizeIDs)->get();
 
-        $brands          = Brand::whereIn('id',$products->pluck('brand_id'))->get();
+        $brands              = Brand::whereIn('id',$products->pluck('brand_id'))->get();
 
         // Selected Product / First Product
 

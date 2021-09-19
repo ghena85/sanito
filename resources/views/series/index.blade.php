@@ -36,39 +36,17 @@
                             <button >New lines</button>
                             <button class="active">On sale</button>
                         </div>
-                        <div class="products-sort__category">
-                            <button class="category-btn">Window boxes <span class="icon-cancel"></span></button>
-                            <button class="category-btn">Asti <span class="icon-cancel"></span></button>
-                            <button class="reset">Resel all</button>
-                        </div>
+                        @include("series.filter.selected-items")
                     </div>
 
                     @include("series.index-sort-mobile")
 
-                    @foreach($series as $value)
-                        @include("series.item-list")
-                    @endforeach
+                    <div class="series_list_area">
+                        @include("series.filter.series-list")
+                    </div>
 
-
-                    <div class="pagination">
-                        <!--
-                        <button class="icon-slider-arrow slider-arrow__prev"></button>
-                        <ul class="pagination-list">
-                            <li class="pagination-list__item active">
-                                <a href="#" class="pagination-list__link">1</a>
-                            </li>
-                            <li class="pagination-list__item">
-                                <a href="#" class="pagination-list__link">2</a>
-                            </li>
-                            <li class="pagination-list__item">
-                                <a href="#" class="pagination-list__link">3</a>
-                            </li>
-                            <li class="pagination-list__item">
-                                <a href="#" class="pagination-list__link">4</a>
-                            </li>
-                        </ul>
-                        <button class="icon-slider-arrow slider-arrow__next"></button>
-                        -->
+                    <div class="pagination pagination_list_area">
+                        @include("series.filter.pagination")
                     </div>
 
 
@@ -79,3 +57,5 @@
     </div>
 
 @endsection
+
+@include("series.filter.js")

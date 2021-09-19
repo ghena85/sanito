@@ -58,4 +58,61 @@ class Series extends Model
     {
         return !empty($this->categoryId) && $this->categoryId->parent_id > 0 ? $this->categoryId->parentId->getTranslatedAttribute('name') : '';
     }
+
+
+    /**
+     * Filter search
+     *
+     * @param $query
+     * @param $request
+     * @return mixed
+     */
+    public static function scopeSearchFilter($query, $request,$lng,$options = [])
+    {
+        // Pret de la
+        if($request->input('price_start') && !isset($options['priceMinMax']) && $request->input('price_start') != $request->input('min_price')) {
+            $query = $query->where('price','>=',$request->input('price_start'));
+        }
+        // Pret pina la
+        if($request->input('price_end') && !isset($options['priceMinMax'])  && $request->input('price_end') != $request->input('max_price')) {
+            $query = $query->where('price','<=',$request->input('price_end'));
+        }
+
+
+        // Brands
+        if($request->input('brand')) {
+            $query = $query->join('brands','brands.id','=','serires.brand_id');
+            $query->where(function ($query) use ($request) {
+                foreach ($request->input('brand') as $value) {
+                    $query->orWhere('brand_id', $value);
+                }
+            });
+        }
+
+        // if count max price
+        if(isset($options['priceMinMax'])) {
+            return $options['priceMinMax'] == 'max' ? (int)$query->max('price') :  (int)$query->min('price');
+        }
+
+        // SortBy
+        switch ($request->input('sortBy')) {
+            case 'price_desc' :
+                $query = $query->orderBy('price','DESC');
+                break;
+            case 'prices_asc' :
+                $query = $query->orderBy('price','ASC');
+                break;
+            case 'popular' :
+                $query = $query->orderBy('views', 'desc');
+                break;
+            default:
+                $query = $query->orderBy('id', 'desc');
+                break;
+        }
+
+        $query = $query->paginate(12);
+
+        return $query;
+    }
+
 }
