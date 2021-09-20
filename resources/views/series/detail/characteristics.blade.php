@@ -5,95 +5,128 @@
         </div>
 
         <div class="characteristic-grid">
-            <div class="characteristic-grid__row">
-                <ul class="characteristic-list">
-                    <li class="characteristic-list__item">Main</li>
-                    <li class="characteristic-list__item">
-                        Brand
-                        <img src="img/brand.png" alt="brand">
-                    </li>
-                    <li class="characteristic-list__item">
-                        Color
-                        <span>Black</span>
-                    </li>
-                    <li class="characteristic-list__item">
-                        Size
-                        <span>108 mm</span>
-                    </li>
-                    <li class="characteristic-list__item">
-                        Weight
-                        <span>1 kg</span>
-                    </li>
-                    <li class="characteristic-list__item">
-                        Material
-                        <span>Plastic</span>
-                    </li>
-                    <li class="characteristic-list__item">
-                        Cod number
-                        <span>2090f204</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="characteristic-grid__row">
-                <ul class="characteristic-list">
-                    <li class="characteristic-list__item">Main</li>
-                    <li class="characteristic-list__item">
-                        Brand
-                        <img src="img/brand.png" alt="brand">
-                    </li>
-                    <li class="characteristic-list__item">
-                        Color
-                        <span>Black</span>
-                    </li>
-                    <li class="characteristic-list__item">
-                        Size
-                        <span>108 mm</span>
-                    </li>
-                    <li class="characteristic-list__item">
-                        Weight
-                        <span>1 kg</span>
-                    </li>
-                    <li class="characteristic-list__item">
-                        Material
-                        <span>Plastic</span>
-                    </li>
-                    <li class="characteristic-list__item">
-                        Cod number
-                        <span>2090f204</span>
-                    </li>
-                </ul>
+
+            <div class="characteristic-grid_row">
+                <table>
+                    <tr>
+                        <td>
+                            Main
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Brand
+                        </td>
+                        <td>
+                            Brand
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Color
+                        </td>
+                        <td>
+                            Black
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Size
+                        </td>
+                        <td>
+                            100ml
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Weight
+                        </td>
+                        <td>
+                            1kg
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Material
+                        </td>
+                        <td>
+                            Plastic
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Cod number
+                        </td>
+                        <td>
+                            2090f204
+                        </td>
+                    </tr>
+                </table>
             </div>
 
-            <!-- <div class="characteristic-grid__row full">
-                <ul class="characteristic-list">
-                    <li class="characteristic-list__item">Main</li>
-                    <li class="characteristic-list__item">
-                        Brand
-                        <img src="img/brand.png" alt="brand">
-                    </li>
-                    <li class="characteristic-list__item">
-                        Color
-                        <span>Black</span>
-                    </li>
-                    <li class="characteristic-list__item">
-                        Size
-                        <span>108 mm</span>
-                    </li>
-                    <li class="characteristic-list__item">
-                        Weight
-                        <span>1 kg</span>
-                    </li>
-                    <li class="characteristic-list__item">
-                        Material
-                        <span>Plastic</span>
-                    </li>
-                    <li class="characteristic-list__item">
-                        Cod number
-                        <span>2090f204</span>
-                    </li>
-                </ul>
-            </div> -->
+            <div class="characteristic-grid_row">
+                <table>
+                    <tr>
+                        <td>
+                            Main
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Brand
+                        </td>
+                        <td>
+                            Brand
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Color
+                        </td>
+                        <td>
+                            Black
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Size
+                        </td>
+                        <td>
+                            100ml
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Weight
+                        </td>
+                        <td>
+                            1kg
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Material
+                        </td>
+                        <td>
+                            Plastic
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Cod number
+                        </td>
+                        <td>
+                            2090f204
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </section>
