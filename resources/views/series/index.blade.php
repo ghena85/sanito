@@ -30,13 +30,11 @@
                 <div class="page-grid__products products">
 
                     <div class="products-sort desktop">
-                        <div class="products-sort__sort">
-                            <span>Sort by: </span>
-                            <button >Popular</button>
-                            <button >New lines</button>
-                            <button class="active">On sale</button>
-                        </div>
+
+                        @include("series.filter.sort-by")
+
                         @include("series.filter.selected-items")
+
                     </div>
 
                     @include("series.index-sort-mobile")
