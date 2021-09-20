@@ -4,7 +4,10 @@
             <div class="slider-category__body slider-container swiper">
                 @foreach ($categoryies as $value)
                         <div class="slider-category__slide">
-                            <a href="#">
+                            @php
+                             $url = $value->parent_id > 0 ? route('series',['slug' => $value->slug]) : route('categoryDetail',['slug' => $value->slug]);
+                            @endphp
+                            <a href="{{ $url }}">
                                 {!! $value->svg !!}
                                 {{ $value->getTranslatedAttribute('name') }}
                             </a>
