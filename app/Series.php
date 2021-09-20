@@ -38,6 +38,10 @@ class Series extends Model
         return $this->belongsTo(Functional::class, 'functional_id');
     }
 
+    public function productId() {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+
     // todo if multiple categories
     public function categories()
     {
@@ -109,7 +113,7 @@ class Series extends Model
                 break;
         }
 
-        $query = $query->paginate(12);
+        $query = $query->paginate(1);
 
         return $query;
     }

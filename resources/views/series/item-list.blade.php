@@ -35,24 +35,30 @@
     @endif
 
     <div class="product-category">
-        <a href="single-category.html">Pots</a>
-        <a href="single-category.html">Flower pots</a>
+        @if($value->category)
+            <a href="{{ route('categoryDetail',['slug' => $value->categoryId->parentId->slug]) }}">
+                {{ $value->category }}
+            </a>
+        @endif
+        @if($value->subcategory)
+            <a href="{{ route('series',['slug' => $value->categoryId->slug]) }}">
+                {{ $value->subcategory }}
+            </a>
+        @endif
     </div>
 
     <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-info">{{ $value->getTranslatedAttribute('name') }}</a>
 
     <div class="product-footer">
-        <button class="accent-btn product-btn  btn-add-cart" data-id="{{ $value->id }}" >Add to cart</button>
+        @if($value->product_id > 0)
+            <button class="accent-btn product-btn btn-add-cart" data-id="{{ $value->product_id }}" >Add to cart</button>
+        @endif
         <button class="accent-btn cart-btn icon-bag"></button>
         <div class="product-footer__review">
             <small>({{ $value->getTranslatedAttribute('reviews') }} reviews) </small>
             <div class="stars">
 
-                @php
-                    $stars = $value->getTranslatedAttribute('rate');
-                @endphp
-
-                @for ($i = 0; $i < $stars; $i++)
+                @for ($i = 0; $i < $value->getTranslatedAttribute('rate'); $i++)
                     @if ($i<5)
                         <span class="icon-star fill"></span>
                     @endif
