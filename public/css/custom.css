@@ -74,6 +74,9 @@
     box-shadow: 0 15px 30px rgb(0 0 0 / 7%);
     font-family: Inter;
 }
+.characteristic-grid_row table:first-child{
+    box-shadow: 0 0px 30px rgb(0 0 0 / 7%);
+}
 .characteristic-grid_row table tr td{
     padding: 15px;
     font-size: 16px;
@@ -85,4 +88,11 @@
 .characteristic-grid_row table tr td:nth-child(2n){
     text-align: right;
     color: #717171;
+}
+
+
+img.table_img_brand{
+    width: 70px;
+    height: 25px;
+    object-fit: contain;
 }

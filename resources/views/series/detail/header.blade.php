@@ -34,15 +34,11 @@
                             <div class="thumb-slider__slide">
                                 <img src="{{ url('storage/'.$series->image) }}" alt="product image">
                             </div>
-                            <div class="thumb-slider__slide">
-                                <img src="{{ url('storage/'.$series->image) }}" alt="product image">
-                            </div>
-                            <div class="thumb-slider__slide">
-                                <img src="{{ url('storage/'.$series->image) }}" alt="product image">
-                            </div>
-                            <div class="thumb-slider__slide">
-                                <img src="{{ url('storage/'.$series->image) }}" alt="product image">
-                            </div>
+                            @foreach (json_decode($series->images) as $key => $image)
+                                    <div class="thumb-slider__slide">
+                                        <img src="{{ url('storage/'.$image) }}" alt="product image">
+                                    </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -55,15 +51,11 @@
                             <div class="single-slider__slide">
                                 <img src="{{ url('storage/'.$series->image) }}" alt="product image">
                             </div>
-                            <div class="single-slider__slide">
-                                <img src="{{ url('storage/'.$series->image) }}" alt="product image">
-                            </div>
-                            <div class="single-slider__slide">
-                                <img src="{{ url('storage/'.$series->image) }}" alt="product image">
-                            </div>
-                            <div class="single-slider__slide">
-                                <img src="{{ url('storage/'.$series->image) }}" alt="product image">
-                            </div>
+                            @foreach (json_decode($series->images) as $key => $image)
+                                        <div class="single-slider__slide">
+                                            <img src="{{ url('storage/'.$image) }}" alt="product image">
+                                        </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -145,7 +137,7 @@
             @endif
 
             <div class="single-product__info">
-                <img src="/img/brand.png" alt="brand" class="product-brand">
+                <img src="{{ url('storage/'.$brands->image) }}" alt="brand" class="product-brand">
                 <div class="brand-review">
                     <div class="stars">
 

@@ -69,8 +69,9 @@ class SeriesController extends AppController
         }
         $sizes               = Size::whereIn('id',$sizeIDs)->get();
 
-        $brands              = Brand::whereIn('id',$products->pluck('brand_id'))->get();
+        $brands              = Brand::whereIn('id',$series->pluck('brand_id'))->get();
 
+        $brands=$brands[0];
 
         // Selected Product / First Product
 
