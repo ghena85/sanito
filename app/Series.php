@@ -78,10 +78,9 @@ class Series extends Model
             $query = $query->where('price','<=',$request->input('price_end'));
         }
 
-
         // Brands
         if($request->input('brand')) {
-            $query = $query->join('brands','brands.id','=','serires.brand_id');
+            $query = $query->join('brands','brands.id','=','series.brand_id');
             $query->where(function ($query) use ($request) {
                 foreach ($request->input('brand') as $value) {
                     $query->orWhere('brand_id', $value);
@@ -106,7 +105,7 @@ class Series extends Model
                 $query = $query->orderBy('views', 'desc');
                 break;
             default:
-                $query = $query->orderBy('id', 'desc');
+                $query = $query->orderBy('series.id', 'desc');
                 break;
         }
 
