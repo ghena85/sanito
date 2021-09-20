@@ -1,8 +1,8 @@
 <section class="product-section sale">
     <div class="container">
         <div class="section__header">
-            <h2>Products on sale</h2>
-            <a href="single-product.html">See all</a>
+            <h2>{{ $vars['products_on_sale'] }}</h2>
+            <a href="{{ route('series',['slug' => 'oferte']) }}">{{ $vars['see_all'] }}</a>
         </div>
         <div class="product-section__body product-body">
             @foreach ($productPopulars as $key => $value)
