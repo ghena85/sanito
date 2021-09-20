@@ -1,8 +1,8 @@
 <section class="product-section popular">
     <div class="container">
         <div class="section__header">
-            <h2>Most popular products</h2>
-            <a href="{{ route('category') }}">See all</a>
+            <h2>{{ $vars['most_popular_products'] }}</h2>
+            <a href="{{ route('category') }}">{{ $vars['see_all'] }}</a>
         </div>
         <div class="product-section__body product-body">
             @foreach ($productPopulars as $key => $value)
@@ -13,12 +13,12 @@
                             <h3>{{ $value->getTranslatedAttribute('name') }}</h3>
 
                             @if ((!empty($value->price_from)) && (empty($value->price_offer_from)))
-                                <p class="main-product__price">de la <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
+                                <p class="main-product__price">{{ $vars['aboutp-pricet'] }} <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
                             @endif
 
                             
                             @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
-                                <p class="main-product__price">de la <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
+                                <p class="main-product__price">{{ $vars['aboutp-pricet'] }} <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
                             @endif
 
                         </a>
@@ -46,12 +46,12 @@
 
                             @if ((!empty($value->price_from)) && (empty($value->price_offer_from)))
                                 <div class="product-meta">
-                                    <p class="product-meta__price">de la <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
+                                    <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
                                     @if ($value->in_stock == 0)
-                                        <span class="product-meta__status out">Out of stock</span>
+                                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                                     @endif
                                     @if ($value->in_stock == 1)
-                                        <span class="product-meta__status">In stock</span>
+                                        <span class="product-meta__status">{{ $vars['aboutp-instock'] }}</span>
                                     @endif
                                 </div>
                             @endif
@@ -59,12 +59,12 @@
                             
                             @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
                                 <div class="product-meta">
-                                    <p class="product-meta__price">de la <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
+                                    <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
                                     @if ($value->in_stock == 0)
-                                        <span class="product-meta__status out">Out of stock</span>
+                                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                                     @endif
                                     @if ($value->in_stock == 1)
-                                        <span class="product-meta__status">In stock</span>
+                                        <span class="product-meta__status">{{ $vars['aboutp-instock'] }}</span>
                                     @endif
                                 </div>
                             @endif
@@ -85,10 +85,12 @@
                             <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-info">{{ $value->getTranslatedAttribute('name') }}</a>
 
                             <div class="product-footer">
-                                <button class="accent-btn product-btn">Add to cart</button>
+                                @if($value->product_id > 0)
+                                    <button class="accent-btn product-btn btn-add-cart" data-id="{{ $value->product_id }}" >{{ $vars['aboutp-add-cart'] }}</button>
+                                @endif
                                 <button class="accent-btn cart-btn icon-bag"></button>                                
                                 <div class="product-footer__review">
-                                    <small>({{ $value->getTranslatedAttribute('reviews') }} reviews) </small>
+                                    <small>({{ $value->getTranslatedAttribute('reviews') }} {{ $vars['single_product_review'] }}) </small>
 
                                     <div class="stars">
 

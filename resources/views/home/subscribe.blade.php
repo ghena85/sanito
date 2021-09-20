@@ -5,8 +5,8 @@
             <p>{{ $vars['subscribe_text'] }}</p>
         </div>
         <form action="#" class="subscribe-form" method="post">
-            <input type="email" placeholder="Your e-mail" name="email">
-            <button type="submit" class="accent-btn">Subscribe</button>
+            <input type="email" placeholder="{{ $vars['your_e_mail'] }}" name="email">
+            <button type="submit" class="accent-btn">{{ $vars['subscribe'] }}</button>
         </form>
     </div>
 </section>
