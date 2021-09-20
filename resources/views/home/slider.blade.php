@@ -10,7 +10,7 @@
                                     <div class="slider-main__text"> 
                                         <h1 class="swiper-no-swiping">{{ $value->getTranslatedAttribute('title') }}</h1>
                                         <p class="swiper-no-swiping">{{ $value->getTranslatedAttribute('description') }}</p>
-                                        <a class="accent-btn slider-main__btn" href="{{ route('category') }}">View all products</a>
+                                        <a class="accent-btn slider-main__btn" href="{{ route('category') }}">{{ $vars['view_all_products'] }}</a>
                                     </div>
 
                                     <img src="{{ url('storage/'.$value->image) }}" alt="plants">
