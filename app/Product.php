@@ -13,7 +13,6 @@ class Product extends Model
     protected $translatable = [
         'name',
         'text',
-        'short_text',
     ];
 
     public function seriesId() {

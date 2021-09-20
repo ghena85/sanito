@@ -60,6 +60,7 @@ class SeriesController extends AppController
 
         $brands              = Brand::whereIn('id',$products->pluck('brand_id'))->get();
 
+
         // Selected Product / First Product
 
         $product         = Product::where('series_id',$series->id);

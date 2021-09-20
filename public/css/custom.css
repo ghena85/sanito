@@ -53,3 +53,36 @@
 .sidebar-row__title.active{
     color: #62c0cb;
 }
+
+.about-grid__text{
+    margin-bottom: auto;
+}
+
+.series_list_area{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 30px;
+}
+
+.series_list_area .product{
+    margin-right: 20px;
+}
+
+.characteristic-grid_row table{
+    width: 100%;
+    border-spacing: 0;
+    box-shadow: 0 15px 30px rgb(0 0 0 / 7%);
+    font-family: Inter;
+}
+.characteristic-grid_row table tr td{
+    padding: 15px;
+    font-size: 16px;
+}
+.characteristic-grid_row table tr:nth-child(even){
+    background-color: #f6f6f6;
+}
+
+.characteristic-grid_row table tr td:nth-child(2n){
+    text-align: right;
+    color: #717171;
+}
