@@ -27,6 +27,8 @@ class HomeController extends AppController
         $about      = About::find(4);
         $aboutList      = About::where('id','>=',4)->orderBy('id','desc')->get();
 
+        $bestOffers = Category::where('id','>=',13)->get();
+
         return view('home.index', compact(
             'page',
             'news',
@@ -37,7 +39,8 @@ class HomeController extends AppController
             'productOnSale',
             'productOnNewLine',
             'about',
-            'aboutList'
+            'aboutList',
+            'bestOffers'
         ));
     }
 
