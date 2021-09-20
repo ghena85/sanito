@@ -11,8 +11,7 @@
             var ac_brand_ids = [];
             $(".js_ac_brand").each(function(){
                 var el = $(this);
-                // if( el.hasClass('active') ) {
-                if(el.is(':checked')){
+                if( el.hasClass('active') ) {
                         ac_brand_ids.push($(this).attr('data-id'));
                         upUrl.searchParams.append('brand[]', $(this).attr('data-id'));
                 }
@@ -72,12 +71,14 @@
                 var input = $(this).find('input');
 
                 if( input.is(':checked') ){
-                    input.removeAttr("checked");
-                    $(this).removeClass("active");
-                }
-                else{
                     input.attr("checked", "checked");
                     $(this).addClass("active");
+
+
+                }
+                else{
+                    input.removeAttr("checked");
+                    $(this).removeClass("active");
                 }
 
 

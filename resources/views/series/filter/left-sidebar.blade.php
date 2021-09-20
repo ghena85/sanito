@@ -1,7 +1,11 @@
 <aside class="page-grid__sidebar sidebar">
-    <h3 class="sidebar__title">{{ $category->getTranslatedAttribute('name') }}</h3>
-    <form action="#" class="filter-form">
+    <h3 class="sidebar__title">
+        <a href="{{ route('series',['slug' => $category->slug]) }}">
+            {{ $category->getTranslatedAttribute('name') }}
+        </a>
 
+    </h3>
+    <form action="#" class="filter-form">
         <div class="filter-form__row">
             <h4>Brand</h4>
             @include("series.filter.brands")
