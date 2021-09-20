@@ -31,14 +31,18 @@
                 <div class="thumb-slider__body">
                     <div class="thumb-slider__slider">
                         <div thumbsSlider="" class="slider-thumb__body swiper">
-                            <div class="thumb-slider__slide">
-                                <img src="{{ url('storage/'.$series->image) }}" alt="product image">
-                            </div>
-                            @foreach (json_decode($series->images) as $key => $image)
+                            @if($series->image)
+                                <div class="thumb-slider__slide">
+                                    <img src="{{ url('storage/'.$series->image) }}" alt="{{ $series->getTranslatedAttribute('name') }}">
+                                </div>
+                            @endif
+                            @if($series->images)
+                                @foreach (json_decode($series->images) as $key => $image)
                                     <div class="thumb-slider__slide">
-                                        <img src="{{ url('storage/'.$image) }}" alt="product image">
+                                        <img src="{{ url('storage/'.$image) }}" alt="{{ $series->getTranslatedAttribute('name') }}">
                                     </div>
-                            @endforeach
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -48,20 +52,24 @@
                 <div class="single-slider__body">
                     <div class="single-slider__slider">
                         <div class="slider-single__body swiper">
-                            <div class="single-slider__slide">
-                                <img src="{{ url('storage/'.$series->image) }}" alt="product image">
-                            </div>
-                            @foreach (json_decode($series->images) as $key => $image)
-                                        <div class="single-slider__slide">
-                                            <img src="{{ url('storage/'.$image) }}" alt="product image">
-                                        </div>
-                            @endforeach
+                            @if($series->image)
+                                <div class="single-slider__slide">
+                                    <img src="{{ url('storage/'.$series->image) }}" alt="{{ $series->getTranslatedAttribute('name') }}">
+                                </div>
+                            @endif
+                            @if($series->images)
+                                @foreach (json_decode($series->images) as $key => $image)
+                                    <div class="single-slider__slide">
+                                        <img src="{{ url('storage/'.$image) }}" alt="{{ $series->getTranslatedAttribute('name') }}">
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="single-product__block">
             <div class="product-category">
                 <a href="{{ route('series',['categorySlug' => $series->slug]) }}">{{ $series->category }}</a>
@@ -137,15 +145,13 @@
             @endif
 
             <div class="single-product__info">
-                <img src="{{ url('storage/'.$brands->image) }}" alt="brand" class="product-brand">
+                @foreach($brands as $brand)
+                    <img src="{{ url('storage/'.$brand->image) }}" alt="{{ $brand->getTranslatedAttribute('name') }}" class="product-brand">
+                @endforeach
                 <div class="brand-review">
                     <div class="stars">
 
-                        @php
-                            $stars = $series->getTranslatedAttribute('rate');
-                        @endphp
-
-                        @for ($i = 0; $i < $stars; $i++)
+                        @for ($i = 0; $i < $series->getTranslatedAttribute('rate'); $i++)
                             @if ($i<5)
                                 <span class="icon-star fill"></span>
                             @endif

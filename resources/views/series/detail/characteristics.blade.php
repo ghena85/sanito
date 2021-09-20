@@ -15,11 +15,17 @@
                         </tr>
                         <tr>
                             <td>Brand</td>
-                            <td><img src="{{ url('storage/'.$brands->image) }}" alt="Brand Img" class="table_img_brand"></td>
+                            <td>
+                                @foreach($brands as $brand)
+                                    <img src="{{ url('storage/'.$brand->image) }}" alt="{{ $brand->getTranslatedAttribute('name') }}" class="table_img_brand">
+                                @endforeach
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                {!! $product->text !!}
+                @if($product)
+                    {!! $product->getTranslatedAttribute('text') !!}
+                @endif
             </div>
 
             <div class="characteristic-grid_row">
@@ -31,11 +37,17 @@
                         </tr>
                         <tr>
                             <td>Brand</td>
-                            <td><img src="{{ url('storage/'.$brands->image) }}" alt="Brand Img" class="table_img_brand"></td>
+                            <td>
+                                @foreach($brands as $brand)
+                                    <img src="{{ url('storage/'.$brand->image) }}" alt="{{ $brand->getTranslatedAttribute('name') }}" class="table_img_brand">
+                                @endforeach
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                {!! $product->text !!}
+                @if($product)
+                    {!! $product->getTranslatedAttribute('text') !!}
+                @endif
             </div>
         </div>
     </div>

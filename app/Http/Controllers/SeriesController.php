@@ -71,10 +71,7 @@ class SeriesController extends AppController
 
         $brands              = Brand::whereIn('id',$series->pluck('brand_id'))->get();
 
-        $brands=$brands[0];
-
         // Selected Product / First Product
-
         $product         = Product::where('series_id',$series->id);
         if($request->color_id || $request->size_id)
         {
@@ -89,13 +86,15 @@ class SeriesController extends AppController
         }
         else if($colorIDs || $sizeIDs)
         {
-            if($colorIDs) {
+            if($colorIDs && !$colors->isEmpty()) {
                 $product = $product->where('color_id',$colors[0]->id);
-            } else {
+            } elseif(!$sizes->isEmpty()) {
                 $product = $product->where('size_id',$sizes[0]->id);
             }
         }
+
         $product         = $product->first();
+
 
         // End Selected Product / First Product
 

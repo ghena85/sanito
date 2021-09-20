@@ -2,7 +2,7 @@
     <div class="container">
         <div class="section__header">
             <h2>Most popular products</h2>
-            <a href="single-category.html">See all</a>
+            <a href="{{ route('category') }}">See all</a>
         </div>
         <div class="product-section__body product-body">
             @foreach ($productPopulars as $key => $value)
@@ -70,8 +70,16 @@
                             @endif
 
                             <div class="product-category">
-                                <a href="single-category.html">Pots</a>
-                                <a href="single-category.html">Flower pots</a>
+                                @if($value->category)
+                                    <a href="{{ route('categoryDetail',['slug' => $value->categoryId->parentId->slug]) }}">
+                                        {{ $value->category }}
+                                    </a>
+                                @endif
+                                @if($value->subcategory)
+                                    <a href="{{ route('series',['slug' => $value->categoryId->slug]) }}">
+                                        {{ $value->subcategory }}
+                                    </a>
+                                @endif
                             </div>
 
                             <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-info">{{ $value->getTranslatedAttribute('name') }}</a>
