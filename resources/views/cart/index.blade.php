@@ -137,7 +137,7 @@
                         <p>Total</p>
                         <h4>370 LEI</h4>
                     </div>
-                    <a href="checkout.html" class="accent-btn chekout-btn">Checkout</a>
+                    <a href="{{ route('cart-checkout') }}" class="accent-btn chekout-btn">Checkout</a>
                 </div>
             </aside>
         </div>

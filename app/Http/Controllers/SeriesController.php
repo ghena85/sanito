@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\Category;
 use App\Color;
+use App\Functional;
 use App\Page;
 use App\Product;
 use App\Series;
@@ -15,19 +16,29 @@ class SeriesController extends AppController
 {
 
     /*
-     * with Filters
+     * List of series with Filters
      */
     public function index($categorySlug,Request $request)
     {
         $page        = Page::find(4);
         $activeMenu  = $page->id;
+
         $category    = Category::where('slug',$categorySlug)->first();
         if(empty($category)) return abort(404);
 
         $series      = Series::where('category_id',$category->id)->SearchFilter($request,$this->lng);
-        $brandIDs    = $series->pluck('brand_id');
-        $brands      = Brand::whereIn('id',$brandIDs)->get();
-        return view('series.index', compact('category','brands','series','activeMenu','page'));
+
+        $brands      = Brand::whereIn('id',Series::where('category_id',$category->id)->pluck('brand_id'))->get();
+        $functionals = Functional::whereIn('id',Series::where('category_id',$category->id)->pluck('functional_id'))->get();
+
+        return view('series.index', compact('category',
+            'functionals',
+            'brands',
+            'series',
+            'activeMenu',
+            'page'
+        ));
+
     }
 
     public function detail(Request $request, $slug)
