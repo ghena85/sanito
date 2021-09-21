@@ -21,7 +21,7 @@
         <div class="cart-grid">
             <div class="cart-body">
                 <div class="cart-product__scroll no-scrollbar">
-                    <div class="cart-product">
+                    {{-- <div class="cart-product">
                         <div class="cart-product__lables">
                             <span class="product-lable product-label__hit">Hit</span>
                         </div>
@@ -113,7 +113,57 @@
                         </div>
 
                         <button class="cart-product__trash icon-bin"></button>
-                    </div>
+                    </div> --}}
+
+                    @foreach ($products as $value)
+                        <div class="cart-product">
+                            <div class="cart-product__lables">
+
+                                @if (!empty($value->label))
+                                    <span class="product-lable product-label__hit">{{ $value->label }}</span>
+                                @endif
+
+                                @if (!empty($value->discount_percent))
+                                    <span class="product-lable product-label__sale">{{ $value->getTranslatedAttribute('discount_percent') }}%</span>
+                                @endif
+                            </div>
+
+                            <a class="cart-product__image" href="{{ route('series-detail',['slug' => $value->slug]) }}">
+                                <img src="{{ url('storage/'.$value->image) }}" alt="product">
+                            </a>
+
+                            <div class="cart-product__title">
+                                <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="cart-product__name">{{ $value->getTranslatedAttribute('name') }}</a>
+                                <div class="product-category">
+                                    @if($value->category)
+                                    <a href="{{ route('categoryDetail',['slug' => $value->categoryId->parentId->slug]) }}">
+                                        {{ $value->category }}
+                                    </a>
+                                    @endif
+                                    @if($value->subcategory)
+                                        <a href="{{ route('series',['slug' => $value->categoryId->slug]) }}">
+                                            {{ $value->subcategory }}
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="cart-product__count">
+                                <button class="minus icon-minus"></button>
+                                <span class="count">1</span>
+                                <button class="plus icon-plus"></button>
+                            </div>
+
+                            @if (!empty($value->price))
+                                <div class="cart-product__price">
+                                    <p>{{ $vars['aboutp-pricet'] }} <b>{{ $value->getTranslatedAttribute('price') }} {{ $vars['valuta'] }}</b></p>
+                                </div>
+                            @endif
+
+                            <button class="cart-product__trash icon-bin"></button>
+                        </div>
+                    @endforeach
+
                 </div> 
 
             </div>

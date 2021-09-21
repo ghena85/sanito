@@ -121,7 +121,25 @@ class CartController extends AppController
 
     public function checkout(){
         $page = Page::find(6);
-        return view('cart.checkout',compact('page'));
+        $cart = session('cart');
+
+        if(!$cart) {
+            return redirect()->route('home');
+        }
+        $products = [];
+
+        $fullPrice = 0;
+
+        foreach($cart as $key => $c) {
+
+            $product = Product::find($key);
+            $product->count = $c['count'];
+            $product->full_price = $product->price*$product->count;
+            $fullPrice += $product->full_price;
+
+            array_push($products, $product);
+        }
+        return view('cart.checkout',compact('page','products','product'));
     }
 
 }

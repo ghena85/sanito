@@ -94,37 +94,23 @@
                 </aside>
 
                 <div class="checkout-grid__products">
-                    <h4>Items(3)</h4>
+                    <h4>Items({{ $product->count }})</h4>
                     <ul class="checkout-grid__list product-list">
-                        <li class="product-list__item">
-                            <img src="img/product1.png" alt="product">
-                            <div class="product-list__information">
-                                <a href="single-product.html" class="product-list__name">Santino Self-Watering Hanging Basket VISTA - Anthracite/ Anthracite, 8.5 inch</a>
-                            </div>
-                            <div class="product-list__price">
-                                <span class="discount">120 LEI</span>
-                                <p>de la <span>150lei</span></p>
-                            </div>
-                        </li>
-                        <li class="product-list__item">
-                            <img src="img/product2.png" alt="product">
-                            <div class="product-list__information">
-                                <a href="single-product.html" class="product-list__name">Santino Self-Watering Hanging Basket VISTA - Anthracite/ Anthracite, 8.5 inch</a>
-                            </div>
-                            <div class="product-list__price">
-                                <p>de la <b>150lei</b></p>
-                            </div>
-                        </li>
-                        <li class="product-list__item">
-                            <img src="img/product3.png" alt="product">
-                            <div class="product-list__information">
-                                <a href="single-product.html" class="product-list__name">Santino Self-Watering Hanging Basket VISTA - Anthracite/ Anthracite, 8.5 inch</a>
-                            </div>
-                            <div class="product-list__price">
-                                <span class="discount">120 LEI</span>
-                                <p>de la <span>150lei</span></p>
-                            </div>
-                        </li>
+
+                        @foreach ($products as $value)
+                            <li class="product-list__item">
+                                <img src="{{ url('storage/'.$value->image) }}" alt="product">
+                                <div class="product-list__information">
+                                    <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-list__name">{{ $value->getTranslatedAttribute('name') }}</a>
+                                </div>
+                                @if (!empty($value->price))
+                                    <div class="product-list__price">
+                                        <p>{{ $vars['aboutp-pricet'] }} <b>{{ $value->getTranslatedAttribute('price') }} {{ $vars['valuta'] }}</b></p>
+                                    </div>
+                                @endif
+                            </li>
+                        @endforeach
+
                     </ul>
                 </div>
             </div>
