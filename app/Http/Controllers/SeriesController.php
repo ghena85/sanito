@@ -26,7 +26,8 @@ class SeriesController extends AppController
         $category    = Category::where('slug',$categorySlug)->first();
         if(empty($category)) return abort(404);
 
-        $series      = Series::where('category_id',$category->id)->SearchFilter($request,$this->lng);
+        $series      = Series::where('category_id',$category->id)
+                                ->SearchFilter($request,$this->lng);
 
         $brands      = Brand::whereIn('id',Series::where('category_id',$category->id)->pluck('brand_id'))->get();
         $functionals = Functional::whereIn('id',Series::where('category_id',$category->id)->pluck('functional_id'))->get();

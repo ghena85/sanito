@@ -44,9 +44,8 @@
                     </div>
 
                     <div class="pagination pagination_list_area">
-                        @include("series.filter.pagination")
+                        {{ $series->links('layouts.pagination') }}
                     </div>
-
 
                 </div>
 
