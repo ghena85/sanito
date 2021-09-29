@@ -32,8 +32,23 @@ class SeriesController extends AppController
         $brands      = Brand::whereIn('id',Series::where('category_id',$category->id)->pluck('brand_id'))->get();
         $functionals = Functional::whereIn('id',Series::where('category_id',$category->id)->pluck('functional_id'))->get();
 
+        $seriesIDs   = Series::where('category_id',$category->id)->pluck('id');
+        $colorIDs    = Product::whereIn('series_id',$seriesIDs)->pluck('color_id');
+        $colors      = Color::whereIn('id',$colorIDs)->groupBy('id')->get();
+
+        $filters = [
+            'price_start' => !empty($request->input('price_start')) ? $request->input('price_start') : '', // pret start
+            'price_end'   => !empty($request->input('price_end')) ? $request->input('price_end') : '', // pret start
+            'category_id' => !empty($request->input('category_id')) ? $request->input('category_id') : '', // category
+            'functional'  => !empty($request->input('functional')) ? $request->input('functional') : [], // Functional
+            'color'       => !empty($request->input('color')) ? $request->input('color') : [], // Colors
+            'sortBy'      => !empty($request->input('sortBy')) ? $request->input('sortBy') : 'onNewLine', // Sort By
+        ];
+
         return view('series.index', compact('category',
             'functionals',
+            'filters',
+            'colors',
             'brands',
             'series',
             'activeMenu',
@@ -42,6 +57,9 @@ class SeriesController extends AppController
 
     }
 
+    /*
+     * Detail
+     */
     public function detail(Request $request, $slug)
     {
 

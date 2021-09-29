@@ -53,7 +53,7 @@
             <div class="container under-header__container">
                 <div class="header-category">
                     <div class="header-category__select">
-                        <a href="{{ route('category') }}" class="white">Category</a>
+                        <a href="{{ route('category') }}" class="white">{{ $vars['category'] }}</a>
                         <span class="icon-chevron down"></span>
                     </div>
                     <div class="header-category__dropdown category-dropdown">

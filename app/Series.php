@@ -74,20 +74,40 @@ class Series extends Model
     public static function scopeSearchFilter($query, $request,$lng,$options = [])
     {
         // Pret de la
-        if($request->input('price_start') && !isset($options['priceMinMax']) && $request->input('price_start') != $request->input('min_price')) {
-            $query = $query->where('price','>=',$request->input('price_start'));
+        $productJoined = 0;
+        if($request->input('price_start'))
+        {
+            $query = $query->where('price_from','>=',$request->input('price_start'));
         }
         // Pret pina la
-        if($request->input('price_end') && !isset($options['priceMinMax'])  && $request->input('price_end') != $request->input('max_price')) {
-            $query = $query->where('price','<=',$request->input('price_end'));
+        if($request->input('price_end'))
+        {
+            $query = $query->where('price_from','<=',$request->input('price_end'));
         }
 
         // Brands
-        if($request->input('brand')) {
-            $query = $query->join('brands','brands.id','=','series.brand_id');
+//        if($request->input('brand')) {
+//            $query = $query->join('brands','brands.id','=','series.brand_id');
+//            $query->where(function ($query) use ($request) {
+//                foreach ($request->input('brand') as $value) {
+//                    $query->orWhere('brand_id', $value);
+//                }
+//            });
+//        }
+
+        // Functional
+        if($request->input('functional')) {
+            $query = $query->whereIn('functional_id', $request->input('functional'));
+        }
+
+        // Colors
+        if($request->input('color')) {
+            if(empty($productJoined)) {
+                $query = $query->join('products','products.series_id','=','series.id');
+            }
             $query->where(function ($query) use ($request) {
-                foreach ($request->input('brand') as $value) {
-                    $query->orWhere('brand_id', $value);
+                foreach ($request->input('color') as $value) {
+                    $query->orWhere('products.color_id', $value);
                 }
             });
         }
@@ -99,21 +119,23 @@ class Series extends Model
 
         // SortBy
         switch ($request->input('sortBy')) {
-            case 'price_desc' :
-                $query = $query->orderBy('price','DESC');
+                // On sale
+            case 'onSale' :
+                $query = $query->orderBy('onSale','ASC');
                 break;
-            case 'prices_asc' :
-                $query = $query->orderBy('price','ASC');
+            case 'onMostPopular' :
+                $query = $query->orderBy('onMostPopular', 'desc');
                 break;
-            case 'popular' :
-                $query = $query->orderBy('views', 'desc');
+            case 'onNewLine' :
+                $query = $query->orderBy('onNewLine', 'desc');
                 break;
             default:
+                // New lines
                 $query = $query->orderBy('series.id', 'desc');
                 break;
         }
 
-        $query = $query->paginate(1);
+        $query = $query->paginate(12);
 
         return $query;
     }

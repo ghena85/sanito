@@ -74,6 +74,17 @@ function getCartItem() {
     return $products;
 }
 
+function isEmptyArray($array)
+{
+    $totalEmpty = 0;
+    foreach ($array as $element) {
+        if (empty($element)) {
+            $totalEmpty++;
+        }
+    }
+    return count($array) == $totalEmpty ? true : false;
+}
+
 function getCartCount() {
     $cart = session('cart');
 
