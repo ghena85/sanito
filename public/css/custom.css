@@ -1,4 +1,4 @@
-.blog-detail .detail-post div>div{
+.blog-detail .detail-post div > div {
     word-break: break-all;
 }
 
@@ -6,7 +6,7 @@
     margin-top: 60px;
 }
 
-.navbar__item.active{
+.navbar__item.active {
     background-color: #545454;
 }
 
@@ -14,7 +14,12 @@
     opacity: 1 !important;
 }
 
-.desktop-header .under-header .under-header__container .navbar .navbar__list .navbar__item.active::after{
+.desktop-header
+    .under-header
+    .under-header__container
+    .navbar
+    .navbar__list
+    .navbar__item.active::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -24,25 +29,25 @@
     background-color: #62c0cb;
 }
 
-.about-section .slider-about__body{
+.about-section .slider-about__body {
     overflow: hidden !important;
 }
 
-.contact-form-errors{
+.contact-form-errors {
     margin-bottom: 50px;
 }
 
-.contact-form-errors ul li{
+.contact-form-errors ul li {
     font-weight: 600;
     color: red;
     text-align: center;
 }
 
-.contact-form .contact-form__lable .contact-form__input.error{
+.contact-form .contact-form__lable .contact-form__input.error {
     border: 2px solid red;
 }
 
-.thumb-slider__slide{
+.thumb-slider__slide {
     height: 85px !important;
 }
 
@@ -50,48 +55,47 @@
     color: white;
 }
 
-.sidebar-row__title.active{
+.sidebar-row__title.active {
     color: #62c0cb;
 }
 
-.about-grid__text{
+.about-grid__text {
     margin-bottom: auto;
 }
 
-.series_list_area{
+.series_list_area {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
 }
 
-.series_list_area .product{
+.series_list_area .product {
     margin-right: 20px;
 }
 
-.characteristic-grid_row table{
+.characteristic-grid_row table {
     width: 100%;
     border-spacing: 0;
     box-shadow: 0 15px 30px rgb(0 0 0 / 7%);
     font-family: Inter;
 }
-.characteristic-grid_row table:first-child{
+.characteristic-grid_row table:first-child {
     box-shadow: 0 0px 30px rgb(0 0 0 / 7%);
 }
-.characteristic-grid_row table tr td{
+.characteristic-grid_row table tr td {
     padding: 15px;
     font-size: 16px;
 }
-.characteristic-grid_row table tr:nth-child(even){
+.characteristic-grid_row table tr:nth-child(even) {
     background-color: #f6f6f6;
 }
 
-.characteristic-grid_row table tr td:nth-child(2n){
+.characteristic-grid_row table tr td:nth-child(2n) {
     text-align: right;
     color: #717171;
 }
 
-
-img.table_img_brand{
+img.table_img_brand {
     width: 70px;
     height: 25px;
     object-fit: contain;
