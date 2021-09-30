@@ -20,6 +20,7 @@ class CartController extends AppController
         if(!$cart) {
             return redirect()->route('home');
         }
+
         $products = [];
 
         $fullPrice = 0;
@@ -33,6 +34,9 @@ class CartController extends AppController
 
             array_push($products, $product);
         }
+
+
+
         return view('cart.index', compact('fullPrice','page', 'products'));
     }
 
@@ -59,7 +63,6 @@ class CartController extends AppController
         }
         return view('cart.confirm', compact('fullPrice','page', 'products'));
     }
-
 
     public function doCheckout(CheckoutRequest $request)
     {
@@ -113,7 +116,6 @@ class CartController extends AppController
         session(['cart' => '']);
         return redirect()->route('success-order');
     }
-
 
     public function successOrder(Request $request) {
         return view('cart.success-order');

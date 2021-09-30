@@ -15,7 +15,7 @@
 
     @include('series.detail.characteristics')
 
-    {{--@include('series.review')--}}
+    @include('series.detail.review')
 
     @include('series.detail.similar')
 

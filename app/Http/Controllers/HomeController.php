@@ -19,7 +19,7 @@ class HomeController extends AppController
         $page        = Page::find(1);
         $activeMenu  = 1;
         $news        = Article::orderBy('id','desc')->take(3)->get();
-        $slider      = Slider::orderBy('id','desc')->take(3)->get();
+        $slider      = Slider::orderBy('id','desc')->get();
         $categoryies           = Category::where('onHome',1)->orderBy('id','desc')->get();
         $productPopulars       = Series::where('onMostPopular',1)->with(['categories'])->orderBy('id','desc')->get();
         $productOnSale         = Series::where('onSale',1)->with(['categories'])->orderBy('id','desc')->get();

@@ -3,7 +3,6 @@
         <a href="{{ route('series',['slug' => $category->slug]) }}">
             {{ $category->getTranslatedAttribute('name') }}
         </a>
-
     </h3>
     <form action="#" class="filter-form">
         <div class="filter-form__row">

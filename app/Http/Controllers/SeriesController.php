@@ -23,7 +23,7 @@ class SeriesController extends AppController
         $page        = Page::find(4);
         $activeMenu  = $page->id;
 
-        $category    = Category::where('slug',$categorySlug)->first();
+        $category    = Category::where('slug',$categorySlug)->with(['parentId'])->first();
         if(empty($category)) return abort(404);
 
         $series      = Series::where('category_id',$category->id)

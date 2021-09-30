@@ -1,5 +1,8 @@
 <section id="review-section" class="single-section single-review">
     <div class="container">
+
+
+
         <div class="single-section__header">
             <h3>Reviews <small>({{ $series->getTranslatedAttribute('reviews') }})</small></h3>
             <a href="#" class="write-review">Write review</a>

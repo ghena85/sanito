@@ -11,11 +11,18 @@
             <div class="breadcrumb">
                 <ul class="breadcrumb-list">
                     <li class="breadcrumb-list__item">
-                        <a href="#" class="breadcrumb-list__link">Home</a>
+                        <a href="{{ route('home') }}" class="breadcrumb-list__link">Home</a>
                     </li>
                     <li class="breadcrumb-list__item">
                         <a href="{{ route('category') }}" class="breadcrumb-list__link">Categories</a>
                     </li>
+                    @if(isset($category))
+                        <li class="breadcrumb-list__item">
+                            <a href="{{ route('series',['slug' => $category->slug])  }}" class="breadcrumb-list__link">
+                                {{ $category->getTranslatedAttribute('name') }}
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>

@@ -3,7 +3,10 @@
     @foreach($categories as $value)
         <div class="sidebar-row">
             <h4 class="sidebar-row__title {{ (isset($category) && $category->id ==$value->id ? 'active' : '') }}">
-                {{ $value->getTranslatedAttribute('name') }}
+                <a href="{{ route('categoryDetail',['slug' => $value->slug])  }}">
+                    {{ $value->getTranslatedAttribute('name') }}
+                </a>
+
             </h4>
             @if($value->childrens)
                 <ul class="sidebar-row__list sidebar-list">

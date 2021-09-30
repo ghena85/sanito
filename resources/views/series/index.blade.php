@@ -16,6 +16,18 @@
                     <li class="breadcrumb-list__item">
                         <a href="{{ route('category') }}" class="breadcrumb-list__link">Categories</a>
                     </li>
+                    @if($category->parentId)
+                        <li class="breadcrumb-list__item">
+                            <a href="{{ route('categoryDetail',['slug' => $category->parentId->slug]) }}"  class="breadcrumb-list__link">
+                                {{ $category->parentId->getTranslatedAttribute('name') }}
+                            </a>
+                        </li>
+                    @endif
+                    <li class="breadcrumb-list__item">
+                        <a href="{{ route('series',['slug' => $category->slug]) }}"  class="breadcrumb-list__link">
+                            {{ $category->getTranslatedAttribute('name') }}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -25,7 +37,9 @@
         <div class="container">
             <div class="page-grid__content">
 
-               @include("series.filter.left-sidebar")
+               @if($category->parentId->id == 23)
+                 @include("series.filter.left-sidebar")
+               @endif
 
                 <div class="page-grid__products products">
 

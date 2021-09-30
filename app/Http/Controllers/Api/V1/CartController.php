@@ -17,8 +17,6 @@ class CartController extends ApiController
      */
     public function addToCart(Request $request)
     {
-        session(['cart' => '']);
-
         $cart = empty(session('cart')) ? [] : session('cart');
 
         if($request->count) {

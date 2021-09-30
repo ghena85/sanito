@@ -148,18 +148,20 @@
                 @foreach($brands as $brand)
                     <img src="{{ url('storage/'.$brand->image) }}" alt="{{ $brand->getTranslatedAttribute('name') }}" class="product-brand">
                 @endforeach
-                <div class="brand-review">
-                    <div class="stars">
+                @if($series->reviews)
+                    <div class="brand-review">
+                        <div class="stars">
 
-                        @for ($i = 0; $i < $series->getTranslatedAttribute('rate'); $i++)
-                            @if ($i<5)
-                                <span class="icon-star fill"></span>
-                            @endif
-                        @endfor
+                            @for ($i = 0; $i < $series->getTranslatedAttribute('rate'); $i++)
+                                @if ($i<5)
+                                    <span class="icon-star fill"></span>
+                                @endif
+                            @endfor
 
+                        </div>
+                        <small>({{ $series->getTranslatedAttribute('reviews') }} reviews) </small>
                     </div>
-                    <small>({{ $series->getTranslatedAttribute('reviews') }} reviews) </small>
-                </div>
+                @endif
             </div>
 
             <div class="single-product__attention attention">
