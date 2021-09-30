@@ -4,32 +4,33 @@
         <div class="footer-body">
             <div class="footer-main">
                 <div class="footer-logo">
-                    <a href="/"><img src="/img/logo.svg" alt="logo"></a>
+                    <a href="/"><img src="{{ url('img/logo.svg') }}" alt="logo"></a>
                 </div>
                 <div class="separator"></div>
 
                 <div class="footer-contacts contacts">
                     <address>{{ $vars['contact-loc'] }}</address>
-                    <a href="tel:+37367525214" class="phone">
-                        <span class="icon-phone"></span> {{ $vars['footer-tel'] }}
+                    <a href="tel:{{ $vars['footer-tel'] }}" class="phone">
+                        <span class="icon-phone"></span>{{ $vars['footer-tel'] }}
                     </a>
-                    <p>Order call back</p>
+                    <p>{{ $vars['order_call_back'] }}</p>
                 </div>
             </div>
 
             <div class="footer__menu menu-footer">
                 <div class="menu-footer__column">
-                    <h4 class="menu-footer__title footer-title">Categories</h4>
+                    <h4 class="menu-footer__title footer-title">{{ $vars['categories'] }}</h4>
                     <ul class="menu-footer__list">
-                        <li><a href="../single-category.html" class="menu-footer__link">Ghiveci</a></li>
-                        <li><a href="../single-category.html" class="menu-footer__link">Gradina</a></li>
-                        <li><a href="../single-category.html" class="menu-footer__link">Gospodarie</a></li>
-                        <li><a href="../single-category.html" class="menu-footer__link">Uz casnic</a></li>
+
+                        @foreach ($categories as $value)
+                            <li><a href="{{ route('categoryDetail',['categorySlug' => $value->slug]) }}" class="menu-footer__link">{{ $value->getTranslatedAttribute('name') }}</a></li>
+                        @endforeach
+
                     </ul>
                 </div>
 
                 <div class="menu-footer__column">
-                    <h4 class="menu-footer__title footer-title">About</h4>
+                    <h4 class="menu-footer__title footer-title">{{ $vars['about'] }}</h4>
                     <ul class="menu-footer__list">
                         @foreach($footerMenu as $value)
                             <li class="{{ (isset($activeMenu) && $activeMenu == $value->id ? 'active' : '') }}">
@@ -42,7 +43,7 @@
                 </div>
 
                 <div class="menu-footer__column">
-                    <h4 class="menu-footer__title footer-title">Information</h4>
+                    <h4 class="menu-footer__title footer-title">{{ $vars['information'] }}</h4>
                     <ul class="menu-footer__list">
                         <li><a href="#" class="menu-footer__link">Privacy policy</a></li>
                         <li><a href="#" class="menu-footer__link">Termes and conditions</a></li>
@@ -54,7 +55,7 @@
             </div>
 
             <div class="footer__social social">
-                <h4 class="menu-footer__title footer-title">Follow us on</h4>
+                <h4 class="menu-footer__title footer-title">{{ $vars['follow_us'] }}</h4>
 
                 <ul class="social__list">
                     <li>
@@ -72,17 +73,17 @@
                 </ul>
 
                 <div class="social__payment">
-                    <img src="/img/visa.svg" alt="visa">
-                    <img src="/img/mastercard.svg" alt="mastercard">
+                    <img src="{{ url('/img/visa.svg') }}" alt="visa">
+                    <img src="{{ url('/img/masterca') }}rd.svg" alt="mastercard">
                 </div>
             </div>
         </div>
 
         <div class="footer-copyright">
-            <small>© 2021 Santino</small>
+            <small>© {{ $vars['2021_santino'] }}</small>
             <div class="social__payment">
-                <img src="/img/visa.svg" alt="visa">
-                <img src="/img/mastercard.svg" alt="mastercard">
+                <img src="{{ url('/img/visa.svg') }}" alt="visa">
+                <img src="{{ url('/img/masterca') }}rd.svg" alt="mastercard">
             </div>
         </div>
     </div>
