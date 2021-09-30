@@ -75,10 +75,16 @@ class SeriesController extends AppController
         } else {
             $colorIDs         = $products->pluck('color_id');
         }
-        $colors          = Color::select("colors.id","colors.name","products.image")
-                                ->leftJoin("products","products.color_id","=","colors.id")
+//        $colors              = Color::select("colors.id","colors.name","products.image")
+//                                ->leftJoin("products","products.color_id","=","colors.id")
+//                                ->whereIn('colors.id',$colorIDs)
+//                                ->groupBy("colors.id")
+//                                ->get();
+        $colors      = Product::select("colors.id","colors.name","products.image")
+                                ->where('series_id',$series->id)
                                 ->whereIn('colors.id',$colorIDs)
-                                ->groupBy("colors.id")
+                                ->leftJoin('colors','colors.id','=','products.color_id')
+                                ->groupBy('products.color_id')
                                 ->get();
 
         if($request->color_id) {

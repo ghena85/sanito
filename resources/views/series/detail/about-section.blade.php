@@ -22,12 +22,23 @@
                <div class="about-grid__text">
                    {!! $series->text !!}
                </div>
-                <img src="{{ url('storage/'.$series->image) }}" alt="product">
+                @if($series->image1)
+                    <img src="{{ url('storage/'.$series->image1) }}" alt="product">
+                @endif
             </div>
-
-            <div class="about-video" style="background: url('/img/about-video.jpg') 50% 50% / cover no-repeat;">
-                <a data-fslightbox="gallery" href="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" class="icon-play"></a>
-            </div>
+            @if($series->text2)
+                <div class="about-grid__row">
+                    <div class="about-grid__text">
+                        {!! $series->text2 !!}
+                    </div>
+                    @if($series->image2)
+                        <img src="{{ url('storage/'.$series->image2) }}" alt="product">
+                    @endif
+                </div>
+            @endif
+            {{--<div class="about-video" style="background: url('/img/about-video.jpg') 50% 50% / cover no-repeat;">--}}
+                {{--<a data-fslightbox="gallery" href="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" class="icon-play"></a>--}}
+            {{--</div>--}}
         </div>
     </div>
 </section>
