@@ -1,7 +1,7 @@
 <section id="review-section" class="single-section single-review">
     <div class="container">
 
-
+       
 
         <div class="single-section__header">
             <h3>Reviews <small>({{ $series->getTranslatedAttribute('reviews') }})</small></h3>
@@ -163,6 +163,30 @@
             </div>
 
             <button class="load-more">See more</button>
+
+            <form action="#" class="review-form">
+                <label class="contact-form__lable" for="nume">
+                    <input class="contact-form__input" type="text" name="" id="nume" placeholder="Prenume">
+                </label>
+
+                <label class="contact-form__lable" for="familie"> 
+                    <input class="contact-form__input" type="text" name="" id="familie" placeholder="Nume familie">
+                </label>
+                
+                <label class="contact-form__lable" for="textarea"> 
+                    <textarea class="contact-form__input textarea" name="" id="textarea" cols="10" rows="3"  placeholder="Review"></textarea>
+                </label>
+
+                <label class="contact-form__lable stars" for="textarea"> 
+                    <span class="icon-star fill"></span>
+                    <span class="icon-star"></span>
+                    <span class="icon-star"></span>
+                    <span class="icon-star"></span>
+                    <span class="icon-star"></span>
+                </label>
+
+                <button type="submit" class="contact-form__btn accent-btn">Trimite</button>
+            </form>
         </div>
         
     </div>
