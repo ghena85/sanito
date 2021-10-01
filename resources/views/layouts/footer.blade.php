@@ -59,22 +59,22 @@
 
                 <ul class="social__list">
                     <li>
-                        <a href="#" class="social__item icon-facebook"></a>
+                        <a href="{{ setting('.facebook_link') }}" class="social__item icon-facebook"></a>
                     </li>
                     <li>
-                        <a href="#" class="social__item icon-instagram"></a>
+                        <a href="{{ setting('.instagram_link') }}" class="social__item icon-instagram"></a>
                     </li>
                     <li>
-                        <a href="#" class="social__item icon-youtube"></a>
+                        <a href="{{ setting('.youtube_link') }}" class="social__item icon-youtube"></a>
                     </li>
                     <li>
-                        <a href="#" class="social__item icon-linkedin"></a>
+                        <a href="{{ setting('.in_link') }}" class="social__item icon-linkedin"></a>
                     </li>
                 </ul>
 
                 <div class="social__payment">
                     <img src="{{ url('/img/visa.svg') }}" alt="visa">
-                    <img src="{{ url('/img/masterca') }}rd.svg" alt="mastercard">
+                    <img src="{{ url('/img/mastercard.svg') }}" alt="mastercard">
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@
             <small>© {{ $vars['2021_santino'] }}</small>
             <div class="social__payment">
                 <img src="{{ url('/img/visa.svg') }}" alt="visa">
-                <img src="{{ url('/img/masterca') }}rd.svg" alt="mastercard">
+                <img src="{{ url('/img/mastercard.svg') }}" alt="mastercard">
             </div>
         </div>
     </div>

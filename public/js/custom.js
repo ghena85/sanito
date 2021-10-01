@@ -123,7 +123,7 @@ $(document).ready(function () {
             data: {'id' :id,'lng' : $('html').attr('lang'),'_token': $('.csrf_token').val()},
             success:function (result) {
 
-                $('.item-'+id).remove();
+                $('.product-'+id).remove();
                 $('.fullPrice').html(result.fullPrice);
                 $('.totalPrice').html(result.totalPrice);
 

@@ -128,17 +128,26 @@
             </div>
     
             <div class="header-logo">
-                <a href="/"><img src="/img/logo.svg" alt="#"></a>
+                <a href="{{ route('home') }}"><img src="{{ url('img/logo.svg') }}"></a>
             </div>
     
             <div class="languages">
                 <div class="current-language">
-                    EN
+                    @foreach (Config::get('languages') as $key => $lang)
+                        @if ($key == app()->getLocale())
+                            {{ $lang }}
+                        @endif
+                    @endforeach
                     <span class="icon-chevron down"></span>
                 </div>
                 <div class="language-dropdown">
-                    <a href="#">RU</a>
-                    <a href="#">RO</a>
+                    @foreach (Config::get('languages') as $key => $lang)
+                        @if ($key != app()->getLocale())
+                            <a href="{{  request()->path() =='' || request()->path() =='/' ? "/$key" : route('setlocale', "$key") }}">
+                                {{ $lang }}
+                            </a>
+                        @endif
+                    @endforeach
                 </div>
             </div>
     
@@ -153,105 +162,24 @@
     
         <nav class="mobile-navbar">
             <ul class="navbar-category">
-                <li class="navbar-category__item">
-                    <div class="navbar-category__button">
-                        <img src="/img/ghiveci.svg" alt="ghiveci">
-                        <span class="navbar-category__name">Ghivece</span>
-                        <span class="icon-chevron down"></span>
-                    </div>
-                    <ul class="navbar-category__sublist category-sublist">
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                    </ul>
-                </li>
-    
-                <li class="navbar-category__item">
-                    <div class="navbar-category__button">
-                        <img src="/img/plant.svg" alt="plant">
-                        <span class="navbar-category__name">Gradina</span>
-                        <span class="icon-chevron down"></span>
-                    </div>
-                    <ul class="navbar-category__sublist category-sublist">
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                    </ul>
-                </li>
-    
-                <li class="navbar-category__item">
-                    <div class="navbar-category__button">
-                        <img src="/img/bucket.svg" alt="bucket">
-                        <span class="navbar-category__name">Gospodarie</span>
-                        <span class="icon-chevron down"></span>
-                    </div>
-                    <ul class="navbar-category__sublist category-sublist">
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                    </ul>
-                </li>
-    
-                <li class="navbar-category__item">
-                    <div class="navbar-category__button">
-                        <img src="/img/dish.svg" alt="dish">
-                        <span class="navbar-category__name">Uz casnic</span>
-                        <span class="icon-chevron down"></span>
-                    </div>
-                    <ul class="navbar-category__sublist category-sublist">
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                        <li class="category-sublist__item">
-                            <a href="../single-category.html">Ghiveci Indoor</a>
-                        </li>
-                    </ul>
-                </li>
+                @foreach ($categories as $value)
+                    <li class="navbar-category__item">
+                        <div class="navbar-category__button">
+                            {!! $value->svg !!}
+                            <span class="navbar-category__name">{{ $value->getTranslatedAttribute('name') }}</span>
+                            <span class="icon-chevron down"></span>
+                        </div>
+                        @if ($value->childrens)
+                            <ul class="navbar-category__sublist category-sublist">
+                                @foreach ($value->childrens as $svalue)
+                                    <li class="category-sublist__item">
+                                        <a href="{{ route('series',['categorySlug' => $svalue->slug]) }}">{{ $svalue->getTranslatedAttribute('name') }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                @endforeach
             </ul>
     
             <ul class="navbar-menu">

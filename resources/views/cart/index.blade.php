@@ -21,9 +21,10 @@
         <div class="cart-grid">
             <div class="cart-body">
                 <div class="cart-product__scroll no-scrollbar">
-
-                    @foreach ($products as $value)
-                        <div class="cart-product">
+                    @php $totalPrice = 0; @endphp
+                    @foreach (getCartItem() as $value)
+                    @php $totalPrice = $totalPrice+($value->price*$value->count); @endphp
+                        <div class="cart-product product-{{ $value->id }}">
                             <div class="cart-product__lables">
 
                                 @if (!empty($value->label))
@@ -56,9 +57,9 @@
                             </div>
 
                             <div class="cart-product__count">
-                                <button class="minus icon-minus"></button>
-                                <span class="count">1</span>
-                                <button class="plus icon-plus"></button>
+                                <button class="minus icon-minus btn-minus-product" data-id="{{ $value->id }}"></button>
+                                <span class="count quantity_checkout-number qt_product_{{ $value->id }}">{{ $value->count }}</span>
+                                <button class="plus icon-plus btn-plus-product" data-id="{{ $value->id }}"></button>
                             </div>
 
                             @if (!empty($value->price))
@@ -67,34 +68,38 @@
                                 </div>
                             @endif
 
-                            <button class="cart-product__trash icon-bin"></button>
+                            <button class="cart-product__trash icon-bin btn-remove-product" data-id="{{ $value->id }}"></button>
                         </div>
+
                     @endforeach
 
                 </div> 
-
+                @php $fullPrice = $totalPrice;$showDelivery = 0; @endphp
             </div>
 
             <aside class="cart-sidebar">
-                <h4 class="cart-sidebar__title">Payment information</h4>
+                <h4 class="cart-sidebar__title">{{ $vars['payment_information'] }}</h4>
 
                 <div class="card-sidebar__prices">
                     <div class="price-row">
-                        <p>Subtotal</p> <b>360 LEI</b>
+                        <p>{{ $vars['subtotal'] }}</p> <b class="totalPrice">{{ $totalPrice }} {{ $vars['valuta'] }}</b>
                     </div>
-                    <div class="price-row">
+                    {{-- <div class="price-row">
                         <p>Sale</p>
                         <b>-10%</b>
+                    </div> --}}
+                    @if(setting('.delivery_price') && is_numeric(setting('.delivery_price')) &&  $fullPrice < setting('.delivery_free_from_price') )
+                        @php $fullPrice = $fullPrice+setting('.delivery_price');$showDelivery = 1; @endphp
+                    @endif
+                    <div class="price-row block-delivery" @if($showDelivery == 0) style="display: none" @endif>
+                        <p>{{ $vars['delivery'] }}</p> 
+                        <b>{{ setting('.delivery_price') }} {{ $vars['valuta'] }}</b>
                     </div>
                     <div class="price-row">
-                        <p>Delivery</p> 
-                        <b>50 LEI</b>
+                        <p>{{ $vars['total'] }}</p>
+                        <h4 class="fullPrice">{{ $fullPrice }} {{ $vars['valuta'] }}</h4>
                     </div>
-                    <div class="price-row">
-                        <p>Total</p>
-                        <h4>370 LEI</h4>
-                    </div>
-                    <a href="{{ route('cart-checkout') }}" class="accent-btn chekout-btn">Checkout</a>
+                    <a href="{{ route('cart-checkout') }}" class="accent-btn chekout-btn">{{ $vars['checkout'] }}</a>
                 </div>
             </aside>
         </div>
