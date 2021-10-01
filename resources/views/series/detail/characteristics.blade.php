@@ -13,14 +13,6 @@
                             <td>Main</td>
                             <td>&nbsp;</td>
                         </tr>
-                        <tr>
-                            <td>Brand</td>
-                            <td>
-                                @foreach($brands as $brand)
-                                    <img src="{{ url('storage/'.$brand->image) }}" alt="{{ $brand->getTranslatedAttribute('name') }}" class="table_img_brand">
-                                @endforeach
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
                 @if($product)
@@ -35,18 +27,10 @@
                             <td>Main</td>
                             <td>&nbsp;</td>
                         </tr>
-                        <tr>
-                            <td>Brand</td>
-                            <td>
-                                @foreach($brands as $brand)
-                                    <img src="{{ url('storage/'.$brand->image) }}" alt="{{ $brand->getTranslatedAttribute('name') }}" class="table_img_brand">
-                                @endforeach
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
                 @if($product)
-                    {!! $product->getTranslatedAttribute('text') !!}
+                    {!! $product->getTranslatedAttribute('text2') !!}
                 @endif
             </div>
         </div>

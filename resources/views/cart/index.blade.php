@@ -57,7 +57,7 @@
 
                             <div class="cart-product__count">
                                 <button class="minus icon-minus"></button>
-                                <span class="count">1</span>
+                                <span class="count quantity_number">1</span>
                                 <button class="plus icon-plus"></button>
                             </div>
 

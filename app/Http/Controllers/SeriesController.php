@@ -94,8 +94,6 @@ class SeriesController extends AppController
         }
         $sizes               = Size::whereIn('id',$sizeIDs)->get();
 
-        $brands              = Brand::whereIn('id',$series->pluck('brand_id'))->get();
-
         // Selected Product / First Product
         $product         = Product::where('series_id',$series->id);
         if($request->color_id || $request->size_id)
@@ -127,7 +125,6 @@ class SeriesController extends AppController
             'similarSeries',
             'colors',
             'product',
-            'brands',
             'sizes',
             'activeMenu',
             'page',

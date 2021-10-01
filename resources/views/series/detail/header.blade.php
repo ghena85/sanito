@@ -31,11 +31,18 @@
                 <div class="thumb-slider__body">
                     <div class="thumb-slider__slider">
                         <div thumbsSlider="" class="slider-thumb__body swiper">
-                            @if($series->image)
+                            @if($product)
                                 <div class="thumb-slider__slide">
-                                    <img src="{{ url('storage/'.$series->image) }}" alt="{{ $series->getTranslatedAttribute('name') }}">
+                                    <img src="{{ url('storage/'.$product->image) }}" alt="{{ $product->getTranslatedAttribute('name') }}">
                                 </div>
+                            @else
+                                @if($series->image)
+                                    <div class="thumb-slider__slide">
+                                        <img src="{{ url('storage/'.$series->image) }}" alt="{{ $series->getTranslatedAttribute('name') }}">
+                                    </div>
+                                @endif
                             @endif
+
                             @if($series->images)
                                 @foreach (json_decode($series->images) as $key => $image)
                                     <div class="thumb-slider__slide">
@@ -52,11 +59,18 @@
                 <div class="single-slider__body">
                     <div class="single-slider__slider">
                         <div class="slider-single__body swiper">
-                            @if($series->image)
+                            @if($product)
                                 <div class="single-slider__slide">
-                                    <img src="{{ url('storage/'.$series->image) }}" alt="{{ $series->getTranslatedAttribute('name') }}">
+                                    <img src="{{ url('storage/'.$product->image) }}" alt="{{ $product->getTranslatedAttribute('name') }}">
                                 </div>
+                            @else
+                                @if($series->image)
+                                    <div class="single-slider__slide">
+                                        <img src="{{ url('storage/'.$series->image) }}" alt="{{ $series->getTranslatedAttribute('name') }}">
+                                    </div>
+                                @endif
                             @endif
+
                             @if($series->images)
                                 @foreach (json_decode($series->images) as $key => $image)
                                     <div class="single-slider__slide">
@@ -145,9 +159,9 @@
             @endif
 
             <div class="single-product__info">
-                @foreach($brands as $brand)
-                    <img src="{{ url('storage/'.$brand->image) }}" alt="{{ $brand->getTranslatedAttribute('name') }}" class="product-brand">
-                @endforeach
+                @if($series->logo)
+                    <img src="{{ url('storage/'.$series->logo) }}" class="product-brand">
+                @endif
                 @if($series->reviews)
                     <div class="brand-review">
                         <div class="stars">

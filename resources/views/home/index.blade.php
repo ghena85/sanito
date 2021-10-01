@@ -18,9 +18,11 @@
 
     @include("home.slider-categ")
 
+    {{--Top Vinzari--}}
     @include("home.most-popular")
 
-    @include("home.products")
+    {{--Reduceri--}}
+    @include("home.sale-products")
 
     @include("home.offer-section")
 

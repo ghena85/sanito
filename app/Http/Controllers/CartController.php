@@ -16,6 +16,7 @@ class CartController extends AppController
     {
         $page = Page::find(5);
         $cart = session('cart');
+//        dd($cart);
 
         if(!$cart) {
             return redirect()->route('home');
