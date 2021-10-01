@@ -71,26 +71,33 @@
                     </form>
                 </div>
             </div>
-
+            @php $totalPrice = 0; @endphp
+            @foreach (getCartItem() as $value)
+                @php $totalPrice = $totalPrice+($value->price*$value->count); @endphp
+            @endforeach
+            @php $fullPrice = $totalPrice;$showDelivery = 0; @endphp
             <div class="checkout-grid__information">
                 <aside class="checkout-grid__sidebar">
                     <div class="price-row">
-                        <p>Subtotal</p>
-                        <b>360 LEI</b>
+                        <p>{{ $vars['subtotal'] }}</p>
+                        <b class="totalPrice">{{ $totalPrice }} {{ $vars['valuta'] }}</b>
                     </div>
-                    <div class="price-row">
+                    {{-- <div class="price-row">
                         <p>Sale</p>
                         <b>-10%</b>
+                    </div> --}}
+                    @if(setting('.delivery_price') && is_numeric(setting('.delivery_price')) &&  $fullPrice < setting('.delivery_free_from_price') )
+                        @php $fullPrice = $fullPrice+setting('.delivery_price');$showDelivery = 1; @endphp
+                    @endif
+                    <div class="price-row block-delivery" @if($showDelivery == 0) style="display: none" @endif>
+                        <p>{{ $vars['delivery'] }}</p> 
+                        <b>{{ setting('.delivery_price') }} {{ $vars['valuta'] }}</b>
                     </div>
                     <div class="price-row">
-                        <p>Delivery</p>
-                        <b>50 LEI</b>
+                        <p>{{ $vars['total'] }}</p>
+                        <h4 class="fullPrice">{{ $fullPrice }} {{ $vars['valuta'] }}</h4>
                     </div>
-                    <div class="price-row">
-                        <p>Total</p>
-                        <h4>370 LEI</h4>
-                    </div>
-                    <a href="#" class="accent-btn order">Place my order</a>
+                    <a href="#" class="accent-btn order">{{ $vars['place_my_order'] }}</a>
                 </aside>
 
                 <div class="checkout-grid__products">
