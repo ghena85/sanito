@@ -21,8 +21,12 @@ class HomeController extends AppController
         $news        = Article::orderBy('id','desc')->take(3)->get();
         $slider      = Slider::orderBy('id','desc')->get();
         $categoryies           = Category::where('onHome',1)->orderBy('id','desc')->get();
+        
         $productPopulars       = Series::where('onMostPopular',1)->with(['categories'])->orderBy('id','desc')->get();
+        $productPopularsMain       = Series::where('onMostPopularMain',1)->orderBy('id','desc')->get();
+        
         $productOnSale         = Series::where('onSale',1)->with(['categories'])->orderBy('id','desc')->get();
+        $productOnSaleMain     = Series::where('onSaleMain',1)->orderBy('id','desc')->get();
         $productOnNewLine      = Series::where('onNewLine',1)->with(['categories'])->orderBy('id','desc')->get();
         $about          = About::find(4);
         $aboutList      = About::where('id','>=',4)->orderBy('id','desc')->get();
@@ -42,7 +46,9 @@ class HomeController extends AppController
             'productOnNewLine',
             'about',
             'aboutList',
-            'bestOffers'
+            'bestOffers',
+            'productPopularsMain',
+            'productOnSaleMain'
         ));
     }
 

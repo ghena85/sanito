@@ -173,4 +173,25 @@ $(document).ready(function () {
         }
     }
 
+    $('span.icon-star.forRev').click(function(){
+        let ord = $(this).attr('data-star');
+        for(let i=1;i<=5;i++){
+            $("span.icon-star.forRev[data-star='"+i+"']").removeClass('fill');
+        }
+        if(ord<=5 && ord>=1){
+            for(let i=1;i<=ord;i++){
+                let currEl = $("span.icon-star.forRev[data-star='"+i+"']");
+                currEl.addClass('fill');
+            }
+            $('input.icon-starRev').val(ord);
+        }
+    });
+
+    $('div.review-info_form').hide();
+
+    $('a.write-review').click(function(e){
+        e.preventDefault();
+        $('div.review-info_form').slideDown();
+    });
+
 })
