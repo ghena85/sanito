@@ -112,7 +112,7 @@
                 <div class="review-reviews__item review-item">
                     <div class="review-item__header">
                         <div class="review-item__profile">
-                            <img src="img/profile1.png" alt="profile pic">
+                            <img src="{{ url('img/profile1.png') }}" alt="profile pic">
                             <div class="profile-info">
                                 <p>{{ $value->getTranslatedAttribute('first_name') }} {{ $value->getTranslatedAttribute('last_name') }}</p>
                                 <p class="profile-info__time">{{ $value->date }}</p>
