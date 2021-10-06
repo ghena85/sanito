@@ -9,9 +9,10 @@ use App\Functional;
 use App\Page;
 use App\Product;
 use App\Series;
-use App\SeriesRating;
 use App\Size;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReviewRequest;
+use App\SeriesRating;
 
 class SeriesController extends AppController
 {
@@ -68,6 +69,7 @@ class SeriesController extends AppController
         $series          = Series::where('slug', $slug)->with(['categories'])->firstOrFail();
         $page            = $series;
         $similarSeries   = Series::orderBy('id','desc')->get();
+        $reviews         = SeriesRating::orderBy('id','desc')->get();
 
         $products        = Product::where('series_id',$series->id)->get();
 
@@ -119,6 +121,7 @@ class SeriesController extends AppController
 
         $product         = $product->first();
 
+
         // End Selected Product / First Product
 
         return view('series.detail', compact(
@@ -128,14 +131,29 @@ class SeriesController extends AppController
             'sizes',
             'activeMenu',
             'page',
-            'series'
+            'series',
+            'reviews'
         ));
 
     }
 
-    public function addRating(Request $request)
+    public function detailSender(ReviewRequest $request, $slug)
     {
-        SeriesRating::create(['firnst_name' => $request->first_name]);
-        return redirect(route('series',['slug'=>$series->series_slug]).'#single')->with('message', 'Transmis cu success.');
+
+        $product = Series::where('slug',$slug)->first();
+
+        SeriesRating::create([
+            'series_id' => $product->id,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'text' => $request->text,
+            'stars' => $request->stars,
+            'date'=>date('Y-m-d')
+
+        ]);
+
+        return redirect(route('series-detail',['slug'=>$slug]).'#allReviews')->with('message', 'Transmis cu success.');
     }
+
+
 }

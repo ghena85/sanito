@@ -82,6 +82,11 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         'uses' => 'SeriesController@detail'
     ]);
 
+    Route::post('/seria/{slug}/sendRev', [
+        'as' => 'series-detail-review',
+        'uses' => 'SeriesController@detailSender'
+    ]);
+
 
     #Category
 

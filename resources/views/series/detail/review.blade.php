@@ -5,7 +5,46 @@
 
         <div class="single-section__header">
             <h3>Reviews <small>({{ $series->getTranslatedAttribute('reviews') }})</small></h3>
-            <a href="#" class="write-review">Write review</a>
+            <a href="#" class="write-review">{{ $vars['write_review'] }}</a>
+        </div>
+
+        <div class="review-info review-info_form">
+
+            @if ($errors->any())
+               <ul>
+                    @foreach ($errors->all() as $value)
+                        <li>
+                            {{ $value }}
+                        </li>
+                    @endforeach
+               </ul>
+            @endif
+
+            <form action="{{ route('series-detail-review',['slug' => $series->slug ]) }}" class="review-form" method="post">
+                @csrf
+                <label class="contact-form__lable" for="nume">
+                    <input class="contact-form__input" type="text" name="first_name" id="nume" placeholder="Prenume">
+                </label>
+
+                <label class="contact-form__lable" for="familie"> 
+                    <input class="contact-form__input" type="text" name="last_name" id="familie" placeholder="Nume familie">
+                </label>
+                
+                <label class="contact-form__lable" for="textarea"> 
+                    <textarea class="contact-form__input textarea" name="text" id="textarea" cols="10" rows="3"  placeholder="Review"></textarea>
+                </label>
+
+                <label class="contact-form__lable stars " for="textarea"> 
+                    <span class="icon-star forRev" data-star="1"></span>
+                    <span class="icon-star forRev" data-star="2"></span>
+                    <span class="icon-star forRev" data-star="3"></span>
+                    <span class="icon-star forRev" data-star="4"></span>
+                    <span class="icon-star forRev" data-star="5"></span>
+                    <input type="hidden" name="stars" value="" class="icon-starRev">
+                </label>
+
+                <button type="submit" class="contact-form__btn accent-btn">{{ $vars['trimite'] }}</button>
+            </form>
         </div>
 
         <div class="review-info">
@@ -65,129 +104,38 @@
             </div>
         </div>
 
-        <div class="review-reviews">
-            <div class="review-reviews__item review-item">
-                <div class="review-item__header">
-                    <div class="review-item__profile">
-                        <img src="img/profile1.png" alt="profile pic">
-                        <div class="profile-info">
-                            <p>Darlene Robertson</p>
-                            <p class="profile-info__time">16 june, 2021</p>
+        
+
+        <div class="review-reviews" id="allReviews">
+
+            @foreach ($reviews as $value)
+                <div class="review-reviews__item review-item">
+                    <div class="review-item__header">
+                        <div class="review-item__profile">
+                            <img src="{{ url('img/profile1.png') }}" alt="profile pic">
+                            <div class="profile-info">
+                                <p>{{ $value->getTranslatedAttribute('first_name') }} {{ $value->getTranslatedAttribute('last_name') }}</p>
+                                <p class="profile-info__time">{{ $value->date }}</p>
+                            </div>
+                        </div>
+                        <div class="stars">
+                            
+                            @for ($i = 0; $i < $value->stars; $i++)
+                                <span class="icon-star fill"></span>
+                            @endfor
+
                         </div>
                     </div>
-                    <div class="stars">
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
+                    <div class="review-item__text">
+                        <p>
+                            {{ $value->getTranslatedAttribute('text') }}
+                        </p>
                     </div>
                 </div>
-                <div class="review-item__text">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-            </div>
+            @endforeach
 
-            <div class="review-reviews__item review-item">
-                <div class="review-item__header">
-                    <div class="review-item__profile">
-                        <img src="img/profile2.png" alt="profile pic">
-                        <div class="profile-info">
-                            <p>Darlene Robertson</p>
-                            <p class="profile-info__name">16 june, 2021</p>
-                        </div>
-                    </div>
-                    <div class="stars">
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                    </div>
-                </div>
-                <div class="review-item__text">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-            </div>
+            <button class="load-more">{{ $vars['see_more'] }}</button>
 
-            <div class="review-reviews__item review-item">
-                <div class="review-item__header">
-                    <div class="review-item__profile">
-                        <img src="img/profile1.png" alt="profile pic">
-                        <div class="profile-info">
-                            <p>Darlene Robertson</p>
-                            <p class="profile-info__name">16 june, 2021</p>
-                        </div>
-                    </div>
-                    <div class="stars">
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                    </div>
-                </div>
-                <div class="review-item__text">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-            </div>
-
-            <div class="review-reviews__item review-item">
-                <div class="review-item__header">
-                    <div class="review-item__profile">
-                        <img src="img/profile2.png" alt="profile pic">
-                        <div class="profile-info">
-                            <p>Darlene Robertson</p>
-                            <p class="profile-info__name">16 june, 2021</p>
-                        </div>
-                    </div>
-                    <div class="stars">
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                        <span class="icon-star fill"></span>
-                    </div>
-                </div>
-                <div class="review-item__text">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-            </div>
-
-            <button class="load-more">See more</button>
-
-            <form action="#" class="review-form">
-                <label class="contact-form__lable" for="nume">
-                    <input class="contact-form__input" type="text" name="" id="nume" placeholder="Prenume">
-                </label>
-
-                <label class="contact-form__lable" for="familie"> 
-                    <input class="contact-form__input" type="text" name="" id="familie" placeholder="Nume familie">
-                </label>
-
-                
-                <label class="contact-form__lable" for="textarea"> 
-                    <textarea class="contact-form__input textarea" name="" id="textarea" cols="10" rows="3"  placeholder="Review"></textarea>
-                </label>
-
-                <label class="contact-form__lable stars" for="textarea"> 
-                    <span class="icon-star fill"></span>
-                    <span class="icon-star"></span>
-                    <span class="icon-star"></span>
-                    <span class="icon-star"></span>
-                    <span class="icon-star"></span>
-                </label>
-
-                <button type="submit" class="contact-form__btn accent-btn">Trimite</button>
-            </form>
         </div>
         
     </div>

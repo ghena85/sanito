@@ -45,10 +45,13 @@
                 <div class="menu-footer__column">
                     <h4 class="menu-footer__title footer-title">{{ $vars['information'] }}</h4>
                     <ul class="menu-footer__list">
-                        <li><a href="#" class="menu-footer__link">Privacy policy</a></li>
-                        <li><a href="#" class="menu-footer__link">Termes and conditions</a></li>
-                        <li><a href="#" class="menu-footer__link">Delivery and payment</a></li>
-                        <li><a href="#" class="menu-footer__link">Guaranty</a></li>
+                        @foreach ($footerMenu2 as $value)
+                            <li>
+                                <a href="{{ Route::has($value->slug) ? route($value->slug) : route('info',['slug' =>$value->slug]) }}" class="menu-footer__link">
+                                    {{ $value->getTranslatedAttribute('name') }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
 
@@ -68,7 +71,7 @@
                         <a href="{{ setting('.youtube_link') }}" class="social__item icon-youtube"></a>
                     </li>
                     <li>
-                        <a href="{{ setting('.in_link') }}" class="social__item icon-linkedin"></a>
+                        <a href="{{ setting('.linkedin_link') }}" class="social__item icon-linkedin"></a>
                     </li>
                 </ul>
 
