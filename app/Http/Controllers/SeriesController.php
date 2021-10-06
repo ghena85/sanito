@@ -9,6 +9,7 @@ use App\Functional;
 use App\Page;
 use App\Product;
 use App\Series;
+use App\SeriesRating;
 use App\Size;
 use Illuminate\Http\Request;
 
@@ -118,7 +119,6 @@ class SeriesController extends AppController
 
         $product         = $product->first();
 
-
         // End Selected Product / First Product
 
         return view('series.detail', compact(
@@ -131,5 +131,11 @@ class SeriesController extends AppController
             'series'
         ));
 
+    }
+
+    public function addRating(Request $request)
+    {
+        SeriesRating::create(['firnst_name' => $request->first_name]);
+        return redirect(route('series',['slug'=>$series->series_slug]).'#single')->with('message', 'Transmis cu success.');
     }
 }

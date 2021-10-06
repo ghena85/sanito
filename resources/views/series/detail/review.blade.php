@@ -172,6 +172,7 @@
                 <label class="contact-form__lable" for="familie"> 
                     <input class="contact-form__input" type="text" name="" id="familie" placeholder="Nume familie">
                 </label>
+
                 
                 <label class="contact-form__lable" for="textarea"> 
                     <textarea class="contact-form__input textarea" name="" id="textarea" cols="10" rows="3"  placeholder="Review"></textarea>
