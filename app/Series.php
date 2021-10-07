@@ -42,6 +42,11 @@ class Series extends Model
         return $this->belongsTo(Product::class, 'product_id');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'series_tags', 'series_id', 'tag_id');
+    }
+
     // todo if multiple categories
     public function categories()
     {

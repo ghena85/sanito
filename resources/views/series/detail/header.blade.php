@@ -178,24 +178,16 @@
                 @endif
             </div>
 
-            <div class="single-product__attention attention">
-                <div class="attention-element">
-                    <span class="icon-pp"></span>
-                    <p>{{ $vars['single_product_text1'] }}</p>
+            @if(!empty($series->tags))
+                <div class="single-product__attention attention">
+                    @foreach($series->tags as $value)
+                        <div class="attention-element">
+                            <img src="{{ url('storage/'.$value->image) }}" style="max-width: 50px" class="product-brand">
+                            <p>{{ $value->getTranslatedAttribute('name') }}</p>
+                        </div>
+                    @endforeach
                 </div>
-                <div class="attention-element">
-                    <span class="icon-sun"></span>
-                    <p>{{ $vars['single_product_text2'] }}</p>
-                </div>
-                <div class="attention-element">
-                    <span class="icon-snowflake"></span>
-                    <p>{{ $vars['single_product_text3'] }}</p>
-                </div>
-                <div class="attention-element">
-                    <span class="icon-eco"></span>
-                    <p>{{ $vars['single_product_text4'] }}</p>
-                </div>
-            </div>
+            @endif
         </div>
     </div>
 </div>

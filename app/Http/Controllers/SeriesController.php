@@ -66,9 +66,9 @@ class SeriesController extends AppController
     {
 
         $activeMenu      = 2;
-        $series          = Series::where('slug', $slug)->with(['categories'])->firstOrFail();
+        $series          = Series::where('slug', $slug)->with(['categories','tags'])->firstOrFail();
         $page            = $series;
-        $similarSeries   = Series::orderBy('id','desc')->get();
+        $similarSeries   = !empty($series->category_id) ? Series::where('category_id', $series->category_id)->orderBy('id','desc')->get() : '';
         $reviews         = SeriesRating::orderBy('id','desc')->get();
 
         $products        = Product::where('series_id',$series->id)->get();
@@ -78,11 +78,7 @@ class SeriesController extends AppController
         } else {
             $colorIDs         = $products->pluck('color_id');
         }
-//        $colors              = Color::select("colors.id","colors.name","products.image")
-//                                ->leftJoin("products","products.color_id","=","colors.id")
-//                                ->whereIn('colors.id',$colorIDs)
-//                                ->groupBy("colors.id")
-//                                ->get();
+
         $colors      = Product::select("colors.id","colors.name","products.image")
                                 ->where('series_id',$series->id)
                                 ->whereIn('colors.id',$colorIDs)
