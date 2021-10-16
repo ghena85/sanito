@@ -90,21 +90,23 @@
                                 @endif
                                 <button class="accent-btn cart-btn icon-bag"></button>                                
                                 <div class="product-footer__review">
-                                    <small>({{ $value->getTranslatedAttribute('reviews') }} {{ $vars['single_product_review'] }}) </small>
+                                    @if($value->getTranslatedAttribute('reviews'))
+                                        <small>({{ $value->getTranslatedAttribute('reviews') }} {{ $vars['single_product_review'] }}) </small>
 
-                                    <div class="stars">
+                                        <div class="stars">
 
-                                        @php
-                                            $stars = $value->getTranslatedAttribute('rate');
-                                        @endphp
+                                            @php
+                                                $stars = $value->getTranslatedAttribute('rate');
+                                            @endphp
 
-                                        @for ($i = 0; $i < $stars; $i++)
-                                            @if ($i<5)
-                                                <span class="icon-star fill"></span>
-                                            @endif
-                                        @endfor
+                                            @for ($i = 0; $i < $stars; $i++)
+                                                @if ($i<5)
+                                                    <span class="icon-star fill"></span>
+                                                @endif
+                                            @endfor
 
-                                    </div>
+                                        </div>
+                                        @endif
                                 </div>
                             </div>
                         </div>

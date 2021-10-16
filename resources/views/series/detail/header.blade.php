@@ -27,7 +27,8 @@
 <div class="single-product">
     <div class="container single-product__container">
         <div class="single-product__block sliders">
-            <div class="thumb-product__slider thumb-slider">
+            @if($series->images)
+                <div class="thumb-product__slider thumb-slider">
                 <div class="thumb-slider__body">
                     <div class="thumb-slider__slider">
                         <div thumbsSlider="" class="slider-thumb__body swiper">
@@ -54,6 +55,7 @@
                     </div>
                 </div>
             </div>
+            @endif
 
             <div class="sigle-product__slider single-slider">
                 <div class="single-slider__body">

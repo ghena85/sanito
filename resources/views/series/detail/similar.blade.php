@@ -1,4 +1,5 @@
-<div class="product-slider">
+@if(!empty($similarSeries))
+    <div class="product-slider">
     <h2 class="product-slider__title">You may also like</h2>
     <div class="product-slider__body">
         <div class="product-slider__slider container">
@@ -86,3 +87,4 @@
         </div>
     </div>
 </div>
+@endif

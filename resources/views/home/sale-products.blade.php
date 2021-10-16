@@ -84,24 +84,27 @@
                                 @if($value->product_id > 0)
                                     <button class="accent-btn product-btn btn-add-cart" data-id="{{ $value->product_id }}" >{{ $vars['aboutp-add-cart'] }}</button>
                                 @endif
-                                <button class="accent-btn cart-btn icon-bag"></button>                                
-                                <div class="product-footer__review">
-                                    <small>({{ $value->getTranslatedAttribute('reviews') }} {{ $vars['single_product_review'] }}) </small>
+                                <button class="accent-btn cart-btn icon-bag"></button>
 
-                                    <div class="stars">
+                                @if($value->getTranslatedAttribute('reviews'))
+                                    <div class="product-footer__review">
+                                        <small>({{ $value->getTranslatedAttribute('reviews') }} {{ $vars['single_product_review'] }}) </small>
 
-                                        @php
-                                            $stars = $value->getTranslatedAttribute('rate');
-                                        @endphp
+                                        <div class="stars">
 
-                                        @for ($i = 0; $i < $stars; $i++)
-                                            @if ($i<5)
-                                                <span class="icon-star fill"></span>
-                                            @endif
-                                        @endfor
+                                            @php
+                                                $stars = $value->getTranslatedAttribute('rate');
+                                            @endphp
 
+                                            @for ($i = 0; $i < $stars; $i++)
+                                                @if ($i<5)
+                                                    <span class="icon-star fill"></span>
+                                                @endif
+                                            @endfor
+
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                     @endif

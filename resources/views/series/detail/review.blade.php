@@ -4,7 +4,11 @@
        
 
         <div class="single-section__header">
-            <h3>Reviews <small>({{ $series->getTranslatedAttribute('reviews') }})</small></h3>
+            <h3>Reviews
+                @if($series->getTranslatedAttribute('reviews'))
+                    <small>({{ $series->getTranslatedAttribute('reviews') }})</small>
+                @endif
+            </h3>
             <a href="#" class="write-review">{{ $vars['write_review'] }}</a>
         </div>
 
@@ -47,6 +51,7 @@
             </form>
         </div>
 
+        <!--
         <div class="review-info">
             <img src="{{ url('storage/'.$series->image) }}" alt="product">
             <div class="review-info__rate">
@@ -64,7 +69,6 @@
 
                 </div>
             </div>
-
             <div class="review-info__percentage percentage">
                 <div class="percentage-row">
                     <p>5</p>
@@ -103,6 +107,7 @@
                 </div>
             </div>
         </div>
+        -->
 
         
 
