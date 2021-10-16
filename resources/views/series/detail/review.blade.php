@@ -23,15 +23,15 @@
             <form action="{{ route('series-detail-review',['slug' => $series->slug ]) }}" class="review-form" method="post">
                 @csrf
                 <label class="contact-form__lable" for="nume">
-                    <input class="contact-form__input" type="text" name="first_name" id="nume" placeholder="Prenume">
+                    <input class="contact-form__input" type="text" required name="first_name" id="nume" placeholder="Prenume">
                 </label>
 
                 <label class="contact-form__lable" for="familie"> 
-                    <input class="contact-form__input" type="text" name="last_name" id="familie" placeholder="Nume familie">
+                    <input class="contact-form__input" type="text" required name="last_name" id="familie" placeholder="Nume familie">
                 </label>
                 
                 <label class="contact-form__lable" for="textarea"> 
-                    <textarea class="contact-form__input textarea" name="text" id="textarea" cols="10" rows="3"  placeholder="Review"></textarea>
+                    <textarea class="contact-form__input textarea" required name="text" id="textarea" cols="10" rows="3"  placeholder="Review"></textarea>
                 </label>
 
                 <label class="contact-form__lable stars " for="textarea"> 
@@ -134,7 +134,9 @@
                 </div>
             @endforeach
 
+            <!--
             <button class="load-more">{{ $vars['see_more'] }}</button>
+            -->
 
         </div>
         
