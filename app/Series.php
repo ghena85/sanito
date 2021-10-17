@@ -129,7 +129,7 @@ class Series extends Model
                 $query = $query->orderBy('onSale','ASC');
                 break;
             case 'onMostPopular' :
-                $query = $query->orderBy('onMostPopular', 'desc');
+                $query = $query->orderBy('onCategoryPopular', 'desc');
                 break;
             case 'onNewLine' :
                 $query = $query->orderBy('onNewLine', 'desc');

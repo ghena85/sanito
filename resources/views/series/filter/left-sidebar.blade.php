@@ -6,7 +6,7 @@
     </h3>
     <form action="#" class="filter-form">
         <div class="filter-form__row">
-            <h4>Brand</h4>
+            <h4>Seria</h4>
             @include("series.filter.brands")
         </div>
 

@@ -13,12 +13,12 @@
                             <h3>{{ $value->getTranslatedAttribute('name') }}</h3>
 
                             @if ((!empty($value->price_from)) && (empty($value->price_offer_from)))
-                                <p class="main-product__price">{{ $vars['aboutp-pricet'] }} <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
+                                <p class="main-product__price">{{ $vars['aboutp-pricet'] }} <b>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</b></p>
                             @endif
 
                             
                             @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
-                                <p class="main-product__price">{{ $vars['aboutp-pricet'] }} <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
+                                <p class="main-product__price">{{ $vars['aboutp-pricet'] }} <span>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}  {{ $vars['lei'] }}</b></p>
                             @endif
 
                         </a>
@@ -42,7 +42,7 @@
 
                             @if ((!empty($value->price_from)) && ($value->price_offer_from == null))
                                 <div class="product-meta">
-                                    <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
+                                    <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <b>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</b></p>
                                     @if ($value->in_stock == 0)
                                         <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                                     @endif
@@ -55,7 +55,7 @@
                             
                             @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
                                 <div class="product-meta">
-                                    <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
+                                    <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <span>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
                                     @if ($value->in_stock == 0)
                                         <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                                     @endif

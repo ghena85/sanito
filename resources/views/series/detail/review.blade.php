@@ -74,22 +74,24 @@
 
 
         <div class="review-info">
-            <img src="{{ url('storage/'.$series->image) }}" alt="product">
-            <div class="review-info__rate">
-                @php
-                    $stars = $series->rate;
-                @endphp
-                <h2>{{ $stars }} <span>/ ({{ $series->reviews }} reviews)</span></h2>
-                <div class="stars">
+            @if(count($reviews) > 0)
+                <img src="{{ url('storage/'.$series->image) }}" alt="product">
+                <div class="review-info__rate">
+                    @php
+                        $stars = $series->rate;
+                    @endphp
+                    <h2>{{ $stars }} <span>/ ({{ $series->reviews }} reviews)</span></h2>
+                    <div class="stars">
 
-                    @for ($i = 0; $i < $stars; $i++)
-                        @if ($i<5)
-                            <span class="icon-star fill"></span>
-                        @endif
-                    @endfor
+                        @for ($i = 0; $i < $stars; $i++)
+                            @if ($i<5)
+                                <span class="icon-star fill"></span>
+                            @endif
+                        @endfor
 
+                    </div>
                 </div>
-            </div>
+            @endif
             <!--
             <div class="review-info__percentage percentage">
                 <div class="percentage-row">
