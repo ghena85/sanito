@@ -26,11 +26,11 @@ class CheckoutRequest extends FormRequest {
     {
         return [
             'first_name' => 'required',
-            'address1' => 'required',
-            'location' => 'required',
-            'last_name' => 'required',
-            'phone' => 'required',
-            'email' => 'required|email',
+//            'address' => 'required',
+//            'city' => 'required',
+//            'last_name' => 'required',
+//            'phone' => 'required',
+//            'email' => 'required|email',
         ];
     }
 
@@ -38,7 +38,7 @@ class CheckoutRequest extends FormRequest {
     {
         $vars = Cache::get('vars');
         return [
-            'first_name.required' => $vars['nume'].' '.$vars['este_obligatoriu'],
+            'first_name.required' => $vars['first_name'].' '.$vars['este_obligatoriu'],
             'email.required' => $vars['email'].' '.$vars['este_obligatoriu'],
             'email.email' => $vars['email'].' '.$vars['trebuie_sa_fie_valid'],
 

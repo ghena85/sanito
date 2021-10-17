@@ -91,14 +91,14 @@ class Series extends Model
         }
 
         // Brands
-//        if($request->input('brand')) {
-//            $query = $query->join('brands','brands.id','=','series.brand_id');
-//            $query->where(function ($query) use ($request) {
-//                foreach ($request->input('brand') as $value) {
-//                    $query->orWhere('brand_id', $value);
-//                }
-//            });
-//        }
+        if($request->input('brand')) {
+            $query = $query->join('brands','brands.id','=','series.brand_id');
+            $query->where(function ($query) use ($request) {
+                foreach ($request->input('brand') as $value) {
+                    $query->orWhere('brand_id', $value);
+                }
+            });
+        }
 
         // Functional
         if($request->input('functional')) {

@@ -44,7 +44,8 @@ class SeriesController extends AppController
             'category_id' => !empty($request->input('category_id')) ? $request->input('category_id') : '', // category
             'functional'  => !empty($request->input('functional')) ? $request->input('functional') : [], // Functional
             'color'       => !empty($request->input('color')) ? $request->input('color') : [], // Colors
-            'sortBy'      => !empty($request->input('sortBy')) ? $request->input('sortBy') : 'onNewLine', // Sort By
+            'brand'       => !empty($request->input('brand')) ? $request->input('brand') : [], // Brands
+            'sortBy'      => !empty($request->input('sortBy')) ? $request->input('sortBy') : 'onMostPopular', // Sort By
         ];
 
         return view('series.index', compact('category',
@@ -69,7 +70,8 @@ class SeriesController extends AppController
         $series          = Series::where('slug', $slug)->with(['categories','tags'])->firstOrFail();
         $page            = $series;
         $similarSeries   = !empty($series->category_id) ? Series::where('category_id', $series->category_id)->orderBy('id','desc')->get() : '';
-        $reviews         = SeriesRating::orderBy('id','desc')->get();
+
+        $reviews         = SeriesRating::where('series_id', $series->id)->orderBy('id','desc')->get();
 
         $products        = Product::where('series_id',$series->id)->get();
 
@@ -136,10 +138,10 @@ class SeriesController extends AppController
     public function detailSender(ReviewRequest $request, $slug)
     {
 
-        $product = Series::where('slug',$slug)->first();
+        $series = Series::where('slug',$slug)->first();
 
         SeriesRating::create([
-            'series_id' => $product->id,
+            'series_id' => $series->id,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'text' => $request->text,
@@ -147,6 +149,10 @@ class SeriesController extends AppController
             'date'=>date('Y-m-d')
 
         ]);
+        $series->reviews = SeriesRating::where('series_id', $series->id)->count();
+        $stars           = SeriesRating::where('series_id', $series->id)->sum('stars');
+        $series->rate    = $stars > 0 && $series->reviews ? round($stars/$series->reviews) : 0;
+        $series->save();
 
         return redirect(route('series-detail',['slug'=>$slug]).'#allReviews')->with('message', 'Transmis cu success.');
     }

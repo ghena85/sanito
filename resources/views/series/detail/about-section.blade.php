@@ -12,7 +12,7 @@
                         </a>
                     </li>
                 @endif
-                @if($product->getTranslatedAttribute('text'))
+                @if($product && $product->getTranslatedAttribute('text'))
                     <li class="navigation-menu__item">
                         <a href="#characteristic-section" class="navigation-menu__link">
                             {{ $vars['single_product_character'] }}

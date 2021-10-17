@@ -51,7 +51,7 @@
 
                     </div>
 
-                    @include("series.index-sort-mobile")
+                    {{--@include("series.index-sort-mobile")--}}
 
                     <div class="series_list_area">
                         @include("series.filter.series-list")

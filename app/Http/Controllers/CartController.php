@@ -72,11 +72,8 @@ class CartController extends AppController
         $order->email   = $request->email;
         $order->first_name   = $request->first_name;
         $order->last_name   = $request->last_name;
-        $order->address1   = $request->address1;
-        $order->address2   = $request->address2;
-        $order->location   = $request->location;
-        $order->country   = $request->country;
-        $order->postal_code   = $request->postal_code;
+        $order->address   = $request->address;
+        $order->city   = $request->city;
         $order->phone   = $request->phone;
         $order->full_price = getPriceCart();// with delivery price
         $order->delivery_price   = $order->full_price < setting('.delivery_free_from_price') ? setting('.delivery_price') : 0;

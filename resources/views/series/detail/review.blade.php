@@ -1,12 +1,33 @@
 <section id="review-section" class="single-section single-review">
     <div class="container">
 
-       
+        <style>
+            .review-info_form
+            {
+                max-width: 100%;
+            }
+            .contact-form__lable {
+                width: 100%;
+
+            }
+            .contact-form__lable input,
+            .contact-form__lable textarea
+            {
+                margin-bottom: 10px;
+                min-width: 500px;
+            }
+            .contact-form__lable .stars,
+            .contact-form__lable.stars
+            {
+                margin-bottom: 15px;
+                margin-top: 5px;
+            }
+        </style>
 
         <div class="single-section__header">
             <h3>Reviews
-                @if($series->getTranslatedAttribute('reviews'))
-                    <small>({{ $series->getTranslatedAttribute('reviews') }})</small>
+                @if(count($reviews) > 0)
+                    <small>({{ count($reviews) }})</small>
                 @endif
             </h3>
             <a href="#" class="write-review">{{ $vars['write_review'] }}</a>
@@ -51,14 +72,14 @@
             </form>
         </div>
 
-        <!--
+
         <div class="review-info">
             <img src="{{ url('storage/'.$series->image) }}" alt="product">
             <div class="review-info__rate">
                 @php
-                        $stars = $series->getTranslatedAttribute('rate');
+                    $stars = $series->rate;
                 @endphp
-                <h2>{{ $stars }} <span>/ ({{ $series->getTranslatedAttribute('reviews') }} reviews)</span></h2>
+                <h2>{{ $stars }} <span>/ ({{ $series->reviews }} reviews)</span></h2>
                 <div class="stars">
 
                     @for ($i = 0; $i < $stars; $i++)
@@ -69,6 +90,7 @@
 
                 </div>
             </div>
+            <!--
             <div class="review-info__percentage percentage">
                 <div class="percentage-row">
                     <p>5</p>
@@ -106,10 +128,8 @@
                     <p>0%</p>
                 </div>
             </div>
+             -->
         </div>
-        -->
-
-        
 
         <div class="review-reviews" id="allReviews">
 

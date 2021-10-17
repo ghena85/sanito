@@ -3662,25 +3662,25 @@ p {
 .checkout-grid__main .checkout-main__block form {
     font-family: Inter, sans-serif;
 }
-.checkout-grid__main .checkout-main__block form.billing-form {
+.checkout-grid__main .checkout-main__block .billing-form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 30px 15px;
 }
-.checkout-grid__main .checkout-main__block form.billing-form label {
+.checkout-grid__main .checkout-main__block .billing-form label {
     font-size: 12px;
     color: #717171;
 }
-.checkout-grid__main .checkout-main__block form.billing-form label:nth-child(3) {
+.checkout-grid__main .checkout-main__block .billing-form label:nth-child(3) {
     grid-column: 2 span;
 }
-.checkout-grid__main .checkout-main__block form.billing-form label:nth-child(6) {
+.checkout-grid__main .checkout-main__block .billing-form label:nth-child(6) {
     grid-column: 2 span;
 }
-.checkout-grid__main .checkout-main__block form.billing-form label input {
+.checkout-grid__main .checkout-main__block .billing-form label input {
     margin-top: 5px;
 }
-.checkout-grid__main .checkout-main__block form.billing-form label select {
+.checkout-grid__main .checkout-main__block .billing-form label select {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -3690,10 +3690,10 @@ p {
     box-shadow: none;
     border: 0 !important;
 }
-.checkout-grid__main .checkout-main__block form.billing-form label select::-ms-expand {
+.checkout-grid__main .checkout-main__block .billing-form label select::-ms-expand {
     display: none;
 }
-.checkout-grid__main .checkout-main__block form.billing-form label .select {
+.checkout-grid__main .checkout-main__block .billing-form label .select {
     margin-top: 5px;
     position: relative;
     display: -webkit-box;
@@ -3702,14 +3702,14 @@ p {
     width: 100%;
     overflow: hidden;
 }
-.checkout-grid__main .checkout-main__block form.billing-form label select {
+.checkout-grid__main .checkout-main__block .billing-form label select {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
     color: #383838;
     cursor: pointer;
 }
-.checkout-grid__main .checkout-main__block form.billing-form label .select::after {
+.checkout-grid__main .checkout-main__block .billing-form label .select::after {
     content: '';
     display: block;
     position: absolute;
@@ -6091,7 +6091,7 @@ p {
     .blog-article__background .blog-article__main {
         width: 95%;
     }
-    .checkout-grid__main .checkout-main__block form.billing-form label {
+    .checkout-grid__main .checkout-main__block .billing-form label {
         grid-column: 2 span;
     }
     .checkout-grid__information .checkout-grid__sidebar {

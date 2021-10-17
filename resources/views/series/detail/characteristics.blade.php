@@ -1,4 +1,4 @@
-@if($product->getTranslatedAttribute('text'))
+@if($product && $product->getTranslatedAttribute('text'))
     <section id="characteristic-section" class="single-section single-charachteristic">
         <style>
             .characteristic-grid_row table {

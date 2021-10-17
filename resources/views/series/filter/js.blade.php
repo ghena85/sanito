@@ -16,17 +16,16 @@
 
         function filtreSeries() {
 
-            //
-            // // brand list
-            // upUrl.searchParams.delete('brand[]');
-            // var ac_brand_ids = [];
-            // $(".js_ac_brand").each(function(){
-            //     var el = $(this);
-            //     if( el.hasClass('active') ) {
-            //             ac_brand_ids.push($(this).attr('data-id'));
-            //             upUrl.searchParams.append('brand[]', $(this).attr('data-id'));
-            //     }
-            // });
+            // brand list
+            upUrl.searchParams.delete('brand[]');
+            var ac_brand_ids = [];
+            $(".js_ac_brand").each(function(){
+                var el = $(this);
+                if( el.hasClass('active') ) {
+                    ac_brand_ids.push($(this).attr('data-id'));
+                    upUrl.searchParams.append('brand[]', $(this).attr('data-id'));
+                }
+            });
 
             // color list
             upUrl.searchParams.delete('color[]');
@@ -73,6 +72,7 @@
 
             var params = {
                 sortBy: sortBy,
+                brand: ac_brand_ids,
                 category_id: {{ $category->id }},
                 '_token': $('.csrf_token').val(),
                 functional: ac_functional_ids,

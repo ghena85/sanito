@@ -3,17 +3,27 @@
 
 {{-- content --}}
 @section('content')
+    <main>
+        <div class="container">
+            <div class="breadcrumb">
+                <ul class="breadcrumb-list ">
+                    <li class="breadcrumb-list__item">
+                        <a href="{{ route('home') }}" class="breadcrumb-list__link">Home</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="about-background" style="background: url('/storage/pages/August2021/about_bg.jpeg') 50% 50% / cover no-repeat;width: 100%; height: 400px;;"></div>
 
-    <!-- <img src="/img/thanksleft.png" class="thanks thanks1" >
-    <img src="/img/thanksRight.png" class="thanks thanks2" > -->
+            <div class="about-info">
+                <h2 class="final_text">{{ $vars['comanda_cu_succes'] }}</h2>
+                <p>
+                    {{ $vars['info_comanda_cu_succes'] }}
+                </p>
+            </div>
 
-
-    <div class="final">
-        <div class="final_body">
-            <img src="./img/thankLogo.png" alt="Logo">
-            <h2 class="final_text">{{ $vars['mielody_va_multumeste'] }}</h2>
-            <a href="{{ route('home') }}" class="final_button">{{ $vars['acasa'] }}</a>
         </div>
-    </div>
+
+
+    </main>
 
 @stop
