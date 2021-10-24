@@ -8,7 +8,7 @@
                              $url = $value->parent_id > 0 ? route('series',['slug' => $value->slug]) : route('categoryDetail',['slug' => $value->slug]);
                             @endphp
                             <a href="{{ $url }}">
-                                <img src="{{ $value->svg_icon }}" alt="">
+                                <img src="{{ url('storage/'.$value->svg_icon) }}" style="margin-bottom: 20px;margin-top: 25px" alt="">
                                 {{ $value->getTranslatedAttribute('name') }}
                             </a>
                         </div>
