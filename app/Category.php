@@ -30,6 +30,6 @@ class Category extends Model
     // Only main category
     public function scopeMain($query)
     {
-        return $query->where('parent_id',0)->orWhereNull('parent_id');
+        return $query->where('parent_id',0)->orWhereNull('parent_id')->orWhere('parent_id',46);
     }
 }

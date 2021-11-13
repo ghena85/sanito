@@ -9,7 +9,8 @@
             @foreach ($productOnNewLine as $key=>$value)
                 @if ($key==0)
                     <div class="newin-body__item newin-item">
-                        <img src="{{ url('storage/'.$value->image) }}" alt="product">
+                        <!-- <img src="{{ url('storage/'.$value->image) }}" alt="product"> -->
+                        <img src="img/dalidea.png" alt="">
                         <div class="newin-item__content">
                             <div class="newin-item__info">
                                 <span class="newin-item__label">{{ $vars['new'] }}</span>

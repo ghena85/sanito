@@ -13,6 +13,8 @@
 
     @include('series.detail.about-section')
 
+    @include('series.detail.touse')
+
     @include('series.detail.characteristics')
 
     @include('series.detail.review')
