@@ -755,6 +755,7 @@ p {
 }
 
 .series_list_area {
+    grid-template-columns: repeat(4, 1fr)!important;
     grid-column: 3 span;
 }
 

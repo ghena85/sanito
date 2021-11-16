@@ -194,20 +194,4 @@ $(document).ready(function () {
         $('div.review-info_form').slideDown();
     });
 
-    $('.subscribe_btn').click(function(){
-        $.ajax({
-            type: "POST",
-            url: "/api/v1/subscribeNow",
-            data : {  'email' : $('.subscribeEmail').val(),'_token': $('.csrf_token').val()   },
-            success : function(data){
-                alertify.success(data.message);
-                console.log(data.message);
-            },
-            error : function(data){
-                alertify.success(data.message);
-                console.log(data.message);
-            }
-        });
-    });
-
 })

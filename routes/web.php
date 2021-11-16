@@ -185,10 +185,6 @@ Route::group(['prefix'=>'api/v1'], function(){
     // filterProducts
     Route::post('series/filterSeries','Api\V1\SeriesController@filterSeries')->name('filterSeries');
 
-    //Subscribe
-
-    Route::post('subscribeNow','Api\V1\SubscribeController@subscribeNow')->name('subscribe');
-
 });
 
 
