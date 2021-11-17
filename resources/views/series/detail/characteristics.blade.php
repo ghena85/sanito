@@ -12,6 +12,7 @@
 
             <div class="characteristic-grid-old">
 
+
                 <div class="characteristic-grid_row" style="width: 100%">
                     @if($product)
                         {!! $product->getTranslatedAttribute('text') !!}

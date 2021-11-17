@@ -128,16 +128,18 @@
                 </div>
             @endif
 
-            @if($product)
+            @if($product && strtoupper($product->color) != 'NONE')
                 <div class="single-product__color color-picker">
                     <p class="color-picker__choosen">Color: <strong>{{ $product->color }}</strong></p>
                     <ul class="color-picker__list">
                         @foreach($colors as $key => $value)
-                            <li onclick="window.location.href='{{ route('series-detail',['slug' => $series->slug]) }}?color_id={{ $value->id }}&size_id={{ request()->size_id }}'"
-                                class="color-picker__item {{ $product->color_id == $value->id ? 'active' : '' }}"
-                            >
-                                <img src="{{ url('storage/'.$value->image) }}" title="{{ $value->getTranslatedAttribute('name') }}">
-                            </li>
+                            @if($value->id != 59)
+                                <li onclick="window.location.href='{{ route('series-detail',['slug' => $series->slug]) }}?color_id={{ $value->id }}&size_id={{ request()->size_id }}'"
+                                    class="color-picker__item {{ $product->color_id == $value->id ? 'active' : '' }}"
+                                >
+                                    <img src="{{ url('storage/'.$value->image) }}" title="{{ $value->getTranslatedAttribute('name') }}">
+                                </li>
+                            @endif
                         @endforeach
                     </ul>
                 </div>

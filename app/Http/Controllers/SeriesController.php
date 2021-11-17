@@ -84,6 +84,7 @@ class SeriesController extends AppController
         $colors      = Product::select("colors.id","colors.name","products.image")
                                 ->where('series_id',$series->id)
                                 ->whereIn('colors.id',$colorIDs)
+                                ->where('colors.id','!=',59)// without NONE
                                 ->leftJoin('colors','colors.id','=','products.color_id')
                                 ->groupBy('products.color_id')
                                 ->get();
@@ -93,7 +94,7 @@ class SeriesController extends AppController
         } else {
             $sizeIDs         = $products->pluck('size_id');
         }
-        $sizes               = Size::whereIn('id',$sizeIDs)->get();
+        $sizes               = Size::whereIn('id',$sizeIDs)->where('id','!=',30)->get();
 
         // Selected Product / First Product
         $product         = Product::where('series_id',$series->id);
