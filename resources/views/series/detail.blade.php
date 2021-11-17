@@ -13,7 +13,9 @@
 
     @include('series.detail.about-section')
 
-    @include('series.detail.touse')
+    @if($series->getTranslatedAttribute('how_to_use'))
+        @include('series.detail.touse')
+    @endif
 
 
     @if($series->youtube1)
