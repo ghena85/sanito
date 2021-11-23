@@ -23,7 +23,11 @@ class Series extends Model
     }
 
     public function labelId() {
-        return $this->belongsTo(Label::class, 'label_id');
+        return $this->belongsToMany(Label::class, 'series_labels', 'series_id', 'label_id');
+    }
+
+    public function labels() {
+        return $this->belongsToMany(Label::class, 'series_labels', 'series_id', 'label_id');
     }
 
     public function brandId() {
@@ -60,7 +64,7 @@ class Series extends Model
 
     public function getLabelAttribute()
     {
-        return !empty($this->labelId) ? $this->labelId->getTranslatedAttribute('name') : '';
+        return !empty($this->labelId)  ? ( $this->label_id != 1 ? $this->labelId->getTranslatedAttribute('name') : '') : '';
     }
 
     public function getCategoryAttribute()

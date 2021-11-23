@@ -22,8 +22,8 @@
                         </div>
                     </div>
                 </div>
-    
-                <form action="#" class="search">
+
+                <form action="{{ route('search') }}" class="search">
                     <input type="text" name="search" id="search" placeholder="Search...">
                     <button type="submit" class="icon-search"></button>
                 </form>
@@ -59,25 +59,27 @@
                     <div class="header-category__dropdown category-dropdown">
                         <ul class="category-dropdown__list">
                             @foreach($categories as $value)
-                                <li class="category-dropdown__item">
-                                    <div class="category-dropdown__button">
-                                        {!! $value->svg !!}
-                                        {{--<img src="/img/ghiveci.svg" alt="ghiveci">--}}
-                                        <span class="category-dropdown__name">{{ $value->getTranslatedAttribute('name') }}</span>
-                                        <span class="icon-chevron"></span>
-                                    </div>
-                                    @if($value->childrens)
-                                        <ul class="category-dropdown__sublist category-sublist">
-                                            @foreach($value->childrens as $svalue)
-                                                <li class="category-sublist__item">
-                                                    <a href="{{ route('series',['categorySlug' => $svalue->slug]) }}">
-                                                        {{ $svalue->getTranslatedAttribute('name') }}
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </li>
+                                @if($value->id != 46)
+                                    <li class="category-dropdown__item">
+                                        <div class="category-dropdown__button">
+                                            {!! $value->svg !!}
+                                            {{--<img src="/img/ghiveci.svg" alt="ghiveci">--}}
+                                            <span class="category-dropdown__name">{{ $value->getTranslatedAttribute('name') }}</span>
+                                            <span class="icon-chevron"></span>
+                                        </div>
+                                        @if($value->childrens)
+                                            <ul class="category-dropdown__sublist category-sublist">
+                                                @foreach($value->childrens as $svalue)
+                                                    <li class="category-sublist__item">
+                                                        <a href="{{ route('series',['categorySlug' => $svalue->slug]) }}">
+                                                            {{ $svalue->getTranslatedAttribute('name') }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>

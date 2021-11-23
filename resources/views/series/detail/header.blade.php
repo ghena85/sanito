@@ -35,14 +35,8 @@
                         <div thumbsSlider="" class="slider-thumb__body swiper">
                             @if($product)
                                 <div class="thumb-slider__slide">
-                                    <img src="{{ url('storage/'.$product->image) }}" alt="{{ $product->getTranslatedAttribute('name') }}" class="swiper-lazy">
+                                    <img src="{{ url('storage/'.$product->image) }}" alt="{{ $series->getTranslatedAttribute('name') }}" class="swiper-lazy" >
                                 </div>
-                            @else
-                                @if($series->image)
-                                    <div class="thumb-slider__slide">
-                                        <img src="{{ url('storage/'.$series->image) }}" alt="{{ $series->getTranslatedAttribute('name') }} class="swiper-lazy"">
-                                    </div>
-                                @endif
                             @endif
 
                             @if($series->images)
@@ -52,6 +46,8 @@
                                     </div>
                                 @endforeach
                             @endif
+
+
                         </div>
                     </div>
                     <div class="thumb-body__arrow swiper-button-next"></div>
@@ -64,19 +60,11 @@
                     <div class="single-slider__slider">
                         <div class="slider-single__body swiper">
                             @if($product)
-                            <div class="single-slider__slide">
-                                    <a href="{{ url('storage/'.$product->image) }}" data-fslightbox="gallery"" class="gallery-popup__open"></a>
-                                    <img src="{{ url('storage/'.$product->image) }}" alt="{{ $product->getTranslatedAttribute('name') }}" class="swiper-lazy">
+                                <div class="single-slider__slide">
+                                    <a href="{{ url('storage/'.$product->image) }}" data-fslightbox="gallery" class="gallery-popup__open"></a>
+                                    <img src="{{ url('storage/'.$product->image) }}" alt="{{ $series->getTranslatedAttribute('name') }}" class="swiper-lazy">
                                 </div>
-                            @else
-                                @if($series->image)
-                                    <div class="single-slider__slide">
-                                        <a href="{{ url('storage/'.$series->image) }}" data-fslightbox="gallery" class="gallery-popup__open"></a>
-                                        <img src="{{ url('storage/'.$series->image) }}" alt="{{ $series->getTranslatedAttribute('name') }}" class="swiper-lazy">
-                                    </div>
-                                @endif
                             @endif
-
                             @if($series->images)
                                 @foreach (json_decode($series->images) as $key => $image)
                                     <div class="single-slider__slide">

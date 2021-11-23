@@ -1,10 +1,12 @@
 <div class="product">
-    <div class="product-labels">
-        <span class="product-labels__hit">{{ $value->label }}</span>
-        @if (!empty($value->discount_percent))
-            <span class="product-labels__discount">{{ $value->getTranslatedAttribute('discount_percent') }}%</span>
-        @endif
-    </div>
+    @if($value->label_id != 1)
+        <div class="product-labels">
+            <span class="product-labels__hit">{{ $value->label }}</span>
+            @if (!empty($value->discount_percent))
+                <span class="product-labels__discount">{{ $value->getTranslatedAttribute('discount_percent') }}%</span>
+            @endif
+        </div>
+    @endif
     <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-image">
         <img src="{{ url('storage/'.$value->image) }}" alt="product">
     </a>

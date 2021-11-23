@@ -41,7 +41,9 @@
                         @endforeach
                     @else
                         @foreach($categories as $value)
-                            @include("category.item-list")
+                            @if($value->id != 46)
+                                @include("category.item-list")
+                            @endif
                         @endforeach
                     @endif
                 </div>

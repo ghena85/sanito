@@ -1,31 +1,52 @@
-@extends('layouts/default')
+@extends('layouts.default')
 
-{{-- Page title --}}
 @section('title')
-    {{ $page->getTranslatedAttribute('name') }} | {{ ENV('APP_NAME') }}
-@stop
+    {{ env('APP_NAME')." - ".$page->getTranslatedAttribute('name') }}
+@endsection
 
-{{-- content --}}
 @section('content')
 
-
-    <div class="main" style="background: url('{{ url('storage/'.$page->image) }}') 50% 50% / cover no-repeat">
+    <div class="page-title">
         <div class="container">
-            <h2 class="main_title">{{ $page->getTranslatedAttribute('name') }}</h2>
-            <p class="main_text">{!! $page->getTranslatedAttribute('short_text') !!}</p>
-        </div>
-    </div>
-
-    <div class="shop_products">
-        <div class="container">
-            <div class="shop_products-body">
-                @foreach($products as $key => $value)
-                    @include("product.item-list")
-                @endforeach
+            <div class="breadcrumb">
+                <ul class="breadcrumb-list">
+                    <li class="breadcrumb-list__item">
+                        <a href="{{ route('home') }}" class="breadcrumb-list__link">Home</a>
+                    </li>
+                    <li class="breadcrumb-list__item">
+                        <a href="{{ route('home') }}" class="breadcrumb-list__link">Search</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="shop_pagination">
-        {{ $products->fragment('categories')->links('layouts.pagination-products') }}
+
+    <div class="page-grid single-category">
+        <div class="container">
+            @php
+                $class = 'no-sidebar';
+            @endphp
+            <div class="page-grid__content {{ $class }}">
+
+
+                <div class="page-grid__products products">
+
+                    <div class="series_list_area">
+                        @include("series.filter.series-list")
+                    </div>
+
+                    <div class="pagination pagination_list_area">
+                        {{ $series->setPath(route('search',['search' => $search]))->links('layouts.pagination') }}
+                    </div>
+
+                    @include("series.banners-disabled")
+
+                </div>
+
+            </div>
+        </div>
     </div>
-@stop
+
+@endsection
+
+@include("series.filter.js")

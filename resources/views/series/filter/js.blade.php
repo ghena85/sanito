@@ -12,7 +12,7 @@
             };
         }
 
-        var upUrl = new URL('{{ route('series',['slug' => $category->slug]) }}');
+        var upUrl = new URL('{{ isset($search) ? route('search',['slug' => $search]) : route('series',['slug' => $category->slug]) }}');
 
         function filtreSeries() {
 
@@ -73,7 +73,7 @@
             var params = {
                 sortBy: sortBy,
                 brand: ac_brand_ids,
-                category_id: {{ $category->id }},
+                category_id: {{ isset($category) ? $category->id : '' }},
                 '_token': $('.csrf_token').val(),
                 functional: ac_functional_ids,
                 color: ac_color_ids,

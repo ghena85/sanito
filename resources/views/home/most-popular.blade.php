@@ -30,11 +30,16 @@
                 @foreach ($productPopulars as $key => $value)
                     @if ($key <= 4)
                         <div class="product">
-                            <div class="product-labels">
-                                @if (!empty($value->label))
-                                    <span class="product-labels__hit">{{ $value->label }}</span>
-                                @endif
 
+                            <div class="product-labels">
+
+                                @if(!empty($series->labelId))
+                                    <div class="single-product__attention attention">
+                                        @foreach($series->labelId as $value)
+                                            <span class="product-labels__hit">{{ $value->label }}</span>
+                                        @endforeach
+                                    </div>
+                                @endif
                                 @if (!empty($value->discount_percent))
                                     <span class="product-labels__discount">{{ $value->getTranslatedAttribute('discount_percent') }}%</span>
                                 @endif
