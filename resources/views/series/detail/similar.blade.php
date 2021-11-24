@@ -1,6 +1,6 @@
 @if(!empty($similarSeries))
     <div class="product-slider">
-    <h2 class="product-slider__title">You may also like</h2>
+    <h2 class="product-slider__title">{{ $vars['also_like'] }}</h2>
     <div class="product-slider__body">
         <div class="product-slider__slider container">
             <div class="slider-product__body slider-container swiper">
@@ -8,7 +8,11 @@
                     <div class="slider-product__slide">
                         <div class="product">
                             <div class="product-labels">
-                                <span class="product-labels__hit">Hit</span>
+                                @if(!empty($value->labelId))
+                                    @foreach($value->labelId as $svalue)
+                                        <span class="product-labels__hit">{{ $svalue->getTranslatedAttribute('name') }}</span>
+                                    @endforeach
+                                @endif
                                 @if (!empty($value->discount_percent))
                                     <span class="product-labels__discount">{{ $value->getTranslatedAttribute('discount_percent') }}%</span>
                                 @endif
@@ -22,10 +26,10 @@
                                 <div class="product-meta">
                                     <p class="product-meta__price">de la <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
                                     @if ($value->in_stock == 0)
-                                        <span class="product-meta__status out">Out of stock</span>
+                                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                                     @endif
                                     @if ($value->in_stock == 1)
-                                        <span class="product-meta__status">In stock</span>
+                                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
                                     @endif
                                 </div>
                             @endif
@@ -35,10 +39,10 @@
                                 <div class="product-meta">
                                     <p class="product-meta__price">de la <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
                                     @if ($value->in_stock == 0)
-                                        <span class="product-meta__status out">Out of stock</span>
+                                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                                     @endif
                                     @if ($value->in_stock == 1)
-                                        <span class="product-meta__status">In stock</span>
+                                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
                                     @endif
                                 </div>
                             @endif

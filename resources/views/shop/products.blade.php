@@ -572,7 +572,7 @@
 
                     <div class="product-meta">
                         <p class="product-meta__price">de la <b>120 LEI</b></p>
-                        <span class="product-meta__status out">Out of stock</span>
+                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                     </div>
 
                     <div class="product-category">
@@ -608,7 +608,7 @@
 
                     <div class="product-meta">
                         <p class="product-meta__price">de la <b>120 LEI</b></p>
-                        <span class="product-meta__status">In stock</span>
+                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
                     </div>
 
                     <div class="product-category">
@@ -644,7 +644,7 @@
 
                     <div class="product-meta">
                         <p class="product-meta__price">de la <b>120 LEI</b></p>
-                        <span class="product-meta__status">In stock</span>
+                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
                     </div>
 
                     <div class="product-category">
@@ -681,7 +681,7 @@
 
                     <div class="product-meta">
                         <p class="product-meta__price">de la <span>150LEI</span> <b class="discount">120 LEI</b></p>
-                        <span class="product-meta__status">In stock</span>
+                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
                     </div>
 
                     <div class="product-category">
@@ -717,7 +717,7 @@
 
                     <div class="product-meta">
                         <p class="product-meta__price">de la <b>120 LEI</b></p>
-                        <span class="product-meta__status out">Out of stock</span>
+                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                     </div>
 
                     <div class="product-category">
@@ -753,7 +753,7 @@
 
                     <div class="product-meta">
                         <p class="product-meta__price">de la <b>120 LEI</b></p>
-                        <span class="product-meta__status">In stock</span>
+                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
                     </div>
 
                     <div class="product-category">
@@ -789,7 +789,7 @@
 
                     <div class="product-meta">
                         <p class="product-meta__price">de la <b>120 LEI</b></p>
-                        <span class="product-meta__status">In stock</span>
+                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
                     </div>
 
                     <div class="product-category">
@@ -826,7 +826,7 @@
 
                     <div class="product-meta">
                         <p class="product-meta__price">de la <span>150LEI</span> <b class="discount">120 LEI</b></p>
-                        <span class="product-meta__status">In stock</span>
+                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
                     </div>
 
                     <div class="product-category">
@@ -862,7 +862,7 @@
 
                     <div class="product-meta">
                         <p class="product-meta__price">de la <b>120 LEI</b></p>
-                        <span class="product-meta__status out">Out of stock</span>
+                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                     </div>
 
                     <div class="product-category">

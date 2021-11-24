@@ -13,6 +13,7 @@ class Series extends Model
     protected $translatable = [
         'name',
         'text',
+        'youtube1',
         'short_text'
     ];
 
@@ -144,7 +145,7 @@ class Series extends Model
                 break;
         }
 
-        $query = $query->paginate(12);
+        $query = $query->groupBy('series.id')->paginate(12);
 
         return $query;
     }

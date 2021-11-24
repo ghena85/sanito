@@ -27,32 +27,32 @@
 <div class="single-product">
     <div class="container single-product__container">
         <div class="single-product__block sliders">
-            @if($series->images)
+            @if($series->images && !empty($series->images) && $series->images != '[]' )
                 <div class="thumb-product__slider thumb-slider">
-                <div class="thumb-slider__body">
-                    <div class="thumb-body__arrow swiper-button-prev"></div>
-                    <div class="thumb-slider__slider">
-                        <div thumbsSlider="" class="slider-thumb__body swiper">
-                            @if($product)
-                                <div class="thumb-slider__slide">
-                                    <img src="{{ url('storage/'.$product->image) }}" alt="{{ $series->getTranslatedAttribute('name') }}" class="swiper-lazy" >
-                                </div>
-                            @endif
-
-                            @if($series->images)
-                                @foreach (json_decode($series->images) as $key => $image)
+                    <div class="thumb-slider__body">
+                        <div class="thumb-body__arrow swiper-button-prev"></div>
+                        <div class="thumb-slider__slider">
+                            <div thumbsSlider="" class="slider-thumb__body swiper">
+                                @if($product)
                                     <div class="thumb-slider__slide">
-                                        <img src="{{ url('storage/'.$image) }}" alt="{{ $series->getTranslatedAttribute('name') }}" class="swiper-lazy">
+                                        <img src="{{ url('storage/'.$product->image) }}" alt="{{ $series->getTranslatedAttribute('name') }}" class="swiper-lazy" >
                                     </div>
-                                @endforeach
-                            @endif
+                                @endif
+
+                                @if($series->images)
+                                    @foreach (json_decode($series->images) as $key => $image)
+                                        <div class="thumb-slider__slide">
+                                            <img src="{{ url('storage/'.$image) }}" alt="{{ $series->getTranslatedAttribute('name') }}" class="swiper-lazy">
+                                        </div>
+                                    @endforeach
+                                @endif
 
 
+                            </div>
                         </div>
+                        <div class="thumb-body__arrow swiper-button-next"></div>
                     </div>
-                    <div class="thumb-body__arrow swiper-button-next"></div>
                 </div>
-            </div>
             @endif
 
             <div class="sigle-product__slider single-slider">
@@ -61,7 +61,8 @@
                         <div class="slider-single__body swiper">
                             @if($product)
                                 <div class="single-slider__slide">
-                                    <a href="{{ url('storage/'.$product->image) }}" data-fslightbox="gallery" class="gallery-popup__open"></a>
+                                    <a href="{{ url('storage/'.$product->image) }}" data-fslightbox="gallery" class="gallery-popup__open">
+                                    </a>
                                     <img src="{{ url('storage/'.$product->image) }}" alt="{{ $series->getTranslatedAttribute('name') }}" class="swiper-lazy">
                                 </div>
                             @endif
@@ -95,9 +96,9 @@
                         <span class="discount">{{ $series->getTranslatedAttribute('price_from') }} LEI</span>
                     </div>
                     @if ($series->in_stock == 0)
-                        <span class="product-meta__status out">Out of stock</span>
+                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                     @else
-                        <span class="product-meta__status">In stock</span>
+                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
                     @endif
                 </div>
             @endif
@@ -109,9 +110,9 @@
                         <span class="discount">{{ $series->getTranslatedAttribute('price_offer_from') }} LEI</span>
                     </div>
                     @if ($series->in_stock == 0)
-                        <span class="product-meta__status out">Out of stock</span>
+                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                     @else
-                        <span class="product-meta__status">In stock</span>
+                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
                     @endif
                 </div>
             @endif
@@ -151,7 +152,7 @@
                         <button class="plus icon-plus"></button>
                     </div>
                     <button class="to-cart accent-btn btn-add-cart" data-id="{{ $product->id }}" data-page="detail">
-                        Add to cart
+                        {{ $vars['add_to_cart'] }}
                     </button>
                 </div>
             @endif

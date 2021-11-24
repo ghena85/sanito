@@ -7,7 +7,7 @@
         </style>
         <div class="container">
             <div class="single-section__header">
-                <h3>Characteristics</h3>
+                <h3>{{ $vars['characteristics'] }}</h3>
             </div>
 
             <div class="characteristic-grid-old">

@@ -18,10 +18,10 @@
     @endif
 
 
-    @if($series->youtube1)
+    @if($series->getTranslatedAttribute('youtube1'))
         <div class="series_youtube_1">
             <div class="container">
-                <a href="{{ $series->youtube1 }}"  data-fslightbox="gallery"  >
+                <a href="{{ $series->getTranslatedAttribute('youtube1') }}"  data-fslightbox="gallery"  >
                     <button class="icon-play"></button>
                     <img src="{{ url('storage/'.$series->youtube1_image) }}" >
                 </a>

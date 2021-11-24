@@ -33,10 +33,10 @@
 
                             <div class="product-labels">
 
-                                @if(!empty($series->labelId))
+                                @if(!empty($value->labelId))
                                     <div class="single-product__attention attention">
-                                        @foreach($series->labelId as $value)
-                                            <span class="product-labels__hit">{{ $value->label }}</span>
+                                        @foreach($value->labelId as $svalue)
+                                            <span class="product-labels__hit">{{ $svalue->getTranslatedAttribute('name') }}</span>
                                         @endforeach
                                     </div>
                                 @endif

@@ -25,7 +25,7 @@
         </style>
 
         <div class="single-section__header">
-            <h3>Reviews
+            <h3>{{ $vars['reviews'] }}
                 @if(count($reviews) > 0)
                     <small>({{ count($reviews) }})</small>
                 @endif
@@ -73,14 +73,14 @@
         </div>
 
 
-        <div class="review-info">
-            @if(count($reviews) > 0)
+        @if(count($reviews) > 0)
+          <div class="review-info">
                 <img src="{{ url('storage/'.$series->image) }}" alt="product">
                 <div class="review-info__rate">
                     @php
                         $stars = $series->rate;
                     @endphp
-                    <h2>{{ $stars }} <span>/ ({{ $series->reviews }} reviews)</span></h2>
+                    <h2>{{ $stars }} <span>/ ({{ $series->reviews }} {{ $vars['reviews'] }}))</span></h2>
                     <div class="stars">
 
                         @for ($i = 0; $i < $stars; $i++)
@@ -91,7 +91,6 @@
 
                     </div>
                 </div>
-            @endif
             <!--
             <div class="review-info__percentage percentage">
                 <div class="percentage-row">
@@ -131,7 +130,8 @@
                 </div>
             </div>
              -->
-        </div>
+          </div>
+        @endif
 
         <div class="review-reviews" id="allReviews">
 

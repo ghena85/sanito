@@ -1,7 +1,11 @@
 <div class="product">
     @if($value->label_id != 1)
         <div class="product-labels">
-            <span class="product-labels__hit">{{ $value->label }}</span>
+            @if(!empty($value->labelId))
+                @foreach($value->labelId as $svalue)
+                    <span class="product-labels__hit">{{ $svalue->getTranslatedAttribute('name') }}</span>
+                @endforeach
+            @endif
             @if (!empty($value->discount_percent))
                 <span class="product-labels__discount">{{ $value->getTranslatedAttribute('discount_percent') }}%</span>
             @endif
@@ -15,10 +19,10 @@
         <div class="product-meta">
             <p class="product-meta__price">de la <b>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</b></p>
             @if ($value->in_stock == 0)
-                <span class="product-meta__status out">Out of stock</span>
+                <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
             @endif
             @if ($value->in_stock == 1)
-                <span class="product-meta__status">In stock</span>
+                <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
             @endif
         </div>
     @endif
@@ -28,10 +32,10 @@
         <div class="product-meta">
             <p class="product-meta__price">de la <span>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}  {{ $vars['lei'] }}</b></p>
             @if ($value->in_stock == 0)
-                <span class="product-meta__status out">Out of stock</span>
+                <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
             @endif
             @if ($value->in_stock == 1)
-                <span class="product-meta__status">In stock</span>
+                <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
             @endif
         </div>
     @endif
@@ -53,12 +57,12 @@
 
     <div class="product-footer">
         @if($value->product_id > 0)
-            <button class="accent-btn product-btn btn-add-cart" data-id="{{ $value->product_id }}" >Add to cart</button>
+            <button class="accent-btn product-btn btn-add-cart" data-id="{{ $value->product_id }}" >{{ $vars['add_to_cart'] }}</button>
         @endif
         <button class="accent-btn cart-btn icon-bag"></button>
         <div class="product-footer__review">
             @if($value->getTranslatedAttribute('reviews'))
-                <small>({{ $value->getTranslatedAttribute('reviews') }} reviews) </small>
+                <small>({{ $value->getTranslatedAttribute('reviews') }} {{ $vars['reviews'] }}) </small>
                 <div class="stars">
 
                     @for ($i = 0; $i < $value->getTranslatedAttribute('rate'); $i++)

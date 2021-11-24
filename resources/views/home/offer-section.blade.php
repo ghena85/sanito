@@ -1,10 +1,15 @@
 <section class="offer-section">
     <div class="container">
         <div class="section__header only-title">
+
             <h2>
                 {{ $bestOffer->getTranslatedAttribute('name') }}
-        </h2>
-            <a href="{{ route('series',['slug' => 'oferte']) }}">{{ $vars['see_all'] }}</a>
+            </h2>
+
+            <a href="{{ route('series',['slug' => 'oferte']) }}">
+                {{ $vars['see_all'] }}
+            </a>
+
         </div>
 
         <div class="offer-section__body offer-body">

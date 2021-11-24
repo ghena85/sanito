@@ -22,10 +22,9 @@ class HomeController extends AppController
         $slider      = Slider::orderBy('id','desc')->get();
         $categoryies           = Category::where('onHome',1)->orderBy('id','desc')->get();
         
-        $productPopulars       = Series::where('onMostPopular',1)->with(['categories','labels'])->orderBy('id','desc')->get();
+        $productPopulars       = Series::where('onMostPopular',1)->with(['categories','labelId'])->orderBy('id','desc')->get();
         $productPopularsMain   = Series::where('onMostPopularMain',1)->with(['categories','labelId'])->orderBy('id','desc')->get();
-//        dd($productPopulars);
-        
+
         $productOnSale         = Series::where('onSale',1)->with(['categories','labelId'])->orderBy('id','desc')->get();
         $productOnSaleMain     = Series::where('onSaleMain',1)->with(['categories','labelId'])->orderBy('id','desc')->get();
         $productOnNewLine      = Series::where('onNewLine',1)->with(['categories','labelId'])->orderBy('id','desc')->get();
