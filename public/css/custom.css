@@ -1,4 +1,4 @@
-.blog-detail .detail-post div > div {
+.blog-detail .detail-post div>div {
     word-break: break-all;
 }
 
@@ -19,12 +19,7 @@ li.error {
     margin-bottom: 10px;
 }
 
-.desktop-header
-    .under-header
-    .under-header__container
-    .navbar
-    .navbar__list
-    .navbar__item.active::after {
+.desktop-header .under-header .under-header__container .navbar .navbar__list .navbar__item.active::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -52,8 +47,12 @@ li.error {
     border: 2px solid red;
 }
 
+.thumb-slider__slide .thumb-test {
+    max-height: 85px !important;
+}
+
 .thumb-slider__slide {
-    height: 85px !important;
+    display: inline;
 }
 
 .white {
@@ -84,13 +83,16 @@ li.error {
     box-shadow: 0 15px 30px rgb(0 0 0 / 7%);
     font-family: Inter;
 }
+
 .characteristic-grid_row table:first-child {
     box-shadow: 0 0px 30px rgb(0 0 0 / 7%);
 }
+
 .characteristic-grid_row table tr td {
     padding: 15px;
     font-size: 16px;
 }
+
 .characteristic-grid_row table tr:nth-child(even) {
     background-color: #f6f6f6;
 }
@@ -106,7 +108,45 @@ img.table_img_brand {
     object-fit: contain;
 }
 
-
-span.icon-star.forRev{
+span.icon-star.forRev {
     cursor: pointer;
+}
+
+.page-grid__content.no-sidebar .series_list_area {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.page-grid__content.no-sidebar .page-grid__products {
+    display: block;
+}
+
+.page-grid__content.no-sidebar .series_list_area .product {
+    width: 100%;
+}
+
+.page-grid__content.no-sidebar .series_list_area .product .product-image img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.page-grid__content.no-sidebar {
+    display: block;
+}
+
+@media (max-width: 992.98px) {
+    .page-grid__content.no-sidebar .series_list_area {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-grid__content.no-sidebar .series_list_area {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .page-grid__content.no-sidebar .series_list_area {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

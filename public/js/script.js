@@ -297,50 +297,52 @@ if (document.querySelector('.slider-product__body')) {
 }
 
 if (document.querySelector('.slider-single__body')) {
-    const thumbs = new Swiper('.slider-thumb__body', {
-        observer: true,
-        observeParents: true,
-        watchOverflow: true,
-        spaceBetween: 15,
-        speed: 800,
-        slidesPerView: 5,
-        preloadImages: false,
-        lazy: true,
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-            480: {
-                spaceBetween: 25,
+    const slides = document.querySelectorAll('.single-slider__slide');
+    if (slides.length > 1) {
+        const thumbs = new Swiper('.slider-thumb__body', {
+            speed: 800,
+            preloadImages: false,
+            lazy: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
             },
-            992: {
-                slidesPerView: 3,
-                direction: "vertical",
+            breakpoints: {
+                320: {
+                    direction: "horizontal",
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                480: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+                992: {
+                    slidesPerView: 4,
+                    direction: "vertical",
+                    spaceBetween: 15,
+                },
             },
-        },
-    })
+        })
 
-    new Swiper('.slider-single__body', {
-        observer: true,
-        observeParents: true,
-        watchOverflow: true,
-        speed: 800,
-        preloadImages: false,
-        lazy: true,
-        thumbs: {
-            swiper: thumbs,
-        },
-        breakpoints: {
-            992: {
-                direction: "vertical",
+        new Swiper('.slider-single__body', {
+            speed: 800,
+            preloadImages: false,
+            lazy: true,
+            thumbs: {
+                swiper: thumbs,
             },
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    })
+            breakpoints: {
+                992: {
+                    direction: "vertical",
+                },
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        })
+    }
 };
 ! function(e, t) {
     if ("object" == typeof exports && "object" == typeof module) module.exports = t();

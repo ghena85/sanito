@@ -32,9 +32,7 @@
                     <div class="presentation-slider__slider container">
                         <div class="slider-presentation__body slider-container swiper">
                             @foreach (json_decode($series->slider_images) as $key => $image)
-                                <div class="slider-presentation__slide">
-                                    <img src="{{ url('storage/'.$image) }}" alt="{{ $series->getTranslatedAttribute('name') }}">
-                                </div>
+                                <div class="slider-presentation__slide" style="background: url('{{ url('storage/'.$image) }}') 50% 50% / cover no-repeat"></div>
                             @endforeach
                         </div>
                         <div class="slider-presentation__pagination"></div>
