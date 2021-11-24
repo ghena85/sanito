@@ -27,7 +27,7 @@
 <div class="single-product">
     <div class="container single-product__container">
         <div class="single-product__block sliders">
-            @if($series->images && !empty($series->images) && $series->images != '[]' )
+            @if(($series->images &&!empty($series->images) && $series->images != '[]') ||  !empty($product->image))
                 <div class="thumb-product__slider thumb-slider">
                     <div class="thumb-slider__body">
                         <div class="thumb-body__arrow swiper-button-prev"></div>
