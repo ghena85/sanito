@@ -7,12 +7,12 @@
             <li class="breadcrumb-list__item">
                 <a href="{{ route('category') }}" class="breadcrumb-list__link">Categories</a>
             </li>
-            @if($series->category)
+            @if($series->category && $series->category != 'NONE')
                 <li class="breadcrumb-list__item">
                     <a href="{{ route('categoryDetail',['slug' => $series->categoryId->parentId->slug]) }}" class="breadcrumb-list__link">{{ $series->category }}</a>
                 </li>
             @endif
-            @if($series->subcategory)
+            @if($series->subcategory && $series->subcategory != 'NONE')
                 <li class="breadcrumb-list__item">
                     <a href="{{ route('series',['slug' => $series->categoryId->slug]) }}" class="breadcrumb-list__link">{{ $series->subcategory }}</a>
                 </li>

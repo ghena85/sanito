@@ -17,11 +17,13 @@
                         <a href="{{ route('category') }}" class="breadcrumb-list__link">Categories</a>
                     </li>
                     @if($category->parentId)
-                        <li class="breadcrumb-list__item">
-                            <a href="{{ route('categoryDetail',['slug' => $category->parentId->slug]) }}"  class="breadcrumb-list__link">
-                                {{ $category->parentId->getTranslatedAttribute('name') }}
-                            </a>
-                        </li>
+                        @if($category->parentId->id != 46)
+                            <li class="breadcrumb-list__item">
+                                <a href="{{ route('categoryDetail',['slug' => $category->parentId->slug]) }}"  class="breadcrumb-list__link">
+                                    {{ $category->parentId->getTranslatedAttribute('name') }}
+                                </a>
+                            </li>
+                        @endif
                     @endif
                     <li class="breadcrumb-list__item">
                         <a href="{{ route('series',['slug' => $category->slug]) }}"  class="breadcrumb-list__link">

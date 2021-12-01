@@ -23,7 +23,9 @@
                     <ul class="menu-footer__list">
 
                         @foreach ($categories as $value)
-                            <li><a href="{{ route('categoryDetail',['categorySlug' => $value->slug]) }}" class="menu-footer__link">{{ $value->getTranslatedAttribute('name') }}</a></li>
+                            @if($value->id != 46)
+                                <li><a href="{{ route('categoryDetail',['categorySlug' => $value->slug]) }}" class="menu-footer__link">{{ $value->getTranslatedAttribute('name') }}</a></li>
+                            @endif
                         @endforeach
 
                     </ul>
