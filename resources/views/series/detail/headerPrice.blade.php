@@ -89,16 +89,49 @@
 
             <h3 class="single-product__name">{{ $series->getTranslatedAttribute('name') }}</h3>
 
-            @if(!empty($product) && !empty($product->price))
-                <div class="single-product__meta">
-                    <div class="price">
-                        <span class="discount">{{ $product->price }} LEI</span>
+            @if(!empty($product))
+                @if ((!empty($product->price_from)) && ($product->price_offer_from == null))
+                    <div class="single-product__meta">
+                        <div class="price">
+                            <p>de la </p>
+                            <span class="discount">{{ $product->getTranslatedAttribute('price_from') }} LEI</span>
+                        </div>
+                        @if ($product->in_stock == 0)
+                            <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
+                        @else
+                            <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
+                        @endif
                     </div>
-                    @if ($product->in_stock == 0)
-                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
-                    @else
-                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
-                    @endif
+                @endif
+                @if ((!empty($product->price_from)) && (!empty($product->price_offer_from)))
+                    <div class="single-product__meta">
+                        <div class="price">
+                            <p>de la <span>{{ $product->getTranslatedAttribute('price_from') }}</span></p>
+                            <span class="discount">{{ $product->getTranslatedAttribute('price_offer_from') }} LEI</span>
+                        </div>
+                        @if ($product->in_stock == 0)
+                            <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
+                        @else
+                            <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
+                        @endif
+                    </div>
+                @endif
+            @endif
+
+            @if($product && strtoupper($product->color) != 'NONE')
+                <div class="single-product__color color-picker">
+                    <p class="color-picker__choosen">Color: <strong>{{ $product->color }}</strong></p>
+                    <ul class="color-picker__list">
+                        @foreach($colors as $key => $value)
+                            @if($value->id != 59)
+                                <li onclick="window.location.href='{{ route('series-detail',['slug' => $series->slug]) }}?color_id={{ $value->id }}&size_id={{ request()->size_id }}'"
+                                    class="color-picker__item {{ $product->color_id == $value->id ? 'active' : '' }}"
+                                >
+                                    <img src="{{ url('storage/'.$value->image) }}" title="{{ $value->getTranslatedAttribute('name') }}">
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
                 </div>
             @endif
 

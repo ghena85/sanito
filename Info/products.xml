@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<products>
+	<product>
+		<barcode>4840952009159</barcode>
+		<price>155</price>
+		<qts>11</qts>
+	</product>
+	<product>
+		<barcode>4840952013583</barcode>
+		<price>55</price>
+		<qts>12</qts>
+	</product>
+	<product>
+		<barcode>4840952013910</barcode>
+		<price>12</price>
+		<qts>56</qts>
+	</product>
+	<product>
+		<barcode>4840952013910</barcode>
+		<price>12</price>
+		<qts>56</qts>
+	</product>
+	<product>
+		<barcode>4840952013910</barcode>
+		<price>12</price>
+		<qts>56</qts>
+	</product>
+	<product>
+		<barcode>4840952013910</barcode>
+		<price>12</price>
+		<qts>56</qts>
+	</product>
+	<product>
+		<barcode>4840952013910</barcode>
+		<price>12</price>
+		<qts>56</qts>
+	</product>
+	<product>
+		<barcode>4840952013910</barcode>
+		<price>12</price>
+		<qts>56</qts>
+	</product>
+	<product>
+		<barcode>4840952013910</barcode>
+		<price>12</price>
+		<qts>56</qts>
+	</product>
+	<product>
+		<barcode>4840952013910</barcode>
+		<price>12</price>
+		<qts>56</qts>
+	</product>
+
+
+</products>

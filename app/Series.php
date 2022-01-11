@@ -13,6 +13,8 @@ class Series extends Model
     protected $translatable = [
         'name',
         'text',
+        'text2',
+        'how_to_use',
         'youtube1',
         'short_text'
     ];
@@ -140,8 +142,8 @@ class Series extends Model
                 $query = $query->orderBy('onNewLine', 'desc');
                 break;
             default:
-                // New lines
-                $query = $query->orderBy('series.id', 'desc');
+                // On Top Results
+                $query = $query->orderBy('series.onTopResult', 'desc');
                 break;
         }
 

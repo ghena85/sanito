@@ -21,7 +21,7 @@
     @if($series->getTranslatedAttribute('youtube1'))
         <div class="series_youtube_1" >
             <div class="container">
-                <div class="series-image__cover" style="background: url('{{ url('storage/'.$series->youtube1_image) }}') 50% 50% / cover no-repeat">
+                <div class="series-image__cover" style="background: url('{{ app()->getLocale() == 'ro' ? url('storage/'.$series->youtube1_image) : url('storage/'.$series->youtube1_image_ru) }}') 50% 50% / cover no-repeat">
                     <a href="{{ $series->getTranslatedAttribute('youtube1') }}"  data-fslightbox="gallery"  >
                         <button class="icon-play"></button>
                         <!-- <img src="{{ url('storage/'.$series->youtube1_image) }}" > -->

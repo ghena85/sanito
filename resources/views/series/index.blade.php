@@ -38,11 +38,11 @@
     <div class="page-grid single-category">
         <div class="container">
             @php
-              $class = $category->parentId->id != 23 ? 'no-sidebar' : '';
+              $class = $category->parentId->id != 23  || $category->id == 30 ? 'no-sidebar' : '';
             @endphp
             <div class="page-grid__content {{ $class }}">
 
-               @if($category->parentId->id == 23)
+               @if($category->parentId->id == 23 && $category->id != 30)
                  @include("series.filter.left-sidebar")
                @endif
 

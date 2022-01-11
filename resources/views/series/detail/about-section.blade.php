@@ -7,7 +7,7 @@
             <div class="about-grid">
             <div class="about-grid__row">
                <div class="about-grid__text">
-                   {!! $series->text !!}
+                   {!! $series->getTranslatedAttribute('text2') !!}
                </div>
                 @if($series->image1)
                     <img src="{{ url('storage/'.$series->image1) }}" alt="product">
@@ -16,7 +16,7 @@
             @if($series->text2)
                 <div class="about-grid__row">
                     <div class="about-grid__text">
-                        {!! $series->text2 !!}
+                        {!! $series->getTranslatedAttribute('text2') !!}
                     </div>
                     @if($series->image2)
                         <img src="{{ url('storage/'.$series->image2) }}" alt="product">
