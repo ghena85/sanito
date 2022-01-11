@@ -4,7 +4,7 @@
         <h1>Final <span>Sale</span></h1>
         <p>Hurry up! Limited offer</p>
     </div>
-    <img src="/img/banner-image.png" alt="banner image">
+    <img src="/img/240x330.png" alt="banner image">
     <div class="category-banner__right">
         <h3>Flower pots</h3>
         <small>up to</small>
