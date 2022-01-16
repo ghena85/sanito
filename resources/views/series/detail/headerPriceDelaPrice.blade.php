@@ -90,6 +90,12 @@
             <h3 class="single-product__name">{{ $series->getTranslatedAttribute('name') }}</h3>
 
             @if(!empty($product))
+                <div class="single-product__meta">
+                    <div class="price">
+                        <span class="discount">{{ $product->pirce }} LEI</span>
+                    </div>
+                </div>
+                <!--
                 @if ((!empty($product->price_from)) && ($product->price_offer_from == null))
                     <div class="single-product__meta">
                         <div class="price">
@@ -116,10 +122,11 @@
                         @endif
                     </div>
                 @endif
+                -->
             @endif
 
-            @if($product && strtoupper($product->color) != 'NONE')
-                <div class="single-product__color color-picker">
+
+                <div class="gg">
                     <p class="color-picker__choosen">Color: <strong>{{ $product->color }}</strong></p>
                     <ul class="color-picker__list">
                         @foreach($colors as $key => $value)
@@ -133,7 +140,7 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+           
 
             <div class="single-product__size size-picker">
                 @foreach($sizes as $key => $value)

@@ -6,7 +6,8 @@
                     @if($value->id != 46)
                         <div class="slider-category__slide">
                             @php
-                             $url = $value->parentId ? route('categoryDetail',['slug' => $value->slug]) : route('series',['slug' => $value->slug]);
+                              $url = $value->parentId && $value->parentId->parent_id > 0 ? route('series',['slug' => $value->slug]) : route('categoryDetail',['slug' => $value->slug]);
+                              $url = ((int)$value->parent_id == 0 || empty((int)$value->parent_id)) ? route('category') : $url;
                             @endphp
                             <a href="{{ $url }}">
                                 <img src="{{ url('storage/'.$value->svg_icon) }}" style="margin-bottom: 20px;margin-top: 25px" alt="">

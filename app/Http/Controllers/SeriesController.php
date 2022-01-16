@@ -89,6 +89,7 @@ class SeriesController extends AppController
                                 ->groupBy('products.color_id')
                                 ->get();
 
+
         if($request->color_id) {
             $sizeIDs         = $products->where('color_id',$request->color_id)->pluck('size_id');
         } else {
@@ -119,7 +120,6 @@ class SeriesController extends AppController
         }
 
         $product         = $product->first();
-
 
         // End Selected Product / First Product
 

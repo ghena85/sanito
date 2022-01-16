@@ -83,7 +83,9 @@
 
         <div class="single-product__block">
             <div class="product-category">
-                <a href="{{ route('series',['categorySlug' => $series->slug]) }}">{{ $series->category }}</a>
+                @if($series->category != 'NONE')
+                    <a href="{{ route('series',['categorySlug' => $series->slug]) }}">{{ $series->category }}</a>
+                @endif
                 <a href="{{ route('series-detail',['slug' => $series->slug]) }}">{{ $series->subcategory }}</a>
             </div>
 
@@ -94,11 +96,28 @@
                     <div class="price">
                         <span class="discount">{{ $product->price }} LEI</span>
                     </div>
-                    @if ($product->in_stock == 0)
-                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
-                    @else
-                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>
-                    @endif
+{{--                    @if ($product->in_stock == 0)--}}
+{{--                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>--}}
+{{--                    @else--}}
+{{--                        <span class="product-meta__status">{{ $vars['in_stock'] }}</span>--}}
+{{--                    @endif--}}
+                </div>
+            @endif
+
+            @if($product && strtoupper($product->color) != 'NONE')
+                <div class="single-product__color color-picker">
+                    <p class="color-picker__choosen">Color: <strong>{{ $product->color }}</strong></p>
+                    <ul class="color-picker__list">
+                        @foreach($colors as $key => $value)
+                            @if($value->id != 59)
+                                <li onclick="window.location.href='{{ route('series-detail',['slug' => $series->slug]) }}?color_id={{ $value->id }}&size_id={{ request()->size_id }}'"
+                                    class="color-picker__item {{ $product->color_id == $value->id ? 'active' : '' }}"
+                                >
+                                    <img src="{{ url('storage/'.$value->image) }}" title="{{ $value->getTranslatedAttribute('name') }}">
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
                 </div>
             @endif
 
