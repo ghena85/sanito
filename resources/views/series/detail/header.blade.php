@@ -132,16 +132,16 @@
             </div>
 
             @if($product)
-                <div class="single-product__controls">
-                    <div class="counter">
-                        <button class="minus icon-minus"></button>
-                        <span class="count quantity_number">1</span>
-                        <button class="plus icon-plus"></button>
-                    </div>
-                    <button class="to-cart accent-btn btn-add-cart" data-id="{{ $product->id }}" data-page="detail">
-                        {{ $vars['add_to_cart'] }}
-                    </button>
-                </div>
+{{--                <div class="single-product__controls">--}}
+{{--                    <div class="counter">--}}
+{{--                        <button class="minus icon-minus"></button>--}}
+{{--                        <span class="count quantity_number">1</span>--}}
+{{--                        <button class="plus icon-plus"></button>--}}
+{{--                    </div>--}}
+{{--                    <button class="to-cart accent-btn btn-add-cart" data-id="{{ $product->id }}" data-page="detail">--}}
+{{--                        {{ $vars['add_to_cart'] }}--}}
+{{--                    </button>--}}
+{{--                </div>--}}
             @endif
 
             <div class="single-product__info">

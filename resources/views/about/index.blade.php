@@ -5,9 +5,9 @@
 @endsection
 
 @section('content')
-    
+
     @include('about/hero')
 
-    @include('about/product-slider')
+{{--    @include('about/product-slider')--}}
 
 @endsection

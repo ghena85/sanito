@@ -13,12 +13,12 @@
                             <h3>{{ $value->getTranslatedAttribute('name') }}</h3>
 
                             @if ((!empty($value->price_from)) && (empty($value->price_offer_from)))
-                                <p class="main-product__price">{{ $vars['aboutp-pricet'] }} <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
+                                <p class="main-product__price">gg <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
                             @endif
 
-                            
+
                             @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
-                                <p class="main-product__price">{{ $vars['aboutp-pricet'] }} <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
+                                <p class="main-product__price"> <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
                             @endif
 
                         </a>
@@ -42,7 +42,7 @@
 
                             @if ((!empty($value->price_from)) && ($value->price_offer_from == null))
                                 <div class="product-meta">
-                                    <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
+                                    <p class="product-meta__price"> <b>{{ $value->getTranslatedAttribute('price_from') }}</b></p>
                                     @if ($value->in_stock == 0)
                                         <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                                     @endif
@@ -52,10 +52,10 @@
                                 </div>
                             @endif
 
-                            
+
                             @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
                                 <div class="product-meta">
-                                    <p class="product-meta__price">{{ $vars['aboutp-pricet'] }} <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
+                                    <p class="product-meta__price"> <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
                                     @if ($value->in_stock == 0)
                                         <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                                     @endif
@@ -82,9 +82,9 @@
 
                             <div class="product-footer">
                                 @if($value->product_id > 0)
-                                    <button class="accent-btn product-btn btn-add-cart" data-id="{{ $value->product_id }}" >{{ $vars['aboutp-add-cart'] }}</button>
+{{--                                    <button class="accent-btn product-btn btn-add-cart" data-id="{{ $value->product_id }}" >{{ $vars['aboutp-add-cart'] }}</button>--}}
                                 @endif
-                                <button class="accent-btn cart-btn icon-bag"></button>                                
+{{--                                <button class="accent-btn cart-btn icon-bag"></button>--}}
                                 <div class="product-footer__review">
                                     <small>({{ $value->getTranslatedAttribute('reviews') }} {{ $vars['single_product_review'] }}) </small>
 

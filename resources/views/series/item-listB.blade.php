@@ -17,7 +17,7 @@
 
     @if ((!empty($value->price_from)) && ($value->price_offer_from == null))
         <div class="product-meta">
-           {{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</b></p>
+            <p class="product-meta__price">de la <b>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</b></p>
             @if ($value->in_stock == 0)
                 <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
             @endif
@@ -30,8 +30,7 @@
 
     @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
         <div class="product-meta">
-            <p class="product-meta__price"><span>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</span>
-                <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}  {{ $vars['lei'] }}</b></p>
+            <p class="product-meta__price">de la <span>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}  {{ $vars['lei'] }}</b></p>
             @if ($value->in_stock == 0)
                 <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
             @endif
@@ -58,9 +57,9 @@
 
     <div class="product-footer">
         @if($value->product_id > 0)
-{{--            <button class="accent-btn product-btn btn-add-cart" data-id="{{ $value->product_id }}" >{{ $vars['add_to_cart'] }}</button>--}}
+            <button class="accent-btn product-btn btn-add-cart" data-id="{{ $value->product_id }}" >{{ $vars['add_to_cart'] }}</button>
         @endif
-{{--        <button class="accent-btn cart-btn icon-bag"></button>--}}
+        <button class="accent-btn cart-btn icon-bag"></button>
         <div class="product-footer__review">
             @if($value->getTranslatedAttribute('reviews'))
                 <small>({{ $value->getTranslatedAttribute('reviews') }} {{ $vars['reviews'] }}) </small>
