@@ -50,7 +50,7 @@
 
                     <div class="products-sort desktop">
 
-                        @include("series.filter.sort-by")
+                        <!-- @include("series.filter.sort-by") -->
 
                         @include("series.filter.selected-items")
 

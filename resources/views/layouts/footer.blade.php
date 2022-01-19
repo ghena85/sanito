@@ -13,7 +13,6 @@
                     <a href="tel:{{ $vars['footer-tel'] }}" class="phone">
                         <span class="icon-phone"></span>{{ $vars['footer-tel'] }}
                     </a>
-                    <p>{{ $vars['order_call_back'] }}</p>
                 </div>
             </div>
 

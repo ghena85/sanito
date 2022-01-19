@@ -21,23 +21,14 @@
         <div class="about-card__item">
             <img src="/img/package.svg" alt="deliver">
             <h4 class="footer-title">{{ $vars['about_card1'] }}</h4>
-            <p>
-                {{ $vars['about_card_desc1'] }}
-            </p>
         </div>
         <div class="about-card__item">
             <img src="/img/diamond.svg" alt="quality">
             <h4 class="footer-title">{{ $vars['about_card2'] }}</h4>
-            <p>
-                {{ $vars['about_card_desc2'] }}
-            </p>
         </div>
         <div class="about-card__item">
             <img src="/img/support.svg" alt="support">
             <h4 class="footer-title">{{ $vars['about_card3'] }}</h4>
-            <p>
-                {{ $vars['about_card_desc3'] }}
-            </p>
         </div>
     </div>
 
@@ -45,8 +36,7 @@
         <img class="about-director__img" src="{{ asset('storage/'.$aboutDir->image) }}" alt="director">
         <div class="about-director__descr">
             <h3>{{ $aboutDir->getTranslatedAttribute('short_text') }}</h3>
-            <h5 class="about-director__name">{{ $aboutDir->getTranslatedAttribute('name2') }}</h5>
-            <span class="about-director__position">{{ $aboutDir->getTranslatedAttribute('name') }}</span>
+            <!-- <span class="about-director__position">{{ $aboutDir->getTranslatedAttribute('name') }}</span> -->
             <p >
                 {!! $aboutDir->getTranslatedAttribute('text') !!}
             </p>

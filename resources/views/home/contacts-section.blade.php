@@ -10,7 +10,7 @@
         <div class="contact-block__block">
             <span class="icon-inbox"></span>
             <h5 class="contact-block__title">{{ $vars['our_inbox_text'] }}</h5>
-            <a href="tel:{{ $vars['contact-phone'] }}" class="contact-block__info">{{ $vars['contact-text-phone'] }}</a>
+            <a href="tel:{{ $vars['contact-phone'] }}" class="contact-block__info">{{ $vars['our_inbox_mail'] }}</a>
         </div>
     </div>
     <div class="contact-block__item">

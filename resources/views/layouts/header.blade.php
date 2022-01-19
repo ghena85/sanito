@@ -28,7 +28,7 @@
                     <button type="submit" class="icon-search"></button>
                 </form>
     
-                <div class="header-cart">
+                <!-- <div class="header-cart">
                     <div class="cart-button icon-bag">
                         <span class="header-cart__count cart__quantity">
                             @if(session('cart') && count(session('cart')) > 0)
@@ -45,7 +45,7 @@
                     <div class="header-cart__content cart-content cart_content">
                         @include("layouts.popup-cart-content")
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     

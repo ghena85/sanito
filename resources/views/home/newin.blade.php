@@ -18,7 +18,7 @@
                                 <p>{{ $value->getTranslatedAttribute('short_text') }}</p>
                             </div>
                             <div class="newin-item__meta">
-                                <p class="newin-item__price">å <b>{{ $value->getTranslatedAttribute('price_from') }} {{ $vars['valuta'] }}</b></p>
+                                <p class="newin-item__price"><b>{{ $value->getTranslatedAttribute('price_from') }} {{ $vars['valuta'] }}</b></p>
                                 @if($value->product_id > 0)
 {{--                                    <button class="accent-btn product-btn btn-add-cart" data-id="{{ $value->product_id }}" >{{ $vars['aboutp-add-cart'] }}</button>--}}
                                 @endif
