@@ -1,7 +1,7 @@
 <div class="category-banner">
     <div class="category-banner__left">
         <small>Best offer</small>
-        <h1>Final <span>Sale</span></h1>
+        <h1>Finally <span>Sale</span></h1>
         <p>Hurry up! Limited offer</p>
     </div>
     <img src="/img/240x330.png" alt="banner image">

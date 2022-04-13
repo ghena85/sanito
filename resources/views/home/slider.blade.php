@@ -1,11 +1,11 @@
-<div class="page__main-slider main-slider">
-    <div class="main-slider__body">
+<div class="page__main-slider main-slider" >
+    <div class="main-slider__body" >
         <div class="main-slider__slider">
             <div class="slider-main__body swiper swiper-bild swiper-container-fade swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
                 <div class="swiper-wrapper" id="swiper-wrapper-b56f9b92ddfa92f1" aria-live="off" style="transition-duration: 0ms;">
 
                     @foreach ($slider as $value)
-                        <div class="slider-main__slide swiper-slide">
+                        <div class="slider-main__slide swiper-slide" style="background: url('https://santino.kurama.xyz/storage/series/October2021/73.jpg') 50% 50% / cover no-repeate">
                             <div class="container slider-main__container">
                                     <div class="slider-main__text"> 
                                         <h1 class="swiper-no-swiping">{{ $value->getTranslatedAttribute('title') }}</h1>

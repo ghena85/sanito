@@ -99,8 +99,8 @@
                 <div class="single-product__meta">
                     @if(!empty($product->price_offer))
                         <div class="price">
-                            <span class="old_price">{{ $product->price }} LEI</span>
-                            <span class="new_price">{{ $product->price_offer }} LEI</span>
+                            <span class="old_price">{{ $product->price }} {{ $vars['valuta']}}</span>
+                            <span class="new_price">{{ $product->price_offer }} {{ $vars['valuta']}}</span>
                         </div>
                     @else
                         <div class="price">
@@ -119,7 +119,7 @@
 
             @if($product && strtoupper($product->color) != 'NONE')
                 <div class="single-product__color color-picker">
-                    <p class="color-picker__choosen">Color: <strong>{{ $product->color }}</strong></p>
+                    <p class="color-picker__choosen">{{ $vars['choosen-color'] }}: <strong>{{ $product->color }}</strong></p>
                     <ul class="color-picker__list">
                         @foreach($colors as $key => $value)
                             @if($value->id != 59)

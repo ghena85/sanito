@@ -1143,18 +1143,40 @@ if (fixedContacts) {
         if (fixedContacts.offsetTop <= window.pageYOffset) {
             fixedContacts.classList.add('fixed')
         }
-        if (window.pageYOffset <= 1120) {
+        if (window.pageYOffset <= 1425) {
             fixedContacts.classList.remove('fixed')
         }
     })
 }
+
+
+const desktopHeader = document.querySelector('.desktop-header');
+
+if (desktopHeader) {
+    const main = document.querySelector('main')
+
+    document.addEventListener('scroll', () => {
+        const scrollPos = window.pageYOffset;
+        const headerH = desktopHeader.offsetHeight;
+
+        if (scrollPos >= headerH) {
+            desktopHeader.classList.add('fixed');
+            main.style.marginTop = `${headerH}px`
+        } else {
+            desktopHeader.classList.remove('fixed')
+            main.style.marginTop = `0px`
+        }
+    })
+
+}
+
+
 
 if ("ontouchstart" in document.documentElement) {
     window.addEventListener('resize', () => {
         const pageW = window.innerWidth;
         console.log(pageW);
         if (pageW >= 767) {
-            const desktopHeader = document.querySelector('.desktop-header');
             if (desktopHeader.querySelector('.languages')) {
                 const currentLanguage = desktopHeader.querySelector('.current-language');
                 const languageDropdown = desktopHeader.querySelector('.language-dropdown');

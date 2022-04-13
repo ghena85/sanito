@@ -24,7 +24,7 @@
                 </div>
 
                 <form action="{{ route('search') }}" class="search">
-                    <input type="text" name="search" id="search" placeholder="Search...">
+                    <input type="text" name="search" id="search" placeholder="{{ $vars['search'] }}...">
                     <button type="submit" class="icon-search"></button>
                 </form>
     
@@ -153,13 +153,13 @@
                 </div>
             </div>
     
-            <div class="header-cart">
+            <!-- <div class="header-cart">
                 <a href="../cart.html">
                     <div class="cart-button icon-bag">
                         <span class="header-cart__count">1</span>
                     </div>
                 </a>
-            </div>
+            </div> -->
         </div>
     
         <nav class="mobile-navbar">

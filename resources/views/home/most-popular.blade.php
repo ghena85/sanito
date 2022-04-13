@@ -8,7 +8,11 @@
             @foreach ($productPopularsMain as $key => $value)
                 @if ($key==0)
                     <div class="product-body__main main-product" style="background: url('{{ url('storage/'.$value->imageSalePopular) }}') 50% 50% / cover no-repeat;">
-                        <a href="{{ route('series-detail',['slug' => $value->slug]) }}"></a>
+                        <a href="{{ route('series-detail',['slug' => $value->slug]) }}">
+                            <h4>Latina</h4>
+                            <span class="main-product__label">TOP</span>
+                            <strong>32 LEI</strong>
+                        </a>
                     </div>
                 @endif
             @endforeach

@@ -36,7 +36,6 @@
         <img class="about-director__img" src="{{ asset('storage/'.$aboutDir->image) }}" alt="director">
         <div class="about-director__descr">
             <h3>{{ $aboutDir->getTranslatedAttribute('short_text') }}</h3>
-            <!-- <span class="about-director__position">{{ $aboutDir->getTranslatedAttribute('name') }}</span> -->
             <p >
                 {!! $aboutDir->getTranslatedAttribute('text') !!}
             </p>

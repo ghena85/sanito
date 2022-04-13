@@ -8,7 +8,12 @@
             @foreach ($productOnSaleMain as $key => $value)
                 @if ($key==0)
                     <div class="product-body__main main-product" style="background: url('img/5.jpg') 50% 50% / cover no-repeat;">
-                         <a href="{{ route('series-detail',['slug' => $value->slug]) }}"></a> 
+                         <a class="product-sale" href="{{ route('series-detail',['slug' => $value->slug]) }}">
+                            <h4>Dali-dea</h4>
+                            <span class="main-product__label">-10%</span>
+                            <strong><span class="old-price">22.5 LEI</span>20.25 LEI</strong>
+                         </a> 
+
                     </div>
                 @endif
             @endforeach
