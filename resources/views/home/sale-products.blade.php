@@ -7,21 +7,8 @@
         <div class="product-section__body product-body">
             @foreach ($productOnSaleMain as $key => $value)
                 @if ($key==0)
-                    <div class="product-body__main main-product" style="background: url('{{ url('storage/'.$value->imageSalePopular) }}') 50% 50% / cover no-repeat;">
-                        <a href="{{ route('series-detail',['slug' => $value->slug]) }}">
-                            <span class="offer">{{ $vars['best-offer'] }}</span>
-                            <h3>{{ $value->getTranslatedAttribute('name') }}</h3>
-
-                            @if ((!empty($value->price_from)) && (empty($value->price_offer_from)))
-                                <p class="main-product__price"><b>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</b></p>
-                            @endif
-
-
-                            @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
-                                <p class="main-product__price"><span>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}  {{ $vars['lei'] }}</b></p>
-                            @endif
-
-                        </a>
+                    <div class="product-body__main main-product" style="background: url('img/5.jpg') 50% 50% / cover no-repeat;">
+                         <a href="{{ route('series-detail',['slug' => $value->slug]) }}"></a> 
                     </div>
                 @endif
             @endforeach
@@ -42,7 +29,7 @@
 
                             @if ((!empty($value->price_from)) && ($value->price_offer_from == null))
                                 <div class="product-meta">
-                                    <p class="product-meta__price"> <b>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</b></p>
+                                    <p class="product-meta__price"> @if((int)$value->showPriceFrom == 1) {{ $vars['de_la'] }} @endif  <b>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</b></p>
                                     @if ($value->in_stock == 0)
                                         <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                                     @endif
@@ -55,7 +42,7 @@
 
                             @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
                                 <div class="product-meta">
-                                    <p class="product-meta__price"> <span>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
+                                    <p class="product-meta__price"> @if((int)$value->showPriceFrom == 1) {{ $vars['de_la'] }} @endif  <span>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
                                     @if ($value->in_stock == 0)
                                         <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
                                     @endif

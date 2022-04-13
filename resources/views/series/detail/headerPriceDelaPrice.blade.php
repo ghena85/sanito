@@ -92,6 +92,7 @@
             @if(!empty($product))
                 <div class="single-product__meta">
                     <div class="price">
+                        <span>20 Lei</span>
                         <span class="discount">{{ $product->pirce }} LEI</span>
                     </div>
                 </div>

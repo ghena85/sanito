@@ -91,11 +91,24 @@
 
             <h3 class="single-product__name">{{ $series->getTranslatedAttribute('name') }}</h3>
 
+            @if (!empty($series->discount_percent) && !empty($product) && !empty($product->price_offer))
+                <span class="product-labels__discount">{{ $series->getTranslatedAttribute('discount_percent') }}%</span>
+            @endif
+
             @if(!empty($product) && !empty($product->price))
                 <div class="single-product__meta">
-                    <div class="price">
-                        <span class="discount">{{ $product->price }} LEI</span>
-                    </div>
+                    @if(!empty($product->price_offer))
+                        <div class="price">
+                            <span class="old_price">{{ $product->price }} LEI</span>
+                            <span class="new_price">{{ $product->price_offer }} LEI</span>
+                        </div>
+                    @else
+                        <div class="price">
+                            <span class="discount">{{ $product->price }} LEI</span>
+                        </div>
+                    @endif
+
+
 {{--                    @if ($product->in_stock == 0)--}}
 {{--                        <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>--}}
 {{--                    @else--}}

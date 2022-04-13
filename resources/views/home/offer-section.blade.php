@@ -13,14 +13,14 @@
         </div>
 
         <div class="offer-section__body offer-body">
-            
+
             @foreach ($bestOffers as $key => $value)
                 <div class="offer-body__item">
                     <div class="offer-body__text">
                         <span class="green">{{ $vars['best_offer'] }}</span>
                         {!! $value->getTranslatedAttribute('short_text') !!}
                         <p class="offer-body__description">{{ $value->getTranslatedAttribute('description') }}</p>
-                        <a href="{{ route('series',['categorySlug' => $value->slug]) }}">{{ $vars['view_all_sale_items'] }}</a>
+                        <a href="{{ $value->link }}">{{ $vars['view_all_sale_items'] }}</a>
                     </div>
                     <img src="{{ url('storage/'.$value->image) }}" alt="cup">
                 </div>

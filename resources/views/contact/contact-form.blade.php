@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="contact-background container" style="background: url('img/contact_bg.jpg') 50% 50% / cover no-repeat; width: 100%; height: 400px;"></div>
+<div class="contact-background container" style="background: url('/img/contact_bg.jpg') 50% 50% / cover no-repeat; width: 100%; height: 400px;"></div>
 
 <div class="contact-form">
     <h2>{{ $vars['contact_text_form'] }}</h2>
@@ -26,10 +26,10 @@
                     @endforeach
                 </ul>
             </div>
-    @endif  
+    @endif
     <form action="{{ route('sendContactForm') }}" method="post">
         @csrf
-        
+
         <label class="contact-form__lable" for="nume"><span>*</span> Prenume
             <input class="contact-form__input {{ ($errors->has('first_name') ? 'error' : '') }}" required type="text" name="first_name" id="nume" placeholder="Ex: Ion" value="{{ old('first_name') }}">
         </label>

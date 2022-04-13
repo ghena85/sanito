@@ -12,11 +12,14 @@
         </div>
     @endif
     <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-image">
-        <img src="{{ url('storage/'.$value->image) }}" alt="product">
+        <img src="{{ url('storage/'.$value->image) }}" alt="serie-image">
     </a>
 
     @if ((!empty($value->price_from)) && ($value->price_offer_from == null))
         <div class="product-meta">
+            @if((int)$value->showPriceFrom == 1)
+                {{ $vars['de_la'] }}
+            @endif
            {{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</b></p>
             @if ($value->in_stock == 0)
                 <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>
@@ -30,7 +33,11 @@
 
     @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
         <div class="product-meta">
-            <p class="product-meta__price"><span>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</span>
+            <p class="product-meta__price">
+                @if((int)$value->showPriceFrom == 1)
+                    {{ $vars['de_la'] }}
+                @endif
+                <span>{{ $value->getTranslatedAttribute('price_from') }}  {{ $vars['lei'] }}</span>
                 <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}  {{ $vars['lei'] }}</b></p>
             @if ($value->in_stock == 0)
                 <span class="product-meta__status out">{{ $vars['aboutp-outof'] }}</span>

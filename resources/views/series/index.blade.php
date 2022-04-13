@@ -66,7 +66,7 @@
                         @include("series.filter.pagination")
                     </div>
 
-                    @include("series.banners-disabled")
+                    <!-- @include("series.banners-disabled") -->
 
                 </div>
 

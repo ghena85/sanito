@@ -28,7 +28,7 @@ class SeriesController extends AppController
         $category    = Category::where('slug',$categorySlug)->with(['parentId'])->first();
         if(empty($category)) return abort(404);
 
-        $series      = Series::where('category_id',$category->id)
+        $series      = Series::select("series.*","series.image")->where('category_id',$category->id)
                                 ->SearchFilter($request,$this->lng);
 
         $brands      = Brand::whereIn('id',Series::where('category_id',$category->id)->pluck('brand_id'))->get();

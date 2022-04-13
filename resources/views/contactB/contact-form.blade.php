@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="contact-background container" style="background: url('img/contact_bg.jpg') 50% 50% / cover no-repeat; width: 100%; height: 400px;"></div>
+<div class="contact-background container" style="background: url('/img/contact_bg.jpg') 50% 50% / cover no-repeat; width: 100%; height: 400px;"></div>
 
 <div class="contact-form">
     <h2>Feel free to contact us</h2>

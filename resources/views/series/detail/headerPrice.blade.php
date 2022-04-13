@@ -94,6 +94,7 @@
                     <div class="single-product__meta">
                         <div class="price">
                             <p>de la </p>
+                            <span>20</span>
                             <span class="discount">{{ $product->getTranslatedAttribute('price_from') }} LEI</span>
                         </div>
                         @if ($product->in_stock == 0)

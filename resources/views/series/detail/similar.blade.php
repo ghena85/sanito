@@ -34,7 +34,7 @@
                                 </div>
                             @endif
 
-                            
+
                             @if ((!empty($value->price_from)) && (!empty($value->price_offer_from)))
                                 <div class="product-meta">
                                     <p class="product-meta__price">de la <span>{{ $value->getTranslatedAttribute('price_from') }}</span> <b class="discount">{{ $value->getTranslatedAttribute('price_offer_from') }}</b></p>
@@ -48,15 +48,23 @@
                             @endif
 
                             <div class="product-category">
-                                <a href="single-category.html">Pots</a>
-                                <a href="single-category.html">Flower pots</a>
+                                @if($value->category)
+                                    <a href="{{ route('categoryDetail',['slug' => $value->categoryId->parentId->slug]) }}">
+                                        {{ $value->category }}
+                                    </a>
+                                @endif
+                                @if($value->subcategory)
+                                    <a href="{{ route('series',['slug' => $value->categoryId->slug]) }}">
+                                        {{ $value->subcategory }}
+                                    </a>
+                                @endif
                             </div>
 
                             <a href="{{ route('series-detail',['slug' => $value->slug]) }}" class="product-info">{{ $value->getTranslatedAttribute('name') }}</a>
 
                             <div class="product-footer">
                                 <button class="accent-btn product-btn">Add to cart</button>
-                                <button class="accent-btn cart-btn icon-bag"></button>                                
+                                <button class="accent-btn cart-btn icon-bag"></button>
                                 <div class="product-footer__review">
                                     <small>({{ $value->getTranslatedAttribute('reviews') }} reviews) </small>
 

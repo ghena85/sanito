@@ -1,4 +1,8 @@
 <aside class="page-grid__sidebar sidebar">
+    <!-- <div class="ripple-loader">
+        <div></div>
+        <div></div>
+    </div> -->
     <h3 class="sidebar__title">
         <a href="{{ route('series',['slug' => $category->slug]) }}">
             {{ $category->getTranslatedAttribute('name') }}
