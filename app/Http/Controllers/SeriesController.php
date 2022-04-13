@@ -20,23 +20,23 @@ class SeriesController extends AppController
     /*
      * List of series with Filters
      */
-    public function index($categorySlug,Request $request)
+    public function index($categorySlug, Request $request)
     {
         $page        = Page::find(4);
         $activeMenu  = $page->id;
 
-        $category    = Category::where('slug',$categorySlug)->with(['parentId'])->first();
-        if(empty($category)) return abort(404);
+        $category    = Category::where('slug', $categorySlug)->with(['parentId'])->first();
+        if (empty($category)) return abort(404);
 
-        $series      = Series::select("series.*","series.image")->where('category_id',$category->id)
-                                ->SearchFilter($request,$this->lng);
+        $series      = Series::select("series.*", "series.image")->where('category_id', $category->id)
+            ->SearchFilter($request, $this->lng);
 
-        $brands      = Brand::whereIn('id',Series::where('category_id',$category->id)->pluck('brand_id'))->get();
-        $functionals = Functional::whereIn('id',Series::where('category_id',$category->id)->pluck('functional_id'))->get();
+        $brands      = Brand::whereIn('id', Series::where('category_id', $category->id)->pluck('brand_id'))->get();
+        $functionals = Functional::whereIn('id', Series::where('category_id', $category->id)->pluck('functional_id'))->get();
 
-        $seriesIDs   = Series::where('category_id',$category->id)->pluck('id');
-        $colorIDs    = Product::whereIn('series_id',$seriesIDs)->pluck('color_id');
-        $colors      = Color::whereIn('id',$colorIDs)->groupBy('id')->get();
+        $seriesIDs   = Series::where('category_id', $category->id)->pluck('id');
+        $colorIDs    = Product::whereIn('series_id', $seriesIDs)->pluck('color_id');
+        $colors      = Color::whereIn('id', $colorIDs)->groupBy('id')->get();
 
         $filters = [
             'price_start' => !empty($request->input('price_start')) ? $request->input('price_start') : '', // pret start
@@ -48,7 +48,8 @@ class SeriesController extends AppController
             'sortBy'      => !empty($request->input('sortBy')) ? $request->input('sortBy') : 'onMostPopular', // Sort By
         ];
 
-        return view('series.index', compact('category',
+        return view('series.index', compact(
+            'category',
             'functionals',
             'filters',
             'colors',
@@ -57,7 +58,6 @@ class SeriesController extends AppController
             'activeMenu',
             'page'
         ));
-
     }
 
     /*
@@ -67,55 +67,67 @@ class SeriesController extends AppController
     {
 
         $activeMenu      = 2;
-        $series          = Series::where('slug', $slug)->with(['categories','tags'])->firstOrFail();
+        $series          = Series::where('slug', $slug)->with(['categories', 'tags'])->firstOrFail();
         $page            = $series;
-        $similarSeries   = !empty($series->category_id) ? Series::where('category_id', $series->category_id)->orderBy('id','desc')->get() : '';
+        $similarSeries   = !empty($series->category_id) ? Series::where('category_id', $series->category_id)->orderBy('id', 'desc')->get() : '';
 
-        $reviews         = SeriesRating::where('series_id', $series->id)->orderBy('id','desc')->get();
+        $reviews         = SeriesRating::where('series_id', $series->id)->orderBy('id', 'desc')->get();
 
-        $products        = Product::where('series_id',$series->id)->get();
+        $products        = Product::where('series_id', $series->id)->get();
 
-        if($request->size_id) {
-            $colorIDs         = $products->where('size_id',$request->size_id)->pluck('color_id');
+        if ($request->size_id) {
+            $colorIDs         = $products->where('size_id', $request->size_id)->pluck('color_id');
         } else {
             $colorIDs         = $products->pluck('color_id');
         }
 
-        $colors      = Product::select("colors.id","colors.name","products.image")
-                                ->where('series_id',$series->id)
-                                ->whereIn('colors.id',$colorIDs)
-                                ->where('colors.id','!=',59)// without NONE
-                                ->leftJoin('colors','colors.id','=','products.color_id')
-                                ->groupBy('products.color_id')
-                                ->get();
+        $colors      = Product::select("colors.id", "colors.name", "products.image")
+            ->where('series_id', $series->id)
+            ->whereIn('colors.id', $colorIDs)
+            ->where('colors.id', '!=', 59) // without NONE
+            ->leftJoin('colors', 'colors.id', '=', 'products.color_id')
+            ->groupBy('products.color_id')
+            ->get();
 
 
-        if($request->color_id) {
-            $sizeIDs         = $products->where('color_id',$request->color_id)->pluck('size_id');
+        if ($request->color_id) {
+            $sizeIDs         = $products->where('color_id', $request->color_id)->pluck('size_id');
         } else {
             $sizeIDs         = $products->pluck('size_id');
         }
-        $sizes               = Size::whereIn('id',$sizeIDs)->where('id','!=',30)->get();
+        $sizes               = Size::whereIn('id', $sizeIDs)->where('id', '!=', 30)->get();
+
+        for ($index = 0; $index < count($sizes); $index++) {
+            $sizes[$index]['capacity'] = explode(" ", $sizes[$index]['name']);
+            $sizes[$index]['capacity'] = (float) str_replace(',', '.', $sizes[$index]['capacity'][0]);
+        }
+
+        for ($index = 1; $index < count($sizes) - 1; $index++) {
+            $temp = $sizes[$index];
+            $index2 = $index - 1;
+
+            while ($index2 >= 0 && $temp->capacity < $sizes[$index2]->capacity) {
+                $sizes[$index2 + 1] = $sizes[$index2];
+                $index2--;
+            }
+
+            $sizes[$index2 + 1] = $temp;
+        }
 
         // Selected Product / First Product
-        $product         = Product::where('series_id',$series->id);
-        if($request->color_id || $request->size_id)
-        {
-            if($request->color_id)
-            {
-                $product = $product->where('color_id',$request->color_id);
+        $product         = Product::where('series_id', $series->id);
+        if ($request->color_id || $request->size_id) {
+            if ($request->color_id) {
+                $product = $product->where('color_id', $request->color_id);
             }
-            if($request->size_id)
-            {
-                $product = $product->where('size_id',$request->size_id);
+            if ($request->size_id) {
+                $product = $product->where('size_id', $request->size_id);
             }
-        }
-        else if($colorIDs || $sizeIDs)
-        {
-            if($colorIDs && !$colors->isEmpty()) {
-                $product = $product->where('color_id',$colors[0]->id);
-            } elseif(!$sizes->isEmpty()) {
-                $product = $product->where('size_id',$sizes[0]->id);
+        } else if ($colorIDs || $sizeIDs) {
+            if ($colorIDs && !$colors->isEmpty()) {
+                $product = $product->where('color_id', $colors[0]->id);
+            } elseif (!$sizes->isEmpty()) {
+                $product = $product->where('size_id', $sizes[0]->id);
             }
         }
 
@@ -133,13 +145,12 @@ class SeriesController extends AppController
             'series',
             'reviews'
         ));
-
     }
 
     public function detailSender(ReviewRequest $request, $slug)
     {
 
-        $series = Series::where('slug',$slug)->first();
+        $series = Series::where('slug', $slug)->first();
 
         SeriesRating::create([
             'series_id' => $series->id,
@@ -147,16 +158,14 @@ class SeriesController extends AppController
             'last_name' => $request->last_name,
             'text' => $request->text,
             'stars' => $request->stars,
-            'date'=>date('Y-m-d')
+            'date' => date('Y-m-d')
 
         ]);
         $series->reviews = SeriesRating::where('series_id', $series->id)->count();
         $stars           = SeriesRating::where('series_id', $series->id)->sum('stars');
-        $series->rate    = $stars > 0 && $series->reviews ? round($stars/$series->reviews) : 0;
+        $series->rate    = $stars > 0 && $series->reviews ? round($stars / $series->reviews) : 0;
         $series->save();
 
-        return redirect(route('series-detail',['slug'=>$slug]).'#allReviews')->with('message', 'Transmis cu success.');
+        return redirect(route('series-detail', ['slug' => $slug]) . '#allReviews')->with('message', 'Transmis cu success.');
     }
-
-
 }

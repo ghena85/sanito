@@ -2,7 +2,7 @@
     <div class="container">
         <ul class="breadcrumb-list">
             <li class="breadcrumb-list__item">
-                <a href="{{ route('home') }}" class="breadcrumb-list__link">Home</a>
+                <a href="{{ route('home') }}" class="breadcrumb-list__link">{{ $vars['home'] }}</a>
             </li>
             <li class="breadcrumb-list__item">
                 <a href="{{ route('contacts') }}" class="breadcrumb-list__link">{{ $page->getTranslatedAttribute('name') }}</a>

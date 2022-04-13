@@ -18,21 +18,21 @@ class HomeController extends AppController
     {
         $page        = Page::find(1);
         $activeMenu  = 1;
-        $news        = Article::orderBy('id','desc')->take(3)->get();
-        $slider      = Slider::orderBy('id','desc')->get();
-        $categoryies           = Category::where('onHome',1)->orderBy('id','desc')->get();
-        
-        $productPopulars       = Series::where('onMostPopular',1)->with(['categories','labelId'])->orderBy('id','desc')->get();
-        $productPopularsMain   = Series::where('onMostPopularMain',1)->with(['categories','labelId'])->orderBy('id','desc')->get();
+        $news        = Article::orderBy('id', 'desc')->take(3)->get();
+        $slider      = Slider::orderBy('id', 'desc')->get();
+        $categoryies           = Category::where('onHome', 1)->orderBy('id', 'desc')->get();
 
-        $productOnSale         = Series::where('onSale',1)->with(['categories','labelId'])->orderBy('id','desc')->get();
-        $productOnSaleMain     = Series::where('onSaleMain',1)->with(['categories','labelId'])->orderBy('id','desc')->get();
-        $productOnNewLine      = Series::where('onNewLine',1)->with(['categories','labelId'])->orderBy('id','desc')->get();
+        $productPopulars       = Series::where('onMostPopular', 1)->with(['categories', 'labelId'])->orderBy('id', 'desc')->get();
+        $productPopularsMain   = Series::where('onMostPopularMain', 1)->with(['categories', 'labelId'])->orderBy('id', 'desc')->get();
+
+        $productOnSale         = Series::where('onSale', 1)->with(['categories', 'labelId'])->orderBy('id', 'desc')->get();
+        $productOnSaleMain     = Series::where('onSaleMain', 1)->with(['categories', 'labelId'])->orderBy('id', 'desc')->get();
+        $productOnNewLine      = Series::where('onNewLine', 1)->with(['categories', 'labelId'])->orderBy('id', 'desc')->get();
         $about          = About::find(4);
-        $aboutList      = About::where('id','>=',4)->orderBy('id','desc')->get();
+        $aboutList      = About::where('id', '>=', 4)->orderBy('id', 'desc')->get();
 
         $bestOffer  = Category::find(13);
-        $bestOffers = Category::where('parent_id',13)->get();
+        $bestOffers = Category::where('parent_id', 13)->get();
 
         return view('home.index', compact(
             'page',
@@ -51,5 +51,4 @@ class HomeController extends AppController
             'productOnSaleMain'
         ));
     }
-
 }
