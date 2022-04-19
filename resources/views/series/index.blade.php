@@ -16,11 +16,11 @@
                     <li class="breadcrumb-list__item">
                         <a href="{{ route('category') }}" class="breadcrumb-list__link">{{ $vars['сategorii'] }}</a>
                     </li>
-                    @if($category->parentId)
-                        @if($category->parentId->id != 46)
+                    @if($category->categoryId)
+                        @if($category->categoryId->id != 46)
                             <li class="breadcrumb-list__item">
-                                <a href="{{ route('categoryDetail',['slug' => $category->parentId->slug]) }}"  class="breadcrumb-list__link">
-                                    {{ $category->parentId->getTranslatedAttribute('name') }}
+                                <a href="{{ route('categoryDetail',['slug' => $category->categoryId->slug]) }}"  class="breadcrumb-list__link">
+                                    {{ $category->categoryId->getTranslatedAttribute('name') }}
                                 </a>
                             </li>
                         @endif
@@ -38,11 +38,12 @@
     <div class="page-grid single-category">
         <div class="container">
             @php
-              $class = $category->parentId->id != 23  || $category->id == 30 ? 'no-sidebar' : '';
+              $class = $category->categoryId->id != 23  || $category->categoryId->id == 30 ? 'no-sidebar' : '';
             @endphp
+
             <div class="page-grid__content {{ $class }}">
 
-               @if($category->parentId->id == 23 && $category->id != 30)
+               @if($category->categoryId->id == 23 && $category->id != 30)
                  @include("series.filter.left-sidebar")
                @endif
 
@@ -73,6 +74,7 @@
             </div>
         </div>
     </div>
+    
 
 @endsection
 

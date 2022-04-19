@@ -14,7 +14,7 @@ class Category extends Model
 
     public function parentId()
     {
-        return $this->belongsTo(Category::class, 'parent_id');
+        return $this->belongsTo(SubCategory::class, 'category_id');
     }
 
     public function products()
@@ -25,12 +25,6 @@ class Category extends Model
 
     public function childrens()
     {
-        return $this->hasMany('App\Category', 'parent_id');
-    }
-
-    // Only main category
-    public function scopeMain($query)
-    {
-        return $query->where('parent_id', 0)->orWhereNull('parent_id')->orWhere('parent_id', 46);
+        return $this->hasMany('App\SubCategory', 'category_id');
     }
 }

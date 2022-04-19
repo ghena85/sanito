@@ -18,8 +18,11 @@
                     <div class="about-grid__text">
                         {!! $series->getTranslatedAttribute('text2') !!}
                     </div>
-                    @if($series->image2)
-                        <img src="{{ url('storage/'.$series->image2) }}" alt="product">
+                    @if($series->image2 && app()->getLocale() == "ro")
+                        <img src="{{ url('storage/'.$series->image2) }}" alt="product_img_ro">
+                    @endif
+                    @if($series->image2_ru && app()->getLocale() == "ru")
+                        <img src="{{ url('storage/'.$series->image2_ru) }}" alt="product_img_ru">
                     @endif
                 </div>
             @endif

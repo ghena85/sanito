@@ -1,4 +1,4 @@
-@if($category->parentId->id == 23)
+@if($category->categoryId->id == 23)
     @if(!isEmptyArray($filters))
         {{ $series->setPath(route('series',['slug' => $category->slug]))->appends($filters)->links('layouts.pagination') }}
     @else

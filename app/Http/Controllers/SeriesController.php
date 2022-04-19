@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Brand;
-use App\Category;
 use App\Color;
 use App\Functional;
 use App\Page;
@@ -13,6 +12,8 @@ use App\Size;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReviewRequest;
 use App\SeriesRating;
+use App\SeriesSubCategory;
+use App\SubCategory;
 
 class SeriesController extends AppController
 {
@@ -25,11 +26,28 @@ class SeriesController extends AppController
         $page        = Page::find(4);
         $activeMenu  = $page->id;
 
-        $category    = Category::where('slug', $categorySlug)->with(['parentId'])->first();
+        $category    = SubCategory::where('slug', $categorySlug)->with(['categoryId'])->first();
+
         if (empty($category)) return abort(404);
 
-        $series      = Series::select("series.*", "series.image")->where('category_id', $category->id)
-            ->SearchFilter($request, $this->lng);
+        // $series      = Series::select("series.*", "series.image")->where('category_id', $category->id)
+        //     ->SearchFilter($request, $this->lng);
+
+        $series = Series::query()
+            ->selectRaw("series.*")
+            ->join("series_sub_categories", function ($join) {
+                $join->on("series_sub_categories.series_id", "=", "series.id");
+            })
+            ->where("series_sub_categories.sub_category_id", $category->id)
+            ->paginate(10);
+
+        foreach ($series as $value) {
+            $value->categName = $category->name;
+            $value->categSlug = $category->slug;
+            $value->subCategName = $category->categoryId->name;
+            $value->subCategSlug = $category->categoryId->slug;
+        }
+
 
         $brands      = Brand::whereIn('id', Series::where('category_id', $category->id)->pluck('brand_id'))->get();
         $functionals = Functional::whereIn('id', Series::where('category_id', $category->id)->pluck('functional_id'))->get();
@@ -68,6 +86,7 @@ class SeriesController extends AppController
 
         $activeMenu      = 2;
         $series          = Series::where('slug', $slug)->with(['categories', 'tags'])->firstOrFail();
+        // dd($series->categories[0]->categoryId);
         $page            = $series;
         $similarSeries   = !empty($series->category_id) ? Series::where('category_id', $series->category_id)->orderBy('id', 'desc')->get() : '';
 
@@ -97,16 +116,17 @@ class SeriesController extends AppController
         }
         $sizes               = Size::whereIn('id', $sizeIDs)->where('id', '!=', 30)->get();
 
-        for ($index = 0; $index < count($sizes); $index++) {
-            $sizes[$index]['capacity'] = explode(" ", $sizes[$index]['name']);
-            $sizes[$index]['capacity'] = (float) str_replace(',', '.', $sizes[$index]['capacity'][0]);
+        foreach ($sizes as $key => $value) {
+            $value->val = explode(" ", $value->name)[0];
+            $value->val = str_replace(",", ".", $value->val);
+            $value->val = (float) $value->val;
         }
 
-        for ($index = 1; $index < count($sizes) - 1; $index++) {
+        for ($index = 1; $index <= count($sizes) - 1; $index++) {
             $temp = $sizes[$index];
             $index2 = $index - 1;
 
-            while ($index2 >= 0 && $temp->capacity < $sizes[$index2]->capacity) {
+            while ($index2 >= 0 && $temp->val < $sizes[$index2]->val) {
                 $sizes[$index2 + 1] = $sizes[$index2];
                 $index2--;
             }

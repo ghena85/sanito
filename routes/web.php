@@ -44,8 +44,6 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
             'as' => 'home',
             'uses' => 'AccountController@index'
         ]);
-
-
     });
 
 
@@ -158,33 +156,29 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         'as' => 'cart-checkout',
         'uses' => 'CartController@checkout'
     ]);
-
-
-
 });
 
 #Api
-Route::group(['prefix'=>'api/v1'], function(){
+Route::group(['prefix' => 'api/v1'], function () {
 
     // Add To Cart
-    Route::post('cart/add-to-cart','Api\V1\CartController@addToCart')->name('addToCart');
+    Route::post('cart/add-to-cart', 'Api\V1\CartController@addToCart')->name('addToCart');
 
     // Remove from Cart
-    Route::post('cart/remove-from-cart','Api\V1\CartController@removeFromCart')->name('removeFromCart');
+    Route::post('cart/remove-from-cart', 'Api\V1\CartController@removeFromCart')->name('removeFromCart');
 
     // Hit Plus on Cart
-    Route::post('cart/plus-to-cart','Api\V1\CartController@plusToCart')->name('plusToCart');
+    Route::post('cart/plus-to-cart', 'Api\V1\CartController@plusToCart')->name('plusToCart');
 
     // Hit Minus on Cart
-    Route::post('cart/minus-to-cart','Api\V1\CartController@minusToCart')->name('minusToCart');
+    Route::post('cart/minus-to-cart', 'Api\V1\CartController@minusToCart')->name('minusToCart');
 
     // updateCartProductQt
-    Route::post('cart/updateCartProductQt','Api\V1\CartController@updateCartProductQt')->name('updateCartProductQt');
+    Route::post('cart/updateCartProductQt', 'Api\V1\CartController@updateCartProductQt')->name('updateCartProductQt');
 
 
     // filterProducts
-    Route::post('series/filterSeries','Api\V1\SeriesController@filterSeries')->name('filterSeries');
-
+    Route::post('series/filterSeries', 'Api\V1\SeriesController@filterSeries')->name('filterSeries');
 });
 
 

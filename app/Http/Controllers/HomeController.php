@@ -11,6 +11,7 @@ use App\Series;
 use App\Slider;
 use Illuminate\Http\Request;
 use App\Http\Requests\SubscribeRequest;
+use App\SubCategory;
 
 class HomeController extends AppController
 {
@@ -31,8 +32,8 @@ class HomeController extends AppController
         $about          = About::find(4);
         $aboutList      = About::where('id', '>=', 4)->orderBy('id', 'desc')->get();
 
-        $bestOffer  = Category::find(13);
-        $bestOffers = Category::where('parent_id', 13)->get();
+        $bestOffer  = Category::find(10);
+        $bestOffers = SubCategory::where('category_id', 10)->get();
 
         return view('home.index', compact(
             'page',

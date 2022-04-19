@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Banner;
 use App\Category;
 use App\Page;
+use App\SubCategory;
 use Illuminate\Http\Request;
 
 class CategoryController extends AppController
@@ -12,7 +14,10 @@ class CategoryController extends AppController
     {
         $page        = Page::find(4);
         $activeMenu  = $page->id;
-        return view('category.index', compact('activeMenu', 'page'));
+
+        $banner = Banner::find(2);
+
+        return view('category.index', compact('activeMenu', 'page', 'banner'));
     }
 
     public function detail($slug = '')
@@ -20,8 +25,9 @@ class CategoryController extends AppController
         $page           = Page::find(4);
         $activeMenu     = $page->id;
         $category       = Category::where('slug', $slug)->firstOrFail();
-        $subCategories  = Category::where('parent_id',$category->id)->get();
-        return view('category.index', compact('activeMenu','subCategories','category', 'page','slug'));
-    }
+        $subCategories  = SubCategory::where('category_id', $category->id)->get();
+        $banner = Banner::find(2);
 
+        return view('category.index', compact('activeMenu', 'subCategories', 'category', 'page', 'slug', 'banner'));
+    }
 }

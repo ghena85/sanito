@@ -19,33 +19,40 @@ class Series extends Model
         'short_text'
     ];
 
-    protected $with = ['categoryId','labelId'];
+    protected $with = ['categoryId', 'labelId'];
 
-    public function categoryId() {
+    public function categoryId()
+    {
         return $this->belongsTo(Category::class, 'category_id')->with(['parentId']);
     }
 
-    public function labelId() {
+    public function labelId()
+    {
         return $this->belongsToMany(Label::class, 'series_labels', 'series_id', 'label_id');
     }
 
-    public function labels() {
+    public function labels()
+    {
         return $this->belongsToMany(Label::class, 'series_labels', 'series_id', 'label_id');
     }
 
-    public function brandId() {
+    public function brandId()
+    {
         return $this->belongsTo(Brand::class, 'brand_id');
     }
 
-    public function brands() {
+    public function brands()
+    {
         return $this->hasMany(Brand::class);
     }
 
-    public function functionalId() {
+    public function functionalId()
+    {
         return $this->belongsTo(Functional::class, 'functional_id');
     }
 
-    public function productId() {
+    public function productId()
+    {
         return $this->belongsTo(Product::class, 'product_id');
     }
 
@@ -57,7 +64,7 @@ class Series extends Model
     // todo if multiple categories
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'series_categories', 'series_id', 'category_id');
+        return $this->belongsToMany(SubCategory::class, 'series_sub_categories', 'series_id', 'sub_category_id');
     }
 
     public function getSubCategoryAttribute()
@@ -67,7 +74,7 @@ class Series extends Model
 
     public function getLabelAttribute()
     {
-        return !empty($this->labelId)  ? ( $this->label_id != 1 ? $this->labelId->getTranslatedAttribute('name') : '') : '';
+        return !empty($this->labelId)  ? ($this->label_id != 1 ? $this->labelId->getTranslatedAttribute('name') : '') : '';
     }
 
     public function getCategoryAttribute()
@@ -83,23 +90,21 @@ class Series extends Model
      * @param $request
      * @return mixed
      */
-    public static function scopeSearchFilter($query, $request,$lng,$options = [])
+    public static function scopeSearchFilter($query, $request, $lng, $options = [])
     {
         // Pret de la
         $productJoined = 0;
-        if($request->input('price_start'))
-        {
-            $query = $query->where('price_from','>=',$request->input('price_start'));
+        if ($request->input('price_start')) {
+            $query = $query->where('price_from', '>=', $request->input('price_start'));
         }
         // Pret pina la
-        if($request->input('price_end'))
-        {
-            $query = $query->where('price_from','<=',$request->input('price_end'));
+        if ($request->input('price_end')) {
+            $query = $query->where('price_from', '<=', $request->input('price_end'));
         }
 
         // Brands
-        if($request->input('brand')) {
-            $query = $query->join('brands','brands.id','=','series.brand_id');
+        if ($request->input('brand')) {
+            $query = $query->join('brands', 'brands.id', '=', 'series.brand_id');
             $query->where(function ($query) use ($request) {
                 foreach ($request->input('brand') as $value) {
                     $query->orWhere('brand_id', $value);
@@ -108,14 +113,14 @@ class Series extends Model
         }
 
         // Functional
-        if($request->input('functional')) {
+        if ($request->input('functional')) {
             $query = $query->whereIn('functional_id', $request->input('functional'));
         }
 
         // Colors
-        if($request->input('color')) {
-            if(empty($productJoined)) {
-                $query = $query->join('products','products.series_id','=','series.id');
+        if ($request->input('color')) {
+            if (empty($productJoined)) {
+                $query = $query->join('products', 'products.series_id', '=', 'series.id');
             }
             $query->where(function ($query) use ($request) {
                 foreach ($request->input('color') as $value) {
@@ -125,20 +130,20 @@ class Series extends Model
         }
 
         // if count max price
-        if(isset($options['priceMinMax'])) {
+        if (isset($options['priceMinMax'])) {
             return $options['priceMinMax'] == 'max' ? (int)$query->max('price') :  (int)$query->min('price');
         }
 
         // SortBy
         switch ($request->input('sortBy')) {
                 // On sale
-            case 'onSale' :
-                $query = $query->orderBy('onSale','ASC');
+            case 'onSale':
+                $query = $query->orderBy('onSale', 'ASC');
                 break;
-            case 'onMostPopular' :
+            case 'onMostPopular':
                 $query = $query->orderBy('onCategoryPopular', 'desc');
                 break;
-            case 'onNewLine' :
+            case 'onNewLine':
                 $query = $query->orderBy('onNewLine', 'desc');
                 break;
             default:
@@ -151,5 +156,4 @@ class Series extends Model
 
         return $query;
     }
-
 }

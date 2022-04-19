@@ -49,14 +49,14 @@
     @endif
 
     <div class="product-category">
-        @if($value->category)
-            <a href="{{ route('categoryDetail',['slug' => $value->categoryId->parentId->slug]) }}">
-                {{ $value->category }}
+        @if($value->subCategName)
+            <a href="{{ route('categoryDetail',['slug' => $value->subCategSlug]) }}">
+                {{ $value->subCategName }}
             </a>
         @endif
-        @if($value->subcategory)
-            <a href="{{ route('series',['slug' => $value->categoryId->slug]) }}">
-                {{ $value->subcategory }}
+        @if($value->categName)
+            <a href="{{ route('series',['slug' => $value->categSlug]) }}">
+                {{ $value->categName }}
             </a>
         @endif
     </div>

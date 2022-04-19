@@ -18,7 +18,7 @@
                     </li>
                     @if(isset($category))
                         <li class="breadcrumb-list__item">
-                            <a href="{{ route('series',['slug' => $category->slug])  }}" class="breadcrumb-list__link">
+                            <a href="{{ route('categoryDetail',['slug' => $category->slug])  }}" class="breadcrumb-list__link">
                                 {{ $category->getTranslatedAttribute('name') }}
                             </a>
                         </li>
@@ -46,9 +46,12 @@
                             @endif
                         @endforeach
                     @endif
+
+                    @include("category.banner")
                 </div>
             </div>
         </div>
     </div>
+
 
 @endsection

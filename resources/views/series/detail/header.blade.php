@@ -7,14 +7,14 @@
             <li class="breadcrumb-list__item">
                 <a href="{{ route('category') }}" class="breadcrumb-list__link">{{ $vars['сategorii'] }}</a>
             </li>
-            @if($series->category && $series->category != 'NONE')
+            @if($series->categories[0]->categoryId && $series->categories[0]->categoryId != 'NONE')
                 <li class="breadcrumb-list__item">
-                    <a href="{{ route('categoryDetail',['slug' => $series->categoryId->parentId->slug]) }}" class="breadcrumb-list__link">{{ $series->category }}</a>
+                    <a href="{{ route('categoryDetail',['slug' => $series->categories[0]->categoryId->slug]) }}" class="breadcrumb-list__link">{{ $series->categories[0]->categoryId->getTranslatedAttribute('name') }}</a>
                 </li>
             @endif
-            @if($series->subcategory && $series->subcategory != 'NONE')
+            @if($series->categories[0] && $series->categories[0] != 'NONE')
                 <li class="breadcrumb-list__item">
-                    <a href="{{ route('series',['slug' => $series->categoryId->slug]) }}" class="breadcrumb-list__link">{{ $series->subcategory }}</a>
+                    <a href="{{ route('series',['slug' => $series->categories[0]->slug]) }}" class="breadcrumb-list__link">{{ $series->categories[0]->getTranslatedAttribute('name') }}</a>
                 </li>
             @endif
             <li class="breadcrumb-list__item">
